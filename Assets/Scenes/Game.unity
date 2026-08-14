@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 30625202}
   - component: {fileID: 30625201}
   m_Layer: 0
-  m_Name: EnemyPool
+  m_Name: RangedEnemyPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1240,13 +1240,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 21.18
+  m_fontSizeBase: 21.18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1309,7 +1309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.5, y: -25.3}
+  m_AnchoredPosition: {x: 22.1, y: -27.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &100467196
@@ -4736,46 +4736,65 @@ MonoBehaviour:
   - {fileID: 1104071382}
   waves:
   - groups:
-    - enemyCount: 3
+    - enemyPool: {fileID: 30625201}
+      enemyCount: 3
       pattern: 1
       spacing: 3
       polarity: 1
   - groups:
-    - enemyCount: 2
+    - enemyPool: {fileID: 30625201}
+      enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
-    - enemyCount: 2
+    - enemyPool: {fileID: 30625201}
+      enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
   - groups:
-    - enemyCount: 2
+    - enemyPool: {fileID: 1520353061}
+      enemyCount: 4
       pattern: 0
       spacing: 3
       polarity: 0
-    - enemyCount: 2
+    - enemyPool: {fileID: 30625201}
+      enemyCount: 2
       pattern: 1
       spacing: 3
       polarity: 1
   - groups:
-    - enemyCount: 3
+    - enemyPool: {fileID: 1520353061}
+      enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 1
-    - enemyCount: 3
+    - enemyPool: {fileID: 30625201}
+      enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 0
   - groups:
-    - enemyCount: 4
+    - enemyPool: {fileID: 30625201}
+      enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 1
-    - enemyCount: 4
+    - enemyPool: {fileID: 30625201}
+      enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 0
+    - enemyPool: {fileID: 1520353061}
+      enemyCount: 8
+      pattern: 0
+      spacing: 4
+      polarity: 0
+    - enemyPool: {fileID: 1520353061}
+      enemyCount: 8
+      pattern: 0
+      spacing: 4
+      polarity: 1
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
@@ -4799,6 +4818,7 @@ Transform:
   m_Children:
   - {fileID: 963344243}
   - {fileID: 30625202}
+  - {fileID: 1520353060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &412698639 stripped
@@ -16554,29 +16574,35 @@ MonoBehaviour:
   waves:
   - groups: []
   - groups:
-    - enemyCount: 3
+    - enemyPool: {fileID: 0}
+      enemyCount: 3
       pattern: 0
       spacing: 4
       polarity: 0
-    - enemyCount: 3
+    - enemyPool: {fileID: 0}
+      enemyCount: 3
       pattern: 0
       spacing: 4
       polarity: 1
   - groups:
-    - enemyCount: 2
+    - enemyPool: {fileID: 0}
+      enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 0
-    - enemyCount: 2
+    - enemyPool: {fileID: 0}
+      enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 1
   - groups:
-    - enemyCount: 2
+    - enemyPool: {fileID: 0}
+      enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 1
-    - enemyCount: 4
+    - enemyPool: {fileID: 0}
+      enemyCount: 4
       pattern: 0
       spacing: 4
       polarity: 0
@@ -18498,7 +18524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -159.4}
+  m_AnchoredPosition: {x: -476, y: 254}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1179320959
@@ -21404,7 +21430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -730.7095, y: -401.3847}
+  m_AnchoredPosition: {x: -804, y: 479}
   m_SizeDelta: {x: 256, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1425752839
@@ -22621,6 +22647,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b890216c6645c648bfde4c7ba8f0b08, type: 3}
+--- !u!1 &1520353059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520353060}
+  - component: {fileID: 1520353061}
+  m_Layer: 0
+  m_Name: MeleeEnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1520353060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520353059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412696442}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520353061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520353059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e37c9c420af70449dcdf8e6a22332e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyPool
+  enemyPrefab: {fileID: -393103584126372068, guid: 2984f07c681828042bdd6e526796ee69, type: 3}
+  poolSize: 50
 --- !u!4 &1525538656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 262889321097380118, guid: ce7e4bd04c6404147b4b1dc694ac9a00, type: 3}
