@@ -11,6 +11,7 @@ namespace PolarityBreach.Enemy
         private Transform firePoint;
 
         [SerializeField] private EnemyProjectilePool projectilePool;
+        [SerializeField] private EnemyAnimation enemyAnimation;
 
         [Header("Firing")] [SerializeField] private float fireRate = 1.5f;
         [SerializeField] private float projectileSpeed = 12f;
@@ -30,6 +31,7 @@ namespace PolarityBreach.Enemy
         {
             pursuitAI = GetComponent<EnemyPursuitAI>();
             _polarity = GetComponent<PolarityComponent>();
+            if (enemyAnimation == null) enemyAnimation = GetComponent<EnemyAnimation>();
             if (firePoint == null) firePoint = transform;
             ownColliders = GetComponentsInChildren<Collider>();
 
@@ -71,6 +73,7 @@ namespace PolarityBreach.Enemy
         private void Fire()
         {
             if (projectilePool == null || pursuitAI.Target == null) return;
+            if (enemyAnimation != null) enemyAnimation.PlayAttack();
 
             Vector3 targetPoint = pursuitAI.Target.position + Vector3.up * 0.5f;
             Vector3 baseDirection = (targetPoint - firePoint.position).normalized;

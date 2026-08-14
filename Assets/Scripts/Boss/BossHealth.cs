@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 namespace PolarityBreach.Boss
 {
@@ -18,6 +19,7 @@ namespace PolarityBreach.Boss
 
         private bool isDead;
 
+        public event Action OnDamaged;
         public event Action OnDied;
         public event Action<float> OnHealthPercentChanged;
         public event Action OnWeakPointDestroyed;
@@ -25,6 +27,10 @@ namespace PolarityBreach.Boss
         public float CurrentHealth => currentHealth;
         public float MaxHealth => maxHealth;
         public bool IsDead => isDead;
+
+
+        [Header("Death")]
+        [SerializeField] private float deathAnimationDuration = 2f;
 
         void Awake()
         {
@@ -65,10 +71,17 @@ namespace PolarityBreach.Boss
                 isDead = true;
                 OnDied?.Invoke();
                 Debug.Log("Boss Defeated");
-                gameObject.SetActive(false);
+                StartCoroutine(DisableAfterDeathAnimation());
+                //gameObject.SetActive(false);
             }
         }
-        
+
+        private IEnumerator DisableAfterDeathAnimation()
+        {
+            yield return new WaitForSeconds(deathAnimationDuration);
+            gameObject.SetActive(false);
+        }
+
         public void WeakPointDestroyed()
         {
             RefreshHealth();
@@ -82,6 +95,12 @@ namespace PolarityBreach.Boss
         public void SetShielded(bool shielded)
         {
             IsShielded = shielded;
+        }
+
+        public void NotifyDamaged()
+        {
+            if (isDead) return;
+            OnDamaged?.Invoke();
         }
     }
 }
