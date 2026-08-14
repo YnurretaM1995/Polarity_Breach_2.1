@@ -149,6 +149,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5255814778995812938}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5204095855316427894}
   m_SourcePrefab: {fileID: 100100000, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
 --- !u!4 &1693870628056365393 stripped
 Transform:
@@ -332,7 +335,7 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 0
-  moveSpeed: 11
+  moveSpeed: 13
   acceleration: 12
   stoppingDistance: 0
   isRangedEnemy: 0
@@ -346,7 +349,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074478206260618219}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8f0f477b58fad4ba06d07a25a71fdc, type: 3}
   m_Name: 
@@ -497,3 +500,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyXPReward
   xpReward: 5
+--- !u!114 &-5204095855316427894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074478206260618219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1497ee9d23eba42ae8b19855e9009c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.EnemySlowOnContact
+  slowMultiplier: 0.7
+  knockbackDistance: 8
+  knockbackDuration: 0.2
+  shakeOffRadius: 2.5
+  stunDuration: 2
