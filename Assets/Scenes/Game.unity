@@ -4737,9 +4737,45 @@ MonoBehaviour:
   waves:
   - groups:
     - enemyCount: 3
-      pattern: 0
+      pattern: 1
       spacing: 3
       polarity: 1
+  - groups:
+    - enemyCount: 2
+      pattern: 0
+      spacing: 6
+      polarity: 0
+    - enemyCount: 2
+      pattern: 0
+      spacing: 6
+      polarity: 0
+  - groups:
+    - enemyCount: 2
+      pattern: 0
+      spacing: 3
+      polarity: 0
+    - enemyCount: 2
+      pattern: 1
+      spacing: 3
+      polarity: 1
+  - groups:
+    - enemyCount: 3
+      pattern: 0
+      spacing: 7
+      polarity: 1
+    - enemyCount: 3
+      pattern: 0
+      spacing: 7
+      polarity: 0
+  - groups:
+    - enemyCount: 4
+      pattern: 0
+      spacing: 8
+      polarity: 1
+    - enemyCount: 4
+      pattern: 0
+      spacing: 8
+      polarity: 0
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
