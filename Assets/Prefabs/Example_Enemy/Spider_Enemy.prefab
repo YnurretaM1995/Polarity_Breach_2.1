@@ -136,6 +136,9 @@ PrefabInstance:
       addedObject: {fileID: 860923334636840836}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
       insertIndex: -1
+      addedObject: {fileID: -178576796558061868}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
+      insertIndex: -1
       addedObject: {fileID: -1134821473822150626}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
       insertIndex: -1
@@ -152,6 +155,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5255814778995812938}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2111975541184429305}
   m_SourcePrefab: {fileID: 100100000, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
 --- !u!4 &1693870628056365393 stripped
 Transform:
@@ -342,6 +348,19 @@ MonoBehaviour:
   preferredDistance: 13
   preferredDistanceBuffer: 1.2
   idleUntilDetected: 1
+--- !u!114 &-178576796558061868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074478206260618219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cad4b5f108f4e840b846de2e25a4fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyAnimation
+  animator: {fileID: -2111975541184429305}
 --- !u!114 &-1134821473822150626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
   firePoint: {fileID: 2564543507342304787}
   projectilePool: {fileID: 0}
+  enemyAnimation: {fileID: -178576796558061868}
   fireRate: 0.6
   projectileSpeed: 11
   maxFireRange: 25
@@ -521,3 +541,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyXPReward
   xpReward: 20
+--- !u!95 &-2111975541184429305
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074478206260618219}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b61da222161a93f4f87d374e35980c77, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
