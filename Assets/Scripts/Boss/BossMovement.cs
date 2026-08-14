@@ -10,6 +10,8 @@ namespace PolarityBreach.Boss
         [SerializeField] private float stoppingDistance = 6f;
         [SerializeField] private float repathInterval = 0.25f;
 
+        public bool IsBusy { get; set; }
+
         private NavMeshAgent agent;
         private BossHealth health;
         private float nextRepathTime;
@@ -31,16 +33,18 @@ namespace PolarityBreach.Boss
         {
             if (target == null || health == null) return;
 
-            if (health.IsDead)
+            if (health.IsDead || IsBusy)
             {
                 if (agent.isOnNavMesh) agent.isStopped = true;
                 return;
             }
 
+            if (agent.isOnNavMesh) agent.isStopped = false;
+
             if (Time.time >= nextRepathTime)
             {
                 nextRepathTime = Time.time + repathInterval;
-                if (agent.isOnNavMesh) agent.SetDestination(target.position);
+                agent.SetDestination(target.position);
             }
         }
     }

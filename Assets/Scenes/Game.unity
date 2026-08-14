@@ -16593,34 +16593,34 @@ MonoBehaviour:
   waves:
   - groups: []
   - groups:
-    - enemyPool: {fileID: 0}
+    - enemyPool: {fileID: 30625201}
       enemyCount: 3
       pattern: 0
       spacing: 4
       polarity: 0
-    - enemyPool: {fileID: 0}
+    - enemyPool: {fileID: 30625201}
       enemyCount: 3
       pattern: 0
       spacing: 4
       polarity: 1
   - groups:
-    - enemyPool: {fileID: 0}
+    - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 0
-    - enemyPool: {fileID: 0}
+    - enemyPool: {fileID: 1520353061}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 1
   - groups:
-    - enemyPool: {fileID: 0}
+    - enemyPool: {fileID: 1520353061}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 1
-    - enemyPool: {fileID: 0}
+    - enemyPool: {fileID: 30625201}
       enemyCount: 4
       pattern: 0
       spacing: 4
@@ -16689,9 +16689,12 @@ MonoBehaviour:
   animator: {fileID: 1015451786}
   agent: {fileID: 1015451790}
   health: {fileID: 1015451780}
-  minTimeBetweenAnimations: 3
-  maxTimeBetweenAnimations: 6
+  movement: {fileID: 0}
+  minTimeBetweenAnimations: 0.5
+  maxTimeBetweenAnimations: 1
+  attackAnimationDuration: 1
   takeHitCooldown: 0.4
+  takeHitDuration: 0.5
 --- !u!114 &1015451789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16705,7 +16708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossMovement
   target: {fileID: 1817478970}
-  stoppingDistance: 6
+  stoppingDistance: 15
   repathInterval: 0.25
 --- !u!195 &1015451790
 NavMeshAgent:
@@ -20373,7 +20376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossShield
   maxHealth: 50
   enemyPool: {fileID: 30625201}
-  enemyWaveSpawner: {fileID: 412696441}
+  enemyWaveSpawner: {fileID: 1015451782}
 --- !u!114 &1312911741
 MonoBehaviour:
   m_ObjectHideFlags: 0

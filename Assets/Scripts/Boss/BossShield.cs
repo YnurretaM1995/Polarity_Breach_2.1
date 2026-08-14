@@ -49,17 +49,13 @@ namespace PolarityBreach.Boss
 
         private bool HasEnemiesAlive()
         {
+            if (enemyWaveSpawner != null)
+                return enemyWaveSpawner.AliveEnemies > 0;
+
             FindEnemyPoolIfMissing();
 
-            if (enemyWaveSpawner != null)
-            {
-                return enemyWaveSpawner.AliveEnemies > 0;
-            }
-
             if (enemyPool != null)
-            {
                 return enemyPool.HasActiveEnemies;
-            }
 
             return false;
         }
