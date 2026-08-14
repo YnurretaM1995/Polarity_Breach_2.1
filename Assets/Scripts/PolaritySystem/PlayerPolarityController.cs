@@ -1,3 +1,4 @@
+using System;
 using PolarityBreach.Audio;
 using PolarityBreach.Player;
 using UnityEngine;
@@ -19,6 +20,8 @@ namespace PolarityBreach.PolaritySystem
 
         [SerializeField] private AudioClip colorSound;
         [SerializeField] private AbilityUIDisplay polarityUI;
+        public event Action OnPolaritySwitched;
+        public static event Action<Transform> OnAnyPlayerPolaritySwitched;
         
         public float SwitchCooldown
         {
@@ -84,6 +87,8 @@ namespace PolarityBreach.PolaritySystem
             _lastSwitchTime = Time.time;
             AudioHandler.Play3DSound(colorSound, transform.position);
             polarityUI.StartCooldownUI();
+            OnPolaritySwitched?.Invoke();
+            OnAnyPlayerPolaritySwitched?.Invoke(transform);
             return true;
         }
         
