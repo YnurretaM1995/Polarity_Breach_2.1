@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using PolarityBreach.PolaritySystem;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace PolarityBreach.Enemy
     [System.Serializable]
     public class EnemySpawnGroup
     {
+        public EnemyPool enemyPool;
         public int enemyCount = 5;
         public SpawnPattern pattern = SpawnPattern.RandomCluster;
         public float spacing = 2f;
@@ -54,7 +56,8 @@ namespace PolarityBreach.Enemy
         [Header("Random Cluster Settings")] [SerializeField]
         private float clusterRadius = 3f;
 
-        private System.Collections.Generic.List<Enemy> activeEnemies = new System.Collections.Generic.List<Enemy>();
+        private List<Enemy> activeEnemies = new List<Enemy>();
+        private Dictionary<Enemy, EnemyPool> enemyPoolsByEnemy = new Dictionary<Enemy, EnemyPool>();
         private int aliveEnemies;
         public int AliveEnemies => aliveEnemies;
         public EnemyPool Pool => enemyPool;
@@ -91,7 +94,14 @@ namespace PolarityBreach.Enemy
             for (int groupIndex = 0; groupIndex < wave.groups.Length; groupIndex++)
             {
                 EnemySpawnGroup group = wave.groups[groupIndex];
+                EnemyPool groupEnemyPool = group.enemyPool != null ? group.enemyPool : enemyPool;
                 Transform spawnPoint = GetRandomSpawnPoint();
+
+                if (groupEnemyPool == null)
+                {
+                    Debug.LogWarning("No enemy pool assigned.");
+                    yield break;
+                }
 
                 if (spawnPoint == null)
                 {
@@ -113,7 +123,7 @@ namespace PolarityBreach.Enemy
 
                 for (int i = 0; i < spawnPositions.Length; i++)
                 {
-                    SpawnEnemyAtPosition(spawnPositions[i], group.polarity);
+                    SpawnEnemyAtPosition(spawnPositions[i], group.polarity, groupEnemyPool);
                     yield return new WaitForSeconds(timeBetweenSpawns);
                 }
             }
@@ -158,9 +168,9 @@ namespace PolarityBreach.Enemy
             return possibleSpawnPoints[randomIndex];
         }
 
-        private void SpawnEnemyAtPosition(Vector3 spawnPosition, Polarity polarity)
+        private void SpawnEnemyAtPosition(Vector3 spawnPosition, Polarity polarity, EnemyPool pool)
         {
-            Enemy enemy = enemyPool.GetEnemy(spawnPosition);
+            Enemy enemy = pool.GetEnemy(spawnPosition);
 
             if (enemy == null)
             {
@@ -178,6 +188,7 @@ namespace PolarityBreach.Enemy
             aliveEnemies++;
             enemy.Spawn(this);
             activeEnemies.Add(enemy);
+            enemyPoolsByEnemy[enemy] = pool;
         }
 
         private Vector3[] GetPatternOffsets(SpawnPattern pattern, int enemyCount, float spacing)
@@ -230,20 +241,29 @@ namespace PolarityBreach.Enemy
         {
             aliveEnemies--;
             activeEnemies.Remove(enemy);
+
+            if (enemyPoolsByEnemy.TryGetValue(enemy, out EnemyPool pool))
+            {
+                enemyPoolsByEnemy.Remove(enemy);
+                pool.ReturnEnemy(enemy);
+                return;
+            }
+
             enemyPool.ReturnEnemy(enemy);
         }
 
         public void DebugCompleteCurrentWave()
         {
-            enemyPool.KillAllActiveEnemies();
+            SkipCurrentWave();
         }
 
         public void DebugStopAndClearEnemies()
         {
             StopAllCoroutines();
-            enemyPool.KillAllActiveEnemies();
+            SkipCurrentWave();
             aliveEnemies = 0;
             activeEnemies.Clear();
+            enemyPoolsByEnemy.Clear();
         }
 
         public void SkipCurrentWave()
