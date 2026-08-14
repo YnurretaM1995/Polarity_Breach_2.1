@@ -4737,9 +4737,45 @@ MonoBehaviour:
   waves:
   - groups:
     - enemyCount: 3
-      pattern: 0
+      pattern: 1
       spacing: 3
       polarity: 1
+  - groups:
+    - enemyCount: 2
+      pattern: 0
+      spacing: 6
+      polarity: 0
+    - enemyCount: 2
+      pattern: 0
+      spacing: 6
+      polarity: 0
+  - groups:
+    - enemyCount: 2
+      pattern: 0
+      spacing: 3
+      polarity: 0
+    - enemyCount: 2
+      pattern: 1
+      spacing: 3
+      polarity: 1
+  - groups:
+    - enemyCount: 3
+      pattern: 0
+      spacing: 7
+      polarity: 1
+    - enemyCount: 3
+      pattern: 0
+      spacing: 7
+      polarity: 0
+  - groups:
+    - enemyCount: 4
+      pattern: 0
+      spacing: 8
+      polarity: 1
+    - enemyCount: 4
+      pattern: 0
+      spacing: 8
+      polarity: 0
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
@@ -4757,7 +4793,7 @@ Transform:
   m_GameObject: {fileID: 412696440}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5032, y: 0, z: 0.1326}
+  m_LocalPosition: {x: -0.5032, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
