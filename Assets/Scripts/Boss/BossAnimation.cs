@@ -9,16 +9,20 @@ namespace PolarityBreach.Boss
         [SerializeField] private Animator animator;
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private BossHealth health;
+        [SerializeField] private BossMovement movement;
 
         [Header("Attack Animations (visual)")]
         [SerializeField] private float minTimeBetweenAnimations = 3f;
         [SerializeField] private float maxTimeBetweenAnimations = 6f;
+        [SerializeField] private float attackAnimationDuration = 1f;
 
         [Header("Take Hit")]
         [SerializeField] private float takeHitCooldown = 0.4f;
+        [SerializeField] private float takeHitDuration = 0.5f;
 
         private float lastTakeHitTime = float.NegativeInfinity;
         private Coroutine attackRoutine;
+        private Coroutine busyRoutine;
         private bool isDead;
 
         private void Awake()
@@ -26,6 +30,7 @@ namespace PolarityBreach.Boss
             if (animator == null) animator = GetComponentInChildren<Animator>();
             if (agent == null) agent = GetComponent<NavMeshAgent>();
             if (health == null) health = GetComponent<BossHealth>();
+            if (movement == null) movement = GetComponent<BossMovement>();
         }
 
         private void OnEnable()
@@ -64,6 +69,9 @@ namespace PolarityBreach.Boss
                 if (isDead) yield break;
 
                 animator.SetTrigger(Random.value < 0.5f ? "Attack" : "Jump");
+                SetBusy(attackAnimationDuration);
+
+                yield return new WaitForSeconds(attackAnimationDuration);
             }
         }
 
@@ -74,6 +82,7 @@ namespace PolarityBreach.Boss
 
             lastTakeHitTime = Time.time;
             animator.SetTrigger("TakeHit");
+            SetBusy(takeHitDuration);
         }
 
         private void PlayDeath()
@@ -81,6 +90,21 @@ namespace PolarityBreach.Boss
             isDead = true;
             if (attackRoutine != null) StopCoroutine(attackRoutine);
             animator.SetTrigger("Death");
+        }
+
+        private void SetBusy(float duration)
+        {
+            if (busyRoutine != null) StopCoroutine(busyRoutine);
+            busyRoutine = StartCoroutine(BusyRoutine(duration));
+        }
+
+
+        private IEnumerator BusyRoutine(float duration)
+        {
+            if (movement != null) movement.IsBusy = true;
+            yield return new WaitForSeconds(duration);
+            if (movement != null && !isDead) movement.IsBusy = false;
+            busyRoutine = null;
         }
     }
 }
