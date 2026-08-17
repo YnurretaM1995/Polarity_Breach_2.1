@@ -7,12 +7,14 @@ namespace PolarityBreach.Player
     [RequireComponent(typeof(PlayerHealth))]
     public class PlayerLevelUpBonus : MonoBehaviour
     {
-        [Header("Stat Increase Per Level")]
-        [SerializeField] private float attackDamageIncrease = 2f;
-        [SerializeField] private float attackSpeedIncrease = 0.05f;
-        [SerializeField] private float maxHealthIncrease = 10f;
+        [Header("Stat Increase per upgrade")]
+        [SerializeField] private float attackDamageIncrease = 5f;
+        [SerializeField] private float attackSpeedIncrease = 0.1f;
+        [SerializeField] private float maxHealthIncrease = 30f;
         [SerializeField] private float attackSpeedDelayReduction = 0.02f; // cooldown between attacks
-        [SerializeField] private float polarityCooldownReduction = 0.1f;  // dash/polarity cooldown
+
+        [Header("UI")]
+        [SerializeField] private LevelUpMenu levelUpMenu;
 
         private PlayerXP playerXP;
         private PlayerStatsData stats;
@@ -23,6 +25,11 @@ namespace PolarityBreach.Player
             playerXP = GetComponent<PlayerXP>();
             stats = GetComponent<PlayerStatsData>();
             health = GetComponent<PlayerHealth>();
+
+            if (levelUpMenu == null)
+            {
+                levelUpMenu = FindFirstObjectByType<LevelUpMenu>();
+            }
         }
 
         private void OnEnable()
@@ -37,19 +44,37 @@ namespace PolarityBreach.Player
 
         private void HandleLevelUp(int newLevel)
         {
+            if (levelUpMenu != null)
+            {
+                levelUpMenu.Open(this);
+                return;
+            }
+
+            ApplyAttackPowerUpgrade();
+        }
+
+        public void ApplyAttackPowerUpgrade()
+        {
             stats.attackDamage += attackDamageIncrease;
+
+            Debug.Log("Attack power upgraded. Damage: " + stats.attackDamage);
+        }
+
+        public void ApplyAttackSpeedUpgrade()
+        {
             stats.attackSpeed += attackSpeedIncrease;
+            stats.attackSpeedDelay = Mathf.Max(0.05f, stats.attackSpeedDelay - attackSpeedDelayReduction);
+
+            Debug.Log("Attack speed upgraded. AttackSpeed: " + stats.attackSpeed + "AttackDelay: " + stats.attackSpeedDelay);
+        }
+
+        public void ApplyMaxHealthUpgrade()
+        {
             stats.maxHealth += maxHealthIncrease;
 
-            // lower delay = faster attacks, so we subtract, with a safety floor
-            stats.attackSpeedDelay = Mathf.Max(0.05f, stats.attackSpeedDelay - attackSpeedDelayReduction);
-            stats.polaritySwitchCooldown = Mathf.Max(0.1f, stats.polaritySwitchCooldown - polarityCooldownReduction);
-
-            // sync current health so max health increase doesn't leave player at old value
             health.IncreaseMaxHealth(maxHealthIncrease);
 
-            Debug.Log($"Level {newLevel}! Dmg: {stats.attackDamage}, AtkSpd: {stats.attackSpeed}, " +
-                      $"MaxHP: {stats.maxHealth}, AtkDelay: {stats.attackSpeedDelay}, PolarityCD: {stats.polaritySwitchCooldown}");
+            Debug.Log("Max health upgraded. MaxHP:" + stats.maxHealth);
         }
     }
 }
