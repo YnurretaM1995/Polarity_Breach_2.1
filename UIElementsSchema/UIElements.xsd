@@ -3,6 +3,7 @@
   <xs:import schemaLocation="UnityEngine.UIElements.xsd" namespace="UnityEngine.UIElements" />
   <xs:import schemaLocation="UnityEditor.ShaderGraph.Drawing.xsd" namespace="UnityEditor.ShaderGraph.Drawing" />
   <xs:import schemaLocation="UnityEditor.Rendering.xsd" namespace="UnityEditor.Rendering" />
+  <xs:import schemaLocation="UnityEditor.U2D.Sprites.SpriteEditorTool.xsd" namespace="UnityEditor.U2D.Sprites.SpriteEditorTool" />
   <xs:import schemaLocation="Unity.UIToolkit.Editor.xsd" namespace="Unity.UIToolkit.Editor" />
   <xs:import schemaLocation="UnityEditor.UIElements.Debugger.xsd" namespace="UnityEditor.UIElements.Debugger" />
   <xs:import schemaLocation="Unity.UI.Builder.xsd" namespace="Unity.UI.Builder" />

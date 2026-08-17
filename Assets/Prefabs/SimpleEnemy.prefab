@@ -379,9 +379,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 12
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 720
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -411,6 +411,7 @@ MonoBehaviour:
     m_Bits: 0
   moveSpeed: 3.5
   acceleration: 12
+  angularSpeed: 720
   stoppingDistance: 0
   isRangedEnemy: 1
   preferredDistance: 5
@@ -428,13 +429,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c014be9b54c514c86ce622a14c2386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  projectilePrefab: {fileID: 979850657213972872, guid: ff8a6265275bbd2459cb490dccb31438, type: 3}
   firePoint: {fileID: 8612148308107307021}
   projectilePool: {fileID: 0}
+  enemyAnimation: {fileID: 0}
   fireRate: 1.5
   projectileSpeed: 12
   maxFireRange: 12
   damage: 10
+  projectilesPerShot: 3
+  spreadAngle: 15
+  shootSound: {fileID: 0}
 --- !u!114 &6935941499969548306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +456,7 @@ MonoBehaviour:
   playerTag: Player
   knockbackForce: 6
   enemyPushback: 1.5
+  damageSound: {fileID: 0}
 --- !u!114 &4029121830450783869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,5 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
-  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
+  _blackMaterial: {fileID: 0}
+  _whiteMaterial: {fileID: 0}
+  flashMaterial: {fileID: 0}
+  flashDuration: 0.04
