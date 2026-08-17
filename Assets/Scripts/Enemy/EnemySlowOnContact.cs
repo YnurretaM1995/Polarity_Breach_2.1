@@ -9,7 +9,9 @@ namespace PolarityBreach.Enemy
     public class EnemySlowOnContact : MonoBehaviour
     {
         [Header("Slow")]
-        [SerializeField] private float slowMultiplier = 0.5f;
+        [SerializeField] private float slowRadius = 2f;
+        [SerializeField] private float slowRefreshDuration = 0.15f;
+        [SerializeField] private string playerTag = "Player";
 
         [Header("Knockback")]
         [SerializeField] private float knockbackDistance = 3f;
@@ -21,9 +23,7 @@ namespace PolarityBreach.Enemy
         private NavMeshAgentPusher pusher;
         private EnemyPursuitAI pursuitAI;
         private Collider enemyCollider;
-        private bool canHit = true;
-        private PlayerStatsData slowedPlayerStats;
-        private float originalPlayerSpeed;
+        private PlayerStatsData targetPlayerStats;
         private Coroutine knockbackRoutine;
 
         private void Awake()
@@ -38,74 +38,68 @@ namespace PolarityBreach.Enemy
         private void OnEnable()
         {
             PlayerPolarityController.OnAnyPlayerPolaritySwitched += HandleAnyPlayerPolaritySwitched;
+            FindPlayerIfMissing();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void Update()
         {
-            TryStartSlow(other);
+            TryApplySlowInRadius();
         }
 
         private void OnTriggerStay(Collider other)
         {
-            TryStartSlow(other);
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            TryStopSlow(other);
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            TryStartSlow(collision.collider);
+            TryApplySlow(other);
         }
 
         private void OnCollisionStay(Collision collision)
         {
-            TryStartSlow(collision.collider);
+            TryApplySlow(collision.collider);
         }
 
-        private void OnCollisionExit(Collision collision)
+        private void TryApplySlow(Collider other)
         {
-            TryStopSlow(collision.collider);
-        }
-
-        private void TryStartSlow(Collider other)
-        {
-            if (!canHit) return;
-            if (slowedPlayerStats != null) return;
-
             PlayerStatsData playerStats = other.GetComponentInParent<PlayerStatsData>();
             if (playerStats == null) return;
 
-            StartSlow(playerStats);
+            playerStats.ApplyTemporaryMovementSlow(this, slowRefreshDuration);
         }
 
-        private void TryStopSlow(Collider other)
+        private void TryApplySlowInRadius()
         {
-            if (slowedPlayerStats == null) return;
+            if (knockbackRoutine != null) return;
 
-            PlayerStatsData playerStats = other.GetComponentInParent<PlayerStatsData>();
-            if (playerStats != slowedPlayerStats) return;
+            FindPlayerIfMissing();
+            if (targetPlayerStats == null) return;
 
-            ClearSlow();
-            canHit = true;
+            Vector3 flatOffset = transform.position - targetPlayerStats.transform.position;
+            flatOffset.y = 0f;
+
+            if (flatOffset.sqrMagnitude <= slowRadius * slowRadius)
+            {
+                targetPlayerStats.ApplyTemporaryMovementSlow(this, slowRefreshDuration);
+            }
         }
 
-        private void StartSlow(PlayerStatsData playerStats)
+        private void FindPlayerIfMissing()
         {
-            canHit = false;
+            if (targetPlayerStats != null) return;
 
-            slowedPlayerStats = playerStats;
-            originalPlayerSpeed = playerStats.movementSpeed;
-            playerStats.movementSpeed *= slowMultiplier;
+            GameObject player = GameObject.FindGameObjectWithTag(playerTag);
+            if (player == null) return;
+
+            targetPlayerStats = player.GetComponentInParent<PlayerStatsData>();
         }
 
         private void HandleAnyPlayerPolaritySwitched(Transform playerTransform)
         {
             if (!ShouldShakeOffFrom(playerTransform)) return;
 
-            ClearSlow();
+            PlayerStatsData playerStats = playerTransform.GetComponentInParent<PlayerStatsData>();
+            if (playerStats != null)
+            {
+                playerStats.ResetMovementSpeedMultiplier();
+            }
+
             KnockbackFromPlayer(playerTransform);
         }
 
@@ -113,29 +107,15 @@ namespace PolarityBreach.Enemy
         {
             if (playerTransform == null) return false;
 
-            if (slowedPlayerStats != null && slowedPlayerStats.transform == playerTransform)
-            {
-                return true;
-            }
-
             Vector3 flatOffset = transform.position - playerTransform.position;
             flatOffset.y = 0f;
             return flatOffset.sqrMagnitude <= shakeOffRadius * shakeOffRadius;
         }
 
-        private void ClearSlow()
-        {
-            if (slowedPlayerStats != null)
-            {
-                slowedPlayerStats.movementSpeed = originalPlayerSpeed;
-            }
-
-            slowedPlayerStats = null;
-        }
-
         private void KnockbackFromPlayer(Transform player)
         {
             if (agent == null) return;
+            if (knockbackRoutine != null) return;
 
             Vector3 direction = transform.position - player.position;
             direction.y = 0f;
@@ -144,8 +124,6 @@ namespace PolarityBreach.Enemy
             {
                 direction = -player.forward;
             }
-
-            if (knockbackRoutine != null) return;
 
             knockbackRoutine = StartCoroutine(KnockbackRoutine(direction.normalized));
         }
@@ -181,7 +159,6 @@ namespace PolarityBreach.Enemy
             }
 
             agent.isStopped = false;
-            canHit = true;
 
             if (enemyCollider != null)
             {
@@ -200,9 +177,6 @@ namespace PolarityBreach.Enemy
                 StopCoroutine(knockbackRoutine);
                 knockbackRoutine = null;
             }
-
-            ClearSlow();
-            canHit = true;
         }
     }
 }
