@@ -54,7 +54,7 @@ public class CameraControlScript : MonoBehaviour
             shakeOffset.y = 0f; 
             transform.position += shakeOffset;
 
-            shakeIntensity -= shakeDecay * Time.deltaTime;
+            shakeIntensity -= shakeDecay * Time.unscaledDeltaTime;
             if (shakeIntensity < 0f) shakeIntensity = 0f;
         }
             
