@@ -539,4 +539,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cad4b5f108f4e840b846de2e25a4fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyAnimation
-  animator: {fileID: -2111975541184429305, guid: c0681513ed3964941aa5cbb61119718b, type: 3}
+  animator: {fileID: -8345655836680786021}
