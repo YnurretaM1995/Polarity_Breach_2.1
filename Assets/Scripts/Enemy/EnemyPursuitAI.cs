@@ -19,6 +19,7 @@ public class EnemyPursuitAI : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float acceleration = 15f;
+    [SerializeField] private float angularSpeed = 720f;
     [Tooltip("Distance from target the agent stops. Set to 0 for melee enemies that need to physically touch the player to deal contact damage. Ranged enemies typically don't use this (they stop via preferredDistance instead).")]
     [SerializeField] private float stoppingDistance = 0f;
 
@@ -43,17 +44,25 @@ public class EnemyPursuitAI : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
-        agent.acceleration = acceleration;
-        agent.stoppingDistance = stoppingDistance;
-        agent.updateRotation = true;
-        agent.updateUpAxis = false;
+        ApplyAgentSettings();
 
         if (target == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null) target = playerObj.transform;
         }
+    }
+
+    private void ApplyAgentSettings()
+    {
+        if (agent == null) return;
+
+        agent.speed = moveSpeed;
+        agent.acceleration = acceleration;
+        agent.angularSpeed = angularSpeed;
+        agent.stoppingDistance = stoppingDistance;
+        agent.updateRotation = true;
+        agent.updateUpAxis = false;
     }
 
     private void OnEnable()
@@ -171,6 +180,13 @@ public class EnemyPursuitAI : MonoBehaviour
 
     private void OnValidate()
     {
+        if (agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
+
+        ApplyAgentSettings();
+
         if (isRangedEnemy && detectionRadius <= preferredDistance + preferredDistanceBuffer)
         {
             Debug.LogWarning($"[{name}] EnemyPursuitAI: detectionRadius ({detectionRadius}) should be " +

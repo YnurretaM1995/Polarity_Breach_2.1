@@ -130,7 +130,7 @@ namespace PolarityBreach.Player
         {
             // rb.linearVelocity = new Vector3(moveInput.x * _playerStats.movementSpeed, rb.linearVelocity.y, moveInput.z * _playerStats.movementSpeed);
            
-            Vector3 targetVelocity = new Vector3(moveInput.x * _playerStats.movementSpeed, 0f, moveInput.z * _playerStats.movementSpeed);
+            Vector3 targetVelocity = new Vector3(moveInput.x * _playerStats.CurrentMovementSpeed, 0f, moveInput.z * _playerStats.CurrentMovementSpeed);
 
             Vector3 currentVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
             float rate = moveInput.sqrMagnitude > 0.01f ? acceleration : deceleration;
