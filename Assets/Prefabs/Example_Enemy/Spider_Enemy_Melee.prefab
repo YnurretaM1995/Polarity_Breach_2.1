@@ -136,9 +136,6 @@ PrefabInstance:
       addedObject: {fileID: 860923334636840836}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3123404587782500808}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8552144289581827118}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
       insertIndex: -1
@@ -191,8 +188,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
@@ -211,11 +208,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Size: {x: 1.2, y: 1, z: 1.2}
   m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!33 &-4234631221508045786
 MeshFilter:
@@ -284,11 +281,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 13
-  m_Acceleration: 80
+  m_Speed: 14
+  m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 720
-  m_StoppingDistance: 0.3
+  m_StoppingDistance: 0.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -341,31 +338,14 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 0
-  moveSpeed: 13
-  acceleration: 12
-  stoppingDistance: 0
+  moveSpeed: 14
+  acceleration: 50
+  angularSpeed: 720
+  stoppingDistance: 0.2
   isRangedEnemy: 0
   preferredDistance: 13
   preferredDistanceBuffer: 1.2
   idleUntilDetected: 1
---- !u!114 &3123404587782500808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074478206260618219}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8f0f477b58fad4ba06d07a25a71fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyContactDamage
-  damage: 10
-  hitCooldown: 1
-  playerTag: Player
-  knockbackForce: 6
-  enemyPushback: 1.5
-  damageSound: {fileID: 8300000, guid: 6f9240006e5c0ac41ae98265261370ac, type: 3}
 --- !u!114 &8552144289581827118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,10 +498,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df1497ee9d23eba42ae8b19855e9009c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.EnemySlowOnContact
-  slowMultiplier: 0.7
+  slowRadius: 2.5
+  slowRefreshDuration: 0.25
+  playerTag: Player
   knockbackDistance: 8
   knockbackDuration: 0.2
-  shakeOffRadius: 2.5
+  shakeOffRadius: 2
   stunDuration: 2
 --- !u!95 &-8345655836680786021
 Animator:
