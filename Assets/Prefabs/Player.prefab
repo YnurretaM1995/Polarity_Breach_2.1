@@ -491,9 +491,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerLevelUpBonus
   attackDamageIncrease: 2
-  attackSpeedIncrease: 0.05
+  attackSpeedIncrease: 10
   maxHealthIncrease: 10
-  attackSpeedDelayReduction: 0.02
+  attackSpeedDelayReduction: 0.15
   polarityCooldownReduction: 0.1
 --- !u!4 &6916354072913583291 stripped
 Transform:

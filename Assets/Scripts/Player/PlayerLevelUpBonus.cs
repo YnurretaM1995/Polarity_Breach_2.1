@@ -9,9 +9,9 @@ namespace PolarityBreach.Player
     {
         [Header("Stat Increase per upgrade")]
         [SerializeField] private float attackDamageIncrease = 5f;
-        [SerializeField] private float attackSpeedIncrease = 0.1f;
+        [SerializeField] private float attackSpeedIncrease = 10f;
         [SerializeField] private float maxHealthIncrease = 30f;
-        [SerializeField] private float attackSpeedDelayReduction = 0.02f; // cooldown between attacks
+        [SerializeField] private float attackSpeedDelayReduction = 0.15f; // cooldown between attacks
 
         [Header("UI")]
         [SerializeField] private LevelUpMenu levelUpMenu;
@@ -65,7 +65,7 @@ namespace PolarityBreach.Player
             stats.attackSpeed += attackSpeedIncrease;
             stats.attackSpeedDelay = Mathf.Max(0.05f, stats.attackSpeedDelay - attackSpeedDelayReduction);
 
-            Debug.Log("Attack speed upgraded. AttackSpeed: " + stats.attackSpeed + "AttackDelay: " + stats.attackSpeedDelay);
+            Debug.Log("Attack speed upgraded. BulletSpeed: " + stats.attackSpeed + " AttackDelay: " + stats.attackSpeedDelay);
         }
 
         public void ApplyMaxHealthUpgrade()
