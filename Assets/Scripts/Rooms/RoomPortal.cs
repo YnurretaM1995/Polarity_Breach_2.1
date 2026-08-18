@@ -1,0 +1,81 @@
+using System.Collections;
+using UnityEngine;
+using PolarityBreach.Enemy;
+
+namespace PolarityBreach.Level
+{
+    public class RoomPortal : MonoBehaviour
+    {
+        [Header("References")]
+        [SerializeField] private EnemyWaveSpawner roomSpawner;
+        [SerializeField] private GameObject portalVisuals;
+        [SerializeField] private Transform destinationPoint;
+
+        [Header("Teleport")]
+        [SerializeField] private float teleportDelay = 0.1f;
+        [SerializeField] private bool closeAfterUse = true;
+
+        [Header("Next Room")]
+        [SerializeField] private GameObject nextRoomSpawner;
+
+        private bool isOpen;
+
+        private void Awake()
+        {
+            if (portalVisuals != null) portalVisuals.SetActive(false);
+        }
+
+        private void OnEnable()
+        {
+            if (roomSpawner != null)
+                roomSpawner.OnRoomCleared += OpenPortal;
+        }
+
+        private void OnDisable()
+        {
+            if (roomSpawner != null)
+                roomSpawner.OnRoomCleared -= OpenPortal;
+        }
+
+        private void OpenPortal()
+        {
+            isOpen = true;
+            if (portalVisuals != null) portalVisuals.SetActive(true);
+        }
+
+        public void OnPlayerEntered(Transform playerRoot)
+        {
+            if (!isOpen) return;
+            if (destinationPoint == null) return;
+
+            isOpen = false; 
+            StartCoroutine(TeleportRoutine(playerRoot));
+        }
+
+        private IEnumerator TeleportRoutine(Transform player)
+        {
+            GameObject playerObj = player.gameObject;
+            playerObj.SetActive(false);
+            yield return new WaitForSecondsRealtime(teleportDelay);
+            player.position = destinationPoint.position;
+
+            Rigidbody rb = playerObj.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.position = destinationPoint.position;
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
+            playerObj.SetActive(true);
+
+            if (nextRoomSpawner != null)
+                nextRoomSpawner.SetActive(true);
+
+            if (closeAfterUse && portalVisuals != null)
+                portalVisuals.SetActive(false);
+            else
+                isOpen = true;
+        }
+    }
+}
