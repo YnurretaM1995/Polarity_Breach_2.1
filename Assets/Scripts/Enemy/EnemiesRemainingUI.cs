@@ -10,6 +10,7 @@ namespace PolarityBreach.Enemy
         [SerializeField] private EnemyPool enemyPool;
         [SerializeField] private TMP_Text enemyText;
         [SerializeField] private RectTransform panel;
+        private EnemyWaveSpawner[] enemyWaveSpawners;
 
         [Header("Slide")]
         [SerializeField] private Vector2 hiddenPosition = new Vector2(0f, 120f);
@@ -20,7 +21,7 @@ namespace PolarityBreach.Enemy
         {
             if (enemyWaveSpawner == null)
             {
-                enemyWaveSpawner = FindFirstObjectByType<EnemyWaveSpawner>();
+                enemyWaveSpawners = FindObjectsByType<EnemyWaveSpawner>(FindObjectsSortMode.None);
             }
 
             if (panel == null)
@@ -47,7 +48,22 @@ namespace PolarityBreach.Enemy
         {
             if (enemyWaveSpawner != null)
             {
-                return enemyWaveSpawner.AliveEnemies;
+                return enemyWaveSpawner.EnemiesRemaining;
+            }
+
+            if (enemyWaveSpawners != null && enemyWaveSpawners.Length > 0)
+            {
+                int totalEnemies = 0;
+
+                for (int i = 0; i < enemyWaveSpawners.Length; i++)
+                {
+                    if (enemyWaveSpawners[i] != null)
+                    {
+                        totalEnemies += enemyWaveSpawners[i].EnemiesRemaining;
+                    }
+                }
+
+                return totalEnemies;
             }
 
             if (enemyPool != null)
