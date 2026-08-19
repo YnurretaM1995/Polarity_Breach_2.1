@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 0.4
 --- !u!114 &-2956634619511975922
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -37,7 +37,7 @@ MonoBehaviour:
     m_Value: 0
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.9967831, b: 0.5424528, a: 1}
+    m_Value: {r: 1, g: 0.99810517, b: 0.7783019, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0
@@ -58,9 +58,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.VolumeProfile
   components:
   - {fileID: 3028197188015490940}
-  - {fileID: 5933131076598529075}
   - {fileID: -2956634619511975922}
   - {fileID: -3787568696994606350}
+  - {fileID: 6207157459984323065}
 --- !u!114 &3028197188015490940
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -91,7 +91,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.9932633, b: 0.8349056, a: 1}
+    m_Value: {r: 1, g: 0.9943845, b: 0.8820755, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &5933131076598529075
+--- !u!114 &6207157459984323065
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,16 +126,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.99607843, b: 0.8352941, a: 1}
+    m_Value: {r: 1, g: 0.98427457, b: 0.6462264, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.35
+    m_Value: 0.241
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.6
+    m_Value: 0.285
   rounded:
     m_OverrideState: 0
     m_Value: 0
