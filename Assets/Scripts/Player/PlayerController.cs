@@ -1,3 +1,4 @@
+using PolarityBreach.UI;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,12 +34,14 @@ namespace PolarityBreach.Player
         {
             controls.Player.Enable();
             PauseMenu.OnPauseChanged += HandlePause;
+            UIQueue.OnBlockingChanged += HandlePause;
         }
 
         private void OnDisable()
         {
             controls.Player.Disable();
             PauseMenu.OnPauseChanged -= HandlePause;
+            UIQueue.OnBlockingChanged -= HandlePause;
         }
 
         private void Start()
