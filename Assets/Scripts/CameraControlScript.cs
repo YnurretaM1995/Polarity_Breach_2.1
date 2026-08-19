@@ -66,4 +66,16 @@ public class CameraControlScript : MonoBehaviour
         if (intensity > shakeIntensity)
             shakeIntensity = intensity;
     }
+
+    public void SnapToPlayer()
+    {
+        if (player == null) return;
+
+        transform.position = new Vector3(
+            player.transform.position.x + offsetX,
+            player.transform.position.y + offsetY,
+            player.transform.position.z + offsetZ);
+
+        velocity = Vector3.zero;
+    }
 }

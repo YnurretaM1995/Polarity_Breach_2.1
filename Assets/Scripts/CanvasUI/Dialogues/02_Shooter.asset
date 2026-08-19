@@ -16,8 +16,8 @@ MonoBehaviour:
   lines:
   - text: Movement on deck one. Same pattern as the boarding party
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
+    rightPortrait: {fileID: 21300000, guid: 325e68328d3038d46bf39046ca187284, type: 3}
     clearLeftPortrait: 0
     clearRightPortrait: 0
     isPrompt: 0
@@ -26,8 +26,8 @@ MonoBehaviour:
   - text: "They carry a polarity \u2014 black or white. So do their rounds. Match
       their color and their fire goes straight through me. Harmless."
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
+    rightPortrait: {fileID: 21300000, guid: 325e68328d3038d46bf39046ca187284, type: 3}
     clearLeftPortrait: 0
     clearRightPortrait: 0
     isPrompt: 0
@@ -36,8 +36,8 @@ MonoBehaviour:
   - text: But it cuts both ways. My shots pass through them too. To hurt them, I
       have to be the opposite of what they are.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
+    rightPortrait: {fileID: 21300000, guid: 325e68328d3038d46bf39046ca187284, type: 3}
     clearLeftPortrait: 0
     clearRightPortrait: 0
     isPrompt: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
   - text: Switch to survive. Switch again to kill. Let's find out how fast I can
       do both.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
+    rightPortrait: {fileID: 21300000, guid: 325e68328d3038d46bf39046ca187284, type: 3}
     clearLeftPortrait: 0
     clearRightPortrait: 0
     isPrompt: 0
@@ -55,8 +55,8 @@ MonoBehaviour:
     gamepadHint: 
   - text: "Keyboard: Right Click \nGamepad: Left Trigger (LT)"
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
+    rightPortrait: {fileID: 21300000, guid: 325e68328d3038d46bf39046ca187284, type: 3}
     clearLeftPortrait: 0
     clearRightPortrait: 0
     isPrompt: 1

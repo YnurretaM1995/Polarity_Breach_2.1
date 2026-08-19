@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e37c9c420af70449dcdf8e6a22332e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyPool
-  enemyPrefab: {fileID: -393103584126372068, guid: c0681513ed3964941aa5cbb61119718b, type: 3}
+  enemyPrefab: {fileID: 2649112381080562179, guid: 4c225b8e0ed72784aa32fb15ee4ee622, type: 3}
   poolSize: 50
 --- !u!4 &30625202
 Transform:
@@ -17898,7 +17898,13 @@ MonoBehaviour:
   destinationPoint: {fileID: 495826144}
   teleportDelay: 0.1
   closeAfterUse: 1
+  cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 495826143}
+  playerStats: {fileID: 0}
+  unlocksDash: 0
+  unlocksChargeShot: 0
+  dialoguesOnCross: []
+  dialogueOnRoomCleared: {fileID: 0}
 --- !u!1 &905260845
 GameObject:
   m_ObjectHideFlags: 0
@@ -28128,7 +28134,13 @@ MonoBehaviour:
   destinationPoint: {fileID: 1210887013}
   teleportDelay: 0.1
   closeAfterUse: 1
+  cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 1015451772}
+  playerStats: {fileID: 0}
+  unlocksDash: 0
+  unlocksChargeShot: 0
+  dialoguesOnCross: []
+  dialogueOnRoomCleared: {fileID: 0}
 --- !u!4 &1563446877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 262889321097380118, guid: ce7e4bd04c6404147b4b1dc694ac9a00, type: 3}
@@ -29928,7 +29940,13 @@ MonoBehaviour:
   destinationPoint: {fileID: 638365804}
   teleportDelay: 0.1
   closeAfterUse: 1
+  cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 638365802}
+  playerStats: {fileID: 0}
+  unlocksDash: 0
+  unlocksChargeShot: 0
+  dialoguesOnCross: []
+  dialogueOnRoomCleared: {fileID: 0}
 --- !u!4 &1684528608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9222408220077309190, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
