@@ -1,5 +1,6 @@
 using PolarityBreach.Audio;
 using PolarityBreach.Player;
+using PolarityBreach.UI;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
@@ -45,16 +46,19 @@ namespace PolarityBreach.PolaritySystem
         { 
             _fireAction.Enable();
             PauseMenu.OnPauseChanged += HandlePause;
+            UIQueue.OnBlockingChanged += HandlePause;
         }
         private void OnDisable()
         {
             _fireAction.Disable();
             PauseMenu.OnPauseChanged -= HandlePause;
+            UIQueue.OnBlockingChanged -= HandlePause;
         }
         private void OnDestroy() => _fireAction.Dispose();
 
         private void Update()
         {
+            if (UIQueue.IsBlocking || PauseMenu.IsPaused) return;
             if (_playerStats.chargeShotUnlocked)
             {
                 if (_fireAction.WasPressedThisFrame())

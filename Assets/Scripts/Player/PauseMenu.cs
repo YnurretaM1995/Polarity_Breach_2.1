@@ -1,6 +1,7 @@
+using PolarityBreach.Enemy;
+using PolarityBreach.UI;
 using System;
 using UnityEngine;
-using PolarityBreach.Enemy;
 
 namespace PolarityBreach.Player
 {
@@ -43,6 +44,7 @@ namespace PolarityBreach.Player
 
         private void TogglePause()
         {
+            if (UIQueue.IsBlocking) return;
             if (LevelUpMenu.IsOpen) return;
 
             if (IsPaused) Resume();

@@ -1,6 +1,7 @@
-using System;
 using PolarityBreach.Audio;
 using PolarityBreach.Player;
+using PolarityBreach.UI;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -64,6 +65,7 @@ namespace PolarityBreach.PolaritySystem
             _switchAction.performed += OnSwitchPerformed;
             PauseMenu.OnPauseChanged += HandlePause;
             _switchAction.Enable();
+            UIQueue.OnBlockingChanged += HandlePause;
         }
 
         private void OnDisable()
@@ -71,6 +73,7 @@ namespace PolarityBreach.PolaritySystem
             _switchAction.performed -= OnSwitchPerformed;
             PauseMenu.OnPauseChanged -= HandlePause;
             if (_ownsAction) _switchAction.Disable();
+            UIQueue.OnBlockingChanged -= HandlePause;
         }
 
         private void OnDestroy()

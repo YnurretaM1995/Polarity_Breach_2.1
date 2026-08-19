@@ -1,5 +1,6 @@
 using PolarityBreach.Enemy;
 using PolarityBreach.Player;
+using PolarityBreach.UI;
 using System.Collections;
 using UnityEngine;
 
@@ -24,6 +25,10 @@ namespace PolarityBreach.Level
         [SerializeField] private bool unlocksDash;
         [SerializeField] private bool unlocksChargeShot;
 
+        [Header("Dialogue")]
+        [SerializeField] private DialogueTrigger[] dialoguesOnCross;
+        [SerializeField] private DialogueTrigger dialogueOnRoomCleared;
+
         private bool isOpen;
 
         private void Awake()
@@ -47,6 +52,7 @@ namespace PolarityBreach.Level
         {
             isOpen = true;
             if (portalVisuals != null) portalVisuals.SetActive(true);
+            if (dialogueOnRoomCleared != null) dialogueOnRoomCleared.Play();
         }
 
         public void OnPlayerEntered(Transform playerRoot)
@@ -81,6 +87,12 @@ namespace PolarityBreach.Level
             {
                 if (unlocksDash) playerStats.dashUnlocked = true;
                 if (unlocksChargeShot) playerStats.chargeShotUnlocked = true;
+            }
+
+            if (dialoguesOnCross != null)
+            {
+                for (int i = 0; i < dialoguesOnCross.Length; i++)
+                    if (dialoguesOnCross[i] != null) dialoguesOnCross[i].Play();
             }
 
             if (nextRoomSpawner != null)
