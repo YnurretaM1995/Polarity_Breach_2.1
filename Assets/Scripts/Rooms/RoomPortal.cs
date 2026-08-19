@@ -1,6 +1,7 @@
+using PolarityBreach.Enemy;
+using PolarityBreach.Player;
 using System.Collections;
 using UnityEngine;
-using PolarityBreach.Enemy;
 
 namespace PolarityBreach.Level
 {
@@ -17,6 +18,11 @@ namespace PolarityBreach.Level
 
         [Header("Next Room")]
         [SerializeField] private GameObject nextRoomSpawner;
+
+        [Header("Unlock On Cross")]
+        [SerializeField] private PlayerStatsData playerStats;
+        [SerializeField] private bool unlocksDash;
+        [SerializeField] private bool unlocksChargeShot;
 
         private bool isOpen;
 
@@ -68,6 +74,14 @@ namespace PolarityBreach.Level
             }
 
             playerObj.SetActive(true);
+
+            if (playerStats == null) playerStats = playerObj.GetComponent<PlayerStatsData>();
+
+            if (playerStats != null)
+            {
+                if (unlocksDash) playerStats.dashUnlocked = true;
+                if (unlocksChargeShot) playerStats.chargeShotUnlocked = true;
+            }
 
             if (nextRoomSpawner != null)
                 nextRoomSpawner.SetActive(true);
