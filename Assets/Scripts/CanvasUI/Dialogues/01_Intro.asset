@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dd4f8086f956f4abe7f031ca0fae0e, type: 3}
   m_Name: 01_Intro
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.DialogueSequence
-  fullScreenBackground: {fileID: 0}
+  fullScreenBackground: {fileID: 21300000, guid: 251a9197f0fe6f24f9d68eb038fb7e5c, type: 3}
   lines:
   - text: Forty-one days out from Earth. Cargo run. Nothing on the scopes.
     speakerName: 

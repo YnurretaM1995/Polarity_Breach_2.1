@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace PolarityBreach.UI
@@ -6,13 +7,22 @@ namespace PolarityBreach.UI
     {
         [SerializeField] private DialogueSequence sequence;
         [SerializeField] private bool playOnStart;
+        [SerializeField] private float startDelay;
         [SerializeField] private bool playOnce = true;
 
         private bool hasPlayed;
 
         private void Start()
         {
-            if (playOnStart) Play();
+            if (playOnStart) StartCoroutine(PlayDelayed());
+        }
+
+        private IEnumerator PlayDelayed()
+        {
+            if (startDelay > 0f)
+                yield return new WaitForSecondsRealtime(startDelay);
+
+            Play();
         }
 
         public void Play()

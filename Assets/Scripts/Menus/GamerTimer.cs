@@ -1,21 +1,22 @@
 using UnityEngine;
 using PolarityBreach.Player;
 using PolarityBreach.Boss;
+using PolarityBreach.UI;
 
 namespace PolarityBreach.Level
 {
     public class GameTimer : MonoBehaviour
     {
-        [Header("References")]
         [SerializeField] private BossHealth bossHealth;
-        private bool subscribedToBoss;
 
         private float elapsedTime;
-        private bool isRunning;
         private bool isStopped;
+        private bool subscribedToBoss;
 
         public float ElapsedTime => elapsedTime;
-        public bool IsRunning => isRunning;
+        public bool IsRunning => !isStopped && !IsBlocked;
+
+        private bool IsBlocked => UIQueue.IsBlocking || PauseMenu.IsPaused;
 
         public string FormattedTime
         {
@@ -28,51 +29,36 @@ namespace PolarityBreach.Level
             }
         }
 
-        private void OnEnable()
-        {
-            PauseMenu.OnPauseChanged += HandlePause;
-            SubscribeToBoss();
-        }
-
-        private void OnDisable()
-        {
-            PauseMenu.OnPauseChanged -= HandlePause;
-            if (bossHealth != null) bossHealth.OnDied -= StopTimer;
-            subscribedToBoss = false;
-        }
-
         private void Start()
         {
             elapsedTime = 0f;
-            isRunning = true;
+            isStopped = false;
         }
 
         private void Update()
         {
-            if (!isRunning || isStopped) return;
+            if (!subscribedToBoss) SubscribeToBoss();
+
+            if (isStopped) return;
+            if (IsBlocked) return;
 
             elapsedTime += Time.unscaledDeltaTime;
-
-            if (bossHealth == null) SubscribeToBoss();
         }
 
-        private void HandlePause(bool paused)
+        private void OnDisable()
         {
-            if (isStopped) return;
-            isRunning = !paused;
+            if (bossHealth != null) bossHealth.OnDied -= StopTimer;
+            subscribedToBoss = false;
         }
 
         public void StopTimer()
         {
             isStopped = true;
-            isRunning = false;
             Debug.Log($"Run finished in {FormattedTime}");
         }
 
         private void SubscribeToBoss()
         {
-            if (subscribedToBoss) return;
-
             if (bossHealth == null)
                 bossHealth = FindFirstObjectByType<BossHealth>();
 
@@ -80,7 +66,6 @@ namespace PolarityBreach.Level
             {
                 bossHealth.OnDied += StopTimer;
                 subscribedToBoss = true;
-                Debug.Log("GameTimer: subscribed to boss");
             }
         }
     }
