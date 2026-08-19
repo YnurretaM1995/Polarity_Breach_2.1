@@ -60,7 +60,10 @@ namespace PolarityBreach.Enemy
         private Dictionary<Enemy, EnemyPool> enemyPoolsByEnemy = new Dictionary<Enemy, EnemyPool>();
         private int aliveEnemies;
         public int AliveEnemies => aliveEnemies;
+        public int EnemiesRemaining => aliveEnemies + spawningEnemies;
+        public bool HasEnemiesRemaining => EnemiesRemaining > 0;
         public EnemyPool Pool => enemyPool;
+        private int spawningEnemies;
 
         private void Start()
         {
@@ -119,10 +122,13 @@ namespace PolarityBreach.Enemy
                     spawnPositions[i] = spawnPosition;
                 }
 
+                spawningEnemies += spawnPositions.Length;
+
                 yield return StartCoroutine(ShowSpawnWarnings(spawnPositions, group.polarity));
 
                 for (int i = 0; i < spawnPositions.Length; i++)
                 {
+                    spawningEnemies = Mathf.Max(0, spawningEnemies - 1);
                     SpawnEnemyAtPosition(spawnPositions[i], group.polarity, groupEnemyPool);
                     yield return new WaitForSeconds(timeBetweenSpawns);
                 }
@@ -262,6 +268,7 @@ namespace PolarityBreach.Enemy
             StopAllCoroutines();
             SkipCurrentWave();
             aliveEnemies = 0;
+            spawningEnemies = 0;
             activeEnemies.Clear();
             enemyPoolsByEnemy.Clear();
         }

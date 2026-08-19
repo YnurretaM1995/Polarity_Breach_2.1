@@ -50,7 +50,7 @@ namespace PolarityBreach.Boss
         private bool HasEnemiesAlive()
         {
             if (enemyWaveSpawner != null)
-                return enemyWaveSpawner.AliveEnemies > 0;
+                return enemyWaveSpawner.HasEnemiesRemaining;
 
             FindEnemyPoolIfMissing();
 
