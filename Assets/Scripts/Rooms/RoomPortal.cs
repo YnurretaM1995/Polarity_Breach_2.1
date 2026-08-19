@@ -16,6 +16,7 @@ namespace PolarityBreach.Level
         [Header("Teleport")]
         [SerializeField] private float teleportDelay = 0.1f;
         [SerializeField] private bool closeAfterUse = true;
+        [SerializeField] private CameraControlScript cameraControl;
 
         [Header("Next Room")]
         [SerializeField] private GameObject nextRoomSpawner;
@@ -80,24 +81,25 @@ namespace PolarityBreach.Level
             }
 
             playerObj.SetActive(true);
+            if (cameraControl == null) cameraControl = FindFirstObjectByType<CameraControlScript>();
+            if (cameraControl != null) cameraControl.SnapToPlayer();
 
             if (playerStats == null) playerStats = playerObj.GetComponent<PlayerStatsData>();
-
             if (playerStats != null)
             {
                 if (unlocksDash) playerStats.dashUnlocked = true;
                 if (unlocksChargeShot) playerStats.chargeShotUnlocked = true;
             }
 
+
+            if (nextRoomSpawner != null)
+                nextRoomSpawner.SetActive(true);
+
             if (dialoguesOnCross != null)
             {
                 for (int i = 0; i < dialoguesOnCross.Length; i++)
                     if (dialoguesOnCross[i] != null) dialoguesOnCross[i].Play();
             }
-
-            if (nextRoomSpawner != null)
-                nextRoomSpawner.SetActive(true);
-
             if (closeAfterUse && portalVisuals != null)
                 portalVisuals.SetActive(false);
             else

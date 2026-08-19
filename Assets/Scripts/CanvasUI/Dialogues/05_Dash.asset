@@ -26,8 +26,8 @@ MonoBehaviour:
     gamepadHint: 
   - text: It won't outrun their fire. But it'll get me out from under it.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
+    rightPortrait: {fileID: 21300000, guid: 0559854cf398dde4587dddb50533c8ba, type: 3}
     clearLeftPortrait: 0
     clearRightPortrait: 0
     isPrompt: 0
@@ -35,8 +35,8 @@ MonoBehaviour:
     gamepadHint: 
   - text: "Keyboard: Space \nGamepad: B"
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
+    rightPortrait: {fileID: 21300000, guid: 0559854cf398dde4587dddb50533c8ba, type: 3}
     clearLeftPortrait: 0
     clearRightPortrait: 0
     isPrompt: 1

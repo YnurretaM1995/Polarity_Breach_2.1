@@ -16,7 +16,7 @@ MonoBehaviour:
   lines:
   - text: Forty-one days out from Earth. Cargo run. Nothing on the scopes.
     speakerName: 
-    leftPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 5d19048fe99a87d41ad6bfa480eaabc0, type: 3}
     rightPortrait: {fileID: 0}
     clearLeftPortrait: 0
     clearRightPortrait: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
     gamepadHint: 
   - text: Then the hull opened like paper, and they walked in.
     speakerName: 
-    leftPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
     rightPortrait: {fileID: 0}
     clearLeftPortrait: 0
     clearRightPortrait: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
   - text: They don't shoot metal. They shoot color. Black and white. And whatever
       matches them, passes right through.
     speakerName: 
-    leftPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
     rightPortrait: {fileID: 0}
     clearLeftPortrait: 0
     clearRightPortrait: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   - text: I watched Vasquez take a white round to the chest and shrug it off. The
       next one was black. She didn't get up.
     speakerName: 
-    leftPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
     rightPortrait: {fileID: 0}
     clearLeftPortrait: 0
     clearRightPortrait: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   - text: The Meridian's course is locked. Earth in nineteen hours. If they're still
       aboard when we hit atmosphere, it won't be a landing. It'll be a seeding.
     speakerName: 
-    leftPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
     rightPortrait: {fileID: 0}
     clearLeftPortrait: 0
     clearRightPortrait: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     gamepadHint: 
   - text: So I flood the decks. Clear them out. Room by room.
     speakerName: 
-    leftPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
     rightPortrait: {fileID: 0}
     clearLeftPortrait: 0
     clearRightPortrait: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
     gamepadHint: 
   - text: And I find the thing giving the orders.
     speakerName: 
-    leftPortrait: {fileID: 0}
+    leftPortrait: {fileID: 21300000, guid: 540d1e73e6893014498731ed6c396d62, type: 3}
     rightPortrait: {fileID: 0}
     clearLeftPortrait: 0
     clearRightPortrait: 0
