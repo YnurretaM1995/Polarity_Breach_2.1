@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9dd4f8086f956f4abe7f031ca0fae0e, type: 3}
+  m_Name: 01_Intro
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.DialogueSequence
+  fullScreenBackground: {fileID: 0}
+  lines:
+  - text: Forty-one days out from Earth. Cargo run. Nothing on the scopes.
+    speakerName: 
+    leftPortrait: {fileID: 0}
+    rightPortrait: {fileID: 0}
+    clearLeftPortrait: 0
+    clearRightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
+  - text: Then the hull opened like paper, and they walked in.
+    speakerName: 
+    leftPortrait: {fileID: 0}
+    rightPortrait: {fileID: 0}
+    clearLeftPortrait: 0
+    clearRightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
+  - text: They don't shoot metal. They shoot color. Black and white. And whatever
+      matches them, passes right through.
+    speakerName: 
+    leftPortrait: {fileID: 0}
+    rightPortrait: {fileID: 0}
+    clearLeftPortrait: 0
+    clearRightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
+  - text: I watched Vasquez take a white round to the chest and shrug it off. The
+      next one was black. She didn't get up.
+    speakerName: 
+    leftPortrait: {fileID: 0}
+    rightPortrait: {fileID: 0}
+    clearLeftPortrait: 0
+    clearRightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
+  - text: The Meridian's course is locked. Earth in nineteen hours. If they're still
+      aboard when we hit atmosphere, it won't be a landing. It'll be a seeding.
+    speakerName: 
+    leftPortrait: {fileID: 0}
+    rightPortrait: {fileID: 0}
+    clearLeftPortrait: 0
+    clearRightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
+  - text: So I flood the decks. Clear them out. Room by room.
+    speakerName: 
+    leftPortrait: {fileID: 0}
+    rightPortrait: {fileID: 0}
+    clearLeftPortrait: 0
+    clearRightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
+  - text: And I find the thing giving the orders.
+    speakerName: 
+    leftPortrait: {fileID: 0}
+    rightPortrait: {fileID: 0}
+    clearLeftPortrait: 0
+    clearRightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
