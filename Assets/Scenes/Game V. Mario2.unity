@@ -27320,7 +27320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 59, y: 994}
   m_SizeDelta: {x: 256, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1425752839
@@ -33327,6 +33327,10 @@ PrefabInstance:
       propertyPath: bloodOverlay
       value: 
       objectReference: {fileID: 53516369}
+    - target: {fileID: -3615009978512641162, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: levelUpMenu
+      value: 
+      objectReference: {fileID: 1607550322}
     - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: player
       value: 
