@@ -71,7 +71,7 @@ namespace PolarityBreach.Boss
                 isDead = true;
                 OnDied?.Invoke();
                 Debug.Log("Boss Defeated");
-                StartCoroutine(DisableAfterDeathAnimation());
+                //StartCoroutine(DisableAfterDeathAnimation());
                 //gameObject.SetActive(false);
             }
         }

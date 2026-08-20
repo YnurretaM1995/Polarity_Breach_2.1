@@ -13,33 +13,29 @@ MonoBehaviour:
   m_Name: 04_Melee
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.DialogueSequence
   fullScreenBackground: {fileID: 0}
+  leftPortrait: {fileID: 21300000, guid: 5d19048fe99a87d41ad6bfa480eaabc0, type: 3}
+  rightPortrait: {fileID: 21300000, guid: 0bd507187095d4748bc640dd1c09de48, type: 3}
   lines:
   - text: Different build. No weapon.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
-    clearLeftPortrait: 0
-    clearRightPortrait: 0
+    leftPortrait: 0
+    rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
   - text: "These ones don't shoot. They close the distance and tear. Same rule though
       \u2014 same polarity, no damage. On either side."
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
-    clearLeftPortrait: 0
-    clearRightPortrait: 0
+    leftPortrait: 0
+    rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
   - text: Keep them at range. Keep switching. If one gets its arms around me, that's
       the run.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
-    clearLeftPortrait: 0
-    clearRightPortrait: 0
+    leftPortrait: 0
+    rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 

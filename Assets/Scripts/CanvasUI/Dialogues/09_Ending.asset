@@ -12,52 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dd4f8086f956f4abe7f031ca0fae0e, type: 3}
   m_Name: 09_Ending
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.DialogueSequence
-  fullScreenBackground: {fileID: 0}
+  fullScreenBackground: {fileID: 21300000, guid: 251a9197f0fe6f24f9d68eb038fb7e5c, type: 3}
+  leftPortrait: {fileID: 21300000, guid: 5d19048fe99a87d41ad6bfa480eaabc0, type: 3}
+  rightPortrait: {fileID: 0}
   lines:
   - text: It stopped moving about a minute ago. I waited. It stayed stopped.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
-    clearLeftPortrait: 0
-    clearRightPortrait: 0
+    leftPortrait: 0
+    rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
   - text: The gates closed with it. All of them, at once. Whatever held them open
       was in there.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
-    clearLeftPortrait: 0
-    clearRightPortrait: 0
+    leftPortrait: 0
+    rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
   - text: he Meridian's a wreck. Half the decks are open to vacuum. She'll make it
       to orbit. That's all she needs to do.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
-    clearLeftPortrait: 0
-    clearRightPortrait: 0
+    leftPortrait: 0
+    rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
   - text: Earth's still down there. Blue. Boring. Completely unaware.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
-    clearLeftPortrait: 0
-    clearRightPortrait: 0
+    leftPortrait: 0
+    rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
   - text: Good. Let's keep it that way.
     speakerName: 
-    leftPortrait: {fileID: 0}
-    rightPortrait: {fileID: 0}
-    clearLeftPortrait: 0
-    clearRightPortrait: 0
+    leftPortrait: 0
+    rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 

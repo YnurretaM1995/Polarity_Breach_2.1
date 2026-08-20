@@ -7,13 +7,11 @@ namespace PolarityBreach.UI
     {
         [TextArea(2, 4)]
         public string text;
+
         public string speakerName = "RIO";
 
-        [Header("Portraits")]
-        public Sprite leftPortrait;
-        public Sprite rightPortrait;
-        public bool clearLeftPortrait;
-        public bool clearRightPortrait;
+        public PortraitState leftPortrait = PortraitState.Keep;
+        public PortraitState rightPortrait = PortraitState.Keep;
 
         [Header("Control Prompt")]
         public bool isPrompt;

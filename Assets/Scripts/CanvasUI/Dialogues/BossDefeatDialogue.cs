@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using PolarityBreach.Boss;
 
@@ -7,6 +8,8 @@ namespace PolarityBreach.UI
     {
         [SerializeField] private BossHealth bossHealth;
         [SerializeField] private DialogueTrigger endingDialogue;
+        [SerializeField] private float deathAnimationDuration = 2f;
+        [SerializeField] private float extraDelay = 1f;
 
         private bool subscribed;
 
@@ -32,6 +35,13 @@ namespace PolarityBreach.UI
 
         private void PlayEnding()
         {
+            StartCoroutine(PlayEndingDelayed());
+        }
+
+        private IEnumerator PlayEndingDelayed()
+        {
+            yield return new WaitForSecondsRealtime(deathAnimationDuration + extraDelay);
+
             if (endingDialogue != null) endingDialogue.Play();
         }
     }

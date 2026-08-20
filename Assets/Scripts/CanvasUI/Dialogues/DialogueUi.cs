@@ -19,7 +19,7 @@ namespace PolarityBreach.UI
         [SerializeField] private TMP_Text bodyText;
         [SerializeField] private GameObject speakerBox;
 
-        [Header("Portraits")]
+        [Header("Portrait Slots")]
         [SerializeField] private Image leftPortrait;
         [SerializeField] private Image rightPortrait;
 
@@ -29,6 +29,9 @@ namespace PolarityBreach.UI
         [Header("Typewriter")]
         [SerializeField] private float charDelay = 0.03f;
         [SerializeField] private float inputLockDuration = 0.15f;
+
+        private Sprite sequenceLeftSprite;
+        private Sprite sequenceRightSprite;
 
         private void Awake()
         {
@@ -68,7 +71,7 @@ namespace PolarityBreach.UI
 
         public IEnumerator PlaySequence(DialogueSequence sequence)
         {
-            OpenPanel(sequence.fullScreenBackground);
+            OpenPanel(sequence);
 
             for (int i = 0; i < sequence.lines.Length; i++)
                 yield return PlayLine(sequence.lines[i]);
@@ -76,19 +79,19 @@ namespace PolarityBreach.UI
             ClosePanel();
         }
 
-        private void OpenPanel(Sprite background)
+        private void OpenPanel(DialogueSequence sequence)
         {
             if (root != null) root.SetActive(true);
 
+            sequenceLeftSprite = sequence.leftPortrait;
+            sequenceRightSprite = sequence.rightPortrait;
+
             if (fullScreenBackground != null)
             {
-                bool hasBackground = background != null;
+                bool hasBackground = sequence.fullScreenBackground != null;
                 fullScreenBackground.gameObject.SetActive(hasBackground);
-                if (hasBackground) fullScreenBackground.sprite = background;
+                if (hasBackground) fullScreenBackground.sprite = sequence.fullScreenBackground;
             }
-
-            SetPortrait(leftPortrait, null, true);
-            SetPortrait(rightPortrait, null, true);
         }
 
         private void ClosePanel()
@@ -135,6 +138,26 @@ namespace PolarityBreach.UI
             if (nextIndicator != null) nextIndicator.SetActive(false);
         }
 
+        private void ApplyPortraits(DialogueLine line)
+        {
+            ApplyPortrait(leftPortrait, sequenceLeftSprite, line.leftPortrait);
+            ApplyPortrait(rightPortrait, sequenceRightSprite, line.rightPortrait);
+        }
+
+        private void ApplyPortrait(Image image, Sprite sprite, PortraitState state)
+        {
+            if (image == null) return;
+
+            if (state == PortraitState.None || sprite == null)
+            {
+                image.gameObject.SetActive(false);
+                return;
+            }
+
+            image.sprite = sprite;
+            image.gameObject.SetActive(true);
+        }
+
         private string BuildPromptText(DialogueLine line)
         {
             bool usingGamepad = Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame;
@@ -144,28 +167,6 @@ namespace PolarityBreach.UI
                 hint = string.IsNullOrEmpty(line.keyboardHint) ? line.gamepadHint : line.keyboardHint;
 
             return string.IsNullOrEmpty(line.text) ? hint : line.text + "\n" + hint;
-        }
-
-        private void ApplyPortraits(DialogueLine line)
-        {
-            SetPortrait(leftPortrait, line.leftPortrait, line.clearLeftPortrait);
-            SetPortrait(rightPortrait, line.rightPortrait, line.clearRightPortrait);
-        }
-
-        private void SetPortrait(Image image, Sprite sprite, bool clear)
-        {
-            if (image == null) return;
-
-            if (clear)
-            {
-                image.gameObject.SetActive(false);
-                return;
-            }
-
-            if (sprite == null) return;
-
-            image.sprite = sprite;
-            image.gameObject.SetActive(true);
         }
 
         private bool NextPressed()

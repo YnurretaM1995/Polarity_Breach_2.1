@@ -21255,7 +21255,7 @@ MonoBehaviour:
   - {fileID: 854909404}
   - {fileID: 839705817}
   - {fileID: 412968185}
-  deathAnimationDuration: 2
+  deathAnimationDuration: 4
 --- !u!114 &1015451782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21373,7 +21373,7 @@ MonoBehaviour:
   animator: {fileID: 1015451786}
   agent: {fileID: 1015451790}
   health: {fileID: 1015451780}
-  movement: {fileID: 0}
+  movement: {fileID: 1015451789}
   minTimeBetweenAnimations: 0.5
   maxTimeBetweenAnimations: 1
   attackAnimationDuration: 1
@@ -36166,6 +36166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.BossDefeatedDialogue
   bossHealth: {fileID: 0}
   endingDialogue: {fileID: 1508979111}
+  deathAnimationDuration: 4
+  extraDelay: 1
 --- !u!1 &1902701928
 GameObject:
   m_ObjectHideFlags: 0
