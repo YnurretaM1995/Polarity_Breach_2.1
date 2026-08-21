@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using PolarityBreach.Boss;
+using PolarityBreach.Level;
 
 namespace PolarityBreach.UI
 {
@@ -8,6 +9,7 @@ namespace PolarityBreach.UI
     {
         [SerializeField] private BossHealth bossHealth;
         [SerializeField] private DialogueTrigger endingDialogue;
+        [SerializeField] private GameTimer gameTimer;
         [SerializeField] private float deathAnimationDuration = 2f;
         [SerializeField] private float extraDelay = 1f;
 
@@ -43,6 +45,9 @@ namespace PolarityBreach.UI
             yield return new WaitForSecondsRealtime(deathAnimationDuration + extraDelay);
 
             if (endingDialogue != null) endingDialogue.Play();
+
+            if (gameTimer == null) gameTimer = FindFirstObjectByType<GameTimer>();
+            if (gameTimer != null) VictoryScreen.Show(gameTimer.ElapsedTime);
         }
     }
 }

@@ -381,10 +381,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 50
+  m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 720
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -413,6 +413,7 @@ MonoBehaviour:
     m_Bits: 0
   moveSpeed: 3.5
   acceleration: 12
+  angularSpeed: 720
   stoppingDistance: 0
   isRangedEnemy: 1
   preferredDistance: 5
@@ -432,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
   firePoint: {fileID: 784078283314235144}
   projectilePool: {fileID: 0}
+  enemyAnimation: {fileID: 0}
   fireRate: 0.6
   projectileSpeed: 10
   maxFireRange: 12
