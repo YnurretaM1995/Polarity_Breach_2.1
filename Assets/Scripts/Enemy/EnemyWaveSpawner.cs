@@ -1,7 +1,8 @@
+using PolarityBreach.PolaritySystem;
+using PolarityBreach.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using PolarityBreach.PolaritySystem;
 using UnityEngine;
 
 namespace PolarityBreach.Enemy
@@ -78,6 +79,9 @@ namespace PolarityBreach.Enemy
             for (int waveIndex = 0; waveIndex < waves.Length; waveIndex++)
             {
                 Debug.Log("Starting wave " + (waveIndex + 1));
+
+                if (WaveWarningUI.Instance != null)
+                    yield return WaveWarningUI.Instance.PlayWarning();
 
                 yield return StartCoroutine(SpawnWave(waves[waveIndex]));
 
