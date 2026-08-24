@@ -112,5 +112,16 @@ namespace PolarityBreach.UI
 
             current = null;
         }
+        public void HideNow()
+        {
+            if (current != null)
+            {
+                StopCoroutine(current);
+                current = null;
+            }
+
+            if (group != null) group.alpha = 0f;
+            if (root != null) root.SetActive(false);
+        }
     }
 }

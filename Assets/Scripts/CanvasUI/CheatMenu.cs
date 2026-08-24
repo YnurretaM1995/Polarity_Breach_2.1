@@ -1,5 +1,6 @@
 using PolarityBreach.Enemy;
 using PolarityBreach.Player;
+using PolarityBreach.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,7 @@ namespace PolarityBreach
         [Header("References")]
         [SerializeField] private PlayerStatsData playerStats;
         [SerializeField] private EnemyWaveSpawner waveSpawner;
+        [SerializeField] private EnemyWaveSpawner bossSpawner;
 
         [Header("Boss Debug")]
         [SerializeField] private Transform player;
@@ -102,10 +104,18 @@ namespace PolarityBreach
 
         private void GoToBossFight()
         {
-            if (waveSpawner != null)
+            EnemyWaveSpawner[] spawners = FindObjectsByType<EnemyWaveSpawner>(FindObjectsSortMode.None);
+
+            for (int i = 0; i < spawners.Length; i++)
             {
-                waveSpawner.DebugStopAndClearEnemies();
+                if (bossObject != null && spawners[i].transform.IsChildOf(bossObject.transform))
+                    continue;
+
+                spawners[i].DebugStopAndClearEnemies();
             }
+
+            if (WaveWarningUI.Instance != null)
+                WaveWarningUI.Instance.HideNow();
 
             if (player != null && bossRoomPoint != null)
                 StartCoroutine(TeleportRoutine());
