@@ -666,6 +666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.CheatMenu
   playerStats: {fileID: 1817478972}
   waveSpawner: {fileID: 412696441}
+  bossSpawner: {fileID: 1015451782}
   player: {fileID: 1817478970}
   bossRoomPoint: {fileID: 525857100}
   bossObject: {fileID: 1015451772}
@@ -35066,6 +35067,7 @@ MonoBehaviour:
   - {fileID: 412696441}
   - {fileID: 495826145}
   - {fileID: 638365803}
+  - {fileID: 1015451782}
   hiddenPosition: {x: 657.3, y: 253}
   visiblePosition: {x: 471.7, y: 253}
   slideSpeed: 5
