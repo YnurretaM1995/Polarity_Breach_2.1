@@ -90,6 +90,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8793706238382140717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2519076331290097812}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2519076331290097812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793706238382140717}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.971, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6916354072913583291}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6372991633216666448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +191,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1275958782165307169}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2519076331290097812}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
       insertIndex: -1
@@ -288,6 +322,11 @@ MonoBehaviour:
   movementSpeed: 0
   maxHealth: 0
   polaritySwitchCooldown: 0
+  movementSpeedMultiplier: 1
+  oneMeleeSlowMultiplier: 0.8
+  twoMeleeSlowMultiplier: 0.6
+  threeMeleeSlowMultiplier: 0.4
+  maxMeleeSlowMultiplier: 0.2
   attackSpeedDelay: 0
   attackDamage: 0
   attackSpeed: 0
@@ -380,7 +419,7 @@ MonoBehaviour:
   _chargedProjectilePool: {fileID: 0}
   shootSound: {fileID: 0}
   chargeSound: {fileID: 0}
-  _muzzle: {fileID: 0}
+  _muzzle: {fileID: 2519076331290097812}
 --- !u!95 &134883091498771782
 Animator:
   serializedVersion: 7
@@ -494,7 +533,7 @@ MonoBehaviour:
   attackSpeedIncrease: 10
   maxHealthIncrease: 10
   attackSpeedDelayReduction: 0.15
-  polarityCooldownReduction: 0.1
+  levelUpMenu: {fileID: 0}
 --- !u!4 &6916354072913583291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
