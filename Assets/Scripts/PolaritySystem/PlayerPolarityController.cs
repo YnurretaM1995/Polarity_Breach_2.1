@@ -21,6 +21,7 @@ namespace PolarityBreach.PolaritySystem
 
         [SerializeField] private AudioClip colorSound;
         [SerializeField] private AbilityUIDisplay polarityUI;
+        [SerializeField] private PolarityPostProcessPulse postProcessPulse;
         public event Action OnPolaritySwitched;
         public static event Action<Transform> OnAnyPlayerPolaritySwitched;
         
@@ -58,6 +59,16 @@ namespace PolarityBreach.PolaritySystem
         {
             _polarity = GetComponent<PolarityComponent>();
             _playerStats = GetComponent<PlayerStatsData>();
+
+            if (postProcessPulse == null)
+            {
+                postProcessPulse = GetComponentInChildren<PolarityPostProcessPulse>();
+            }
+
+            if (postProcessPulse == null)
+            {
+                postProcessPulse = FindFirstObjectByType<PolarityPostProcessPulse>();
+            }
         }
 
         private void OnEnable()
@@ -87,6 +98,7 @@ namespace PolarityBreach.PolaritySystem
         {
             if (!CanSwitch) return false;
             _polarity.Toggle();
+            postProcessPulse?.Play(_polarity.CurrentPolarity);
             _lastSwitchTime = Time.time;
             AudioHandler.Play3DSound(colorSound, transform.position);
             polarityUI.StartCooldownUI();
