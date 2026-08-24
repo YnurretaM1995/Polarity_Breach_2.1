@@ -4471,11 +4471,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8616490787709139147, guid: d96e3ff0793bd824fb6771e987a80a35, type: 3}
   m_PrefabInstance: {fileID: 559954858}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &265612583 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2519076331290097812, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
-  m_PrefabInstance: {fileID: 1817478967}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &267261092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6150,6 +6145,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377155461}
   m_CullTransparentMesh: 1
+--- !u!4 &382707404 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2519076331290097812, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+  m_PrefabInstance: {fileID: 1817478967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &389387066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35066,7 +35066,6 @@ MonoBehaviour:
   - {fileID: 412696441}
   - {fileID: 495826145}
   - {fileID: 638365803}
-  - {fileID: 1015451782}
   hiddenPosition: {x: 657.3, y: 253}
   visiblePosition: {x: 471.7, y: 253}
   slideSpeed: 5
@@ -35602,7 +35601,7 @@ PrefabInstance:
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _muzzle
       value: 
-      objectReference: {fileID: 265612583}
+      objectReference: {fileID: 382707404}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: shootSound
       value: 
