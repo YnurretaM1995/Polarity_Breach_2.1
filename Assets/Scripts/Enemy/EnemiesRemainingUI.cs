@@ -6,11 +6,11 @@ namespace PolarityBreach.Enemy
 {
     public class EnemiesRemainingUI : MonoBehaviour
     {
-        [SerializeField] private EnemyWaveSpawner enemyWaveSpawner;
-        [SerializeField] private EnemyPool enemyPool;
+        private EnemyWaveSpawner enemyWaveSpawner;
+        private EnemyPool enemyPool;
         [SerializeField] private TMP_Text enemyText;
         [SerializeField] private RectTransform panel;
-        private EnemyWaveSpawner[] enemyWaveSpawners;
+        [SerializeField] private EnemyWaveSpawner[] enemyWaveSpawners;
 
         [Header("Slide")]
         [SerializeField] private Vector2 hiddenPosition = new Vector2(0f, 120f);
@@ -19,7 +19,7 @@ namespace PolarityBreach.Enemy
 
         private void Awake()
         {
-            if (enemyWaveSpawner == null)
+            if (enemyWaveSpawners == null)
             {
                 enemyWaveSpawners = FindObjectsByType<EnemyWaveSpawner>(FindObjectsSortMode.None);
             }

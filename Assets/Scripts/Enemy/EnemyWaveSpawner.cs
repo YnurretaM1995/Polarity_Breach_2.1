@@ -36,8 +36,8 @@ namespace PolarityBreach.Enemy
     {
         public event Action OnRoomCleared;
         
-        [Header("References")] [SerializeField]
-        private EnemyPool enemyPool;
+        [Header("References")]
+         private EnemyPool enemyPool;
 
         [SerializeField] private Transform[] possibleSpawnPoints;
 
