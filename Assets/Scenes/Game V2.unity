@@ -162,10 +162,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -225}
+  m_SizeDelta: {x: 900, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &23474965
 CanvasRenderer:
@@ -667,6 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.CheatMenu
   playerStats: {fileID: 1817478972}
   waveSpawner: {fileID: 412696441}
+  bossSpawner: {fileID: 0}
   player: {fileID: 1817478970}
   bossRoomPoint: {fileID: 525857100}
   bossObject: {fileID: 1015451772}
@@ -7057,60 +7058,82 @@ MonoBehaviour:
       pattern: 1
       spacing: 3
       polarity: 1
+      projectilesPerShot: 1
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
+      projectilesPerShot: 1
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
+      projectilesPerShot: 1
+      spreadAngle: 15
   - groups:
-    - enemyPool: {fileID: 1520353061}
+    - enemyPool: {fileID: 30625201}
       enemyCount: 4
       pattern: 0
       spacing: 3
       polarity: 0
+      projectilesPerShot: 1
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 1
       spacing: 3
       polarity: 1
+      projectilesPerShot: 1
+      spreadAngle: 15
   - groups:
-    - enemyPool: {fileID: 1520353061}
+    - enemyPool: {fileID: 30625201}
       enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 1
+      projectilesPerShot: 1
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 0
+      projectilesPerShot: 1
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 1
+      projectilesPerShot: 1
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 0
-    - enemyPool: {fileID: 1520353061}
+      projectilesPerShot: 1
+      spreadAngle: 15
+    - enemyPool: {fileID: 30625201}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 0
-    - enemyPool: {fileID: 1520353061}
+      projectilesPerShot: 1
+      spreadAngle: 15
+    - enemyPool: {fileID: 30625201}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 1
+      projectilesPerShot: 1
+      spreadAngle: 15
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
@@ -8294,60 +8317,82 @@ MonoBehaviour:
       pattern: 1
       spacing: 3
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1251293097}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1251293097}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 2039347782}
       enemyCount: 4
       pattern: 0
       spacing: 3
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1251293097}
       enemyCount: 2
       pattern: 1
       spacing: 3
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 2039347782}
       enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1251293097}
       enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1251293097}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1251293097}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 2039347782}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 2039347782}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
@@ -10947,60 +10992,82 @@ MonoBehaviour:
       pattern: 1
       spacing: 3
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1611390679}
       enemyCount: 4
       pattern: 0
       spacing: 3
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 1
       spacing: 3
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1611390679}
       enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1023556279}
       enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1611390679}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1611390679}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
@@ -22376,33 +22443,45 @@ MonoBehaviour:
       pattern: 0
       spacing: 4
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 3
       pattern: 0
       spacing: 4
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1520353061}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1520353061}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 4
       pattern: 0
       spacing: 4
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
   autoStart: 0
   timeBetweenSpawns: 0.3
   timeBetweenWaves: 3
@@ -24610,7 +24689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1132328028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32218,10 +32297,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -160}
+  m_SizeDelta: {x: 900, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1567987482
 MonoBehaviour:
@@ -41381,10 +41460,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -265}
+  m_SizeDelta: {x: 900, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2140296996
 MonoBehaviour:
