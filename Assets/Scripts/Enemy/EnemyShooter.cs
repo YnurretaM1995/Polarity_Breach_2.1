@@ -70,6 +70,12 @@ namespace PolarityBreach.Enemy
             return dist <= maxFireRange;
         }
 
+        public void SetWaveShootingSettings(int newProjectilesPerShot, float newSpreadAngle)
+        {
+            projectilesPerShot = Mathf.Max(1, newProjectilesPerShot);
+            spreadAngle = Mathf.Max(0f, newSpreadAngle);
+        }
+
         private void Fire()
         {
             if (projectilePool == null || pursuitAI.Target == null) return;

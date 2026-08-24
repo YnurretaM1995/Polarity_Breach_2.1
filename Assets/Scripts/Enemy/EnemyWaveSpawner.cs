@@ -10,10 +10,10 @@ namespace PolarityBreach.Enemy
     public enum SpawnPattern
     {
         RandomCluster,
-        LineShape,
-        VShape,
-        CircleShape,
-        zigzagShape
+        LineShape
+        //VShape,
+        //CircleShape,
+        //zigzagShape
     }
 
     [System.Serializable]
@@ -24,8 +24,11 @@ namespace PolarityBreach.Enemy
         public SpawnPattern pattern = SpawnPattern.RandomCluster;
         public float spacing = 2f;
         public Polarity polarity = Polarity.White;
-    }
 
+        [Header("Shooting Settings")]
+        public int projectilesPerShot = 3;
+        public float spreadAngle = 15f;
+    }
     [System.Serializable]
     public class EnemyWave
     {
@@ -133,7 +136,7 @@ namespace PolarityBreach.Enemy
                 for (int i = 0; i < spawnPositions.Length; i++)
                 {
                     spawningEnemies = Mathf.Max(0, spawningEnemies - 1);
-                    SpawnEnemyAtPosition(spawnPositions[i], group.polarity, groupEnemyPool);
+                    SpawnEnemyAtPosition(spawnPositions[i], group.polarity, groupEnemyPool, group);
                     yield return new WaitForSeconds(timeBetweenSpawns);
                 }
             }
@@ -178,7 +181,7 @@ namespace PolarityBreach.Enemy
             return possibleSpawnPoints[randomIndex];
         }
 
-        private void SpawnEnemyAtPosition(Vector3 spawnPosition, Polarity polarity, EnemyPool pool)
+        private void SpawnEnemyAtPosition(Vector3 spawnPosition, Polarity polarity, EnemyPool pool, EnemySpawnGroup group)
         {
             Enemy enemy = pool.GetEnemy(spawnPosition);
 
@@ -193,6 +196,13 @@ namespace PolarityBreach.Enemy
             if (polarityComponent != null)
             {
                 polarityComponent.SetPolarity(polarity);
+            }
+
+            EnemyShooter shooter = enemy.GetComponent<EnemyShooter>();
+
+            if (shooter != null)
+            {
+                shooter.SetWaveShootingSettings(group.projectilesPerShot, group.spreadAngle);
             }
 
             aliveEnemies++;
