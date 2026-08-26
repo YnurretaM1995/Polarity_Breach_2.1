@@ -23,16 +23,31 @@ MonoBehaviour:
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: "These ones don't shoot. They close the distance and tear. Same rule though
-      \u2014 same polarity, no damage. On either side."
+  - text: 'These ones don''t shoot. They close the distance and tear. '
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: Keep them at range. Keep switching. If one gets its arms around me, that's
-      the run.
+  - text: 'And the suit drags when they''re near. Something in their field.
+
+      The
+      closer they get, the slower I move.'
+    speakerName: 
+    leftPortrait: 0
+    rightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
+  - text: Same rule still applies. Matching polarity, no damage. On either side.
+    speakerName: 
+    leftPortrait: 0
+    rightPortrait: 0
+    isPrompt: 0
+    keyboardHint: 
+    gamepadHint: 
+  - text: Don't let them swarm me. Once I'm slow, I'm theirs.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0

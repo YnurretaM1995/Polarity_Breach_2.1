@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.DialogueSequence
   fullScreenBackground: {fileID: 0}
   leftPortrait: {fileID: 21300000, guid: 5d19048fe99a87d41ad6bfa480eaabc0, type: 3}
-  rightPortrait: {fileID: 0}
+  rightPortrait: {fileID: 21300000, guid: ea464f51bc1bc1b4e8fcca6c88e5ecde, type: 3}
   lines:
   - text: Deck's quiet. That's all of them.
     speakerName: 
     leftPortrait: 0
-    rightPortrait: 0
+    rightPortrait: 1
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
