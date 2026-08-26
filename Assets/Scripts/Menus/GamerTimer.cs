@@ -16,7 +16,7 @@ namespace PolarityBreach.Level
         public float ElapsedTime => elapsedTime;
         public bool IsRunning => !isStopped && !IsBlocked;
 
-        private bool IsBlocked => UIQueue.IsBlocking || PauseMenu.IsPaused;
+        private bool IsBlocked => UIQueue.IsBlocking || PauseMenu.IsPaused || LevelUpMenu.IsOpen;
 
         public string FormattedTime
         {
