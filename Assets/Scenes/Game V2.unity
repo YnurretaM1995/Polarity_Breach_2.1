@@ -27792,7 +27792,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1132328035}
         m_TargetAssemblyTypeName: PolarityBreach.UI.GameOverScreen, Assembly-CSharp
         m_MethodName: Retry
         m_Mode: 1
