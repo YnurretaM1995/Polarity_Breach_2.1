@@ -384,6 +384,7 @@ MonoBehaviour:
   _switchActionRef: {fileID: 0}
   colorSound: {fileID: 0}
   polarityUI: {fileID: 0}
+  postProcessPulse: {fileID: 0}
 --- !u!114 &888351089162473407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,6 +482,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f02e3c778a0ec6439f4b4a2872c0629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerDeathHandler
+  animator: {fileID: 134883091498771782}
+  scriptsToDisable:
+  - {fileID: 1539293552844303146}
+  - {fileID: 5479298315962273938}
+  - {fileID: 8249433527409625419}
+  enemyContainers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyProjectilePool: {fileID: 0}
+  deathAnimationDuration: 2
+  groundHoldDuration: 1.5
 --- !u!114 &-2351572942621127658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.CheatMenu
   playerStats: {fileID: 0}
   waveSpawner: {fileID: 0}
+  bossSpawner: {fileID: 0}
   player: {fileID: 0}
   bossRoomPoint: {fileID: 0}
   bossObject: {fileID: 0}
