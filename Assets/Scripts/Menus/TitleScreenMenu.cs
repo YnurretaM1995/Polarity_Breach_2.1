@@ -9,17 +9,17 @@ namespace PolarityBreach.Menus
     {
         [Header("References")]
         [SerializeField] private MenuController menuController;
+        [SerializeField] private SceneFadeIn sceneFader;
         [SerializeField] private CanvasGroup menuButtonsGroup;
-        [SerializeField] private CanvasGroup blackFadeGroup;
         [SerializeField] private Selectable defaultSelectedButton;
         [SerializeField] private AudioSource musicSource;
+        [SerializeField] private string gameSceneName = "Game V2";
 
         [Header("Optional Options Menu")]
         [SerializeField] private GameObject optionsPanel;
         [SerializeField] private Selectable optionsSelectedButton;
 
         [Header("Timing")]
-        [SerializeField] private float fadeInDuration = 1.5f;
         [SerializeField] private float buttonsDelay = 2f;
         [SerializeField] private float buttonsFadeDuration = 0.75f;
         [SerializeField] private float fadeOutDuration = 1f;
@@ -33,12 +33,15 @@ namespace PolarityBreach.Menus
                 menuController = FindFirstObjectByType<MenuController>();
             }
 
+            if (sceneFader == null)
+            {
+                sceneFader = FindFirstObjectByType<SceneFadeIn>();
+            }
+
             if (musicSource == null)
             {
                 musicSource = FindFirstObjectByType<AudioSource>();
             }
-
-            FixBlackFadeGroupIfNeeded();
         }
 
         private void Start()
@@ -55,12 +58,6 @@ namespace PolarityBreach.Menus
                 menuButtonsGroup.alpha = 0f;
                 menuButtonsGroup.interactable = false;
                 menuButtonsGroup.blocksRaycasts = false;
-            }
-
-            if (blackFadeGroup != null)
-            {
-                blackFadeGroup.alpha = 1f;
-                blackFadeGroup.blocksRaycasts = true;
             }
 
             if (musicSource != null)
@@ -114,43 +111,31 @@ namespace PolarityBreach.Menus
             StartCoroutine(ExitGameRoutine());
         }
 
-        private void FixBlackFadeGroupIfNeeded()
-        {
-            if (blackFadeGroup == null) return;
-            if (blackFadeGroup.GetComponentInChildren<Graphic>() != null) return;
-            if (blackFadeGroup.transform.parent == null) return;
-            if (blackFadeGroup.transform.parent.GetComponentInChildren<Graphic>() == null) return;
-
-            CanvasGroup parentGroup = blackFadeGroup.transform.parent.GetComponent<CanvasGroup>();
-
-            if (parentGroup == null)
-            {
-                parentGroup = blackFadeGroup.transform.parent.gameObject.AddComponent<CanvasGroup>();
-            }
-
-            blackFadeGroup = parentGroup;
-        }
-
         private IEnumerator StartupRoutine()
         {
-            yield return FadeCanvasGroup(blackFadeGroup, 1f, 0f, fadeInDuration);
+            if (sceneFader != null)
+            {
+                yield return sceneFader.FadeFromBlack();
+            }
 
             if (buttonsDelay > 0f)
             {
                 yield return new WaitForSecondsRealtime(buttonsDelay);
             }
 
-            yield return FadeCanvasGroup(menuButtonsGroup, 0f, 1f, buttonsFadeDuration);
+            if (sceneFader != null)
+            {
+                yield return sceneFader.FadeGroup(menuButtonsGroup, 0f, 1f, buttonsFadeDuration);
+            }
+            else if (menuButtonsGroup != null)
+            {
+                menuButtonsGroup.alpha = 1f;
+            }
 
             if (menuButtonsGroup != null)
             {
                 menuButtonsGroup.interactable = true;
                 menuButtonsGroup.blocksRaycasts = true;
-            }
-
-            if (blackFadeGroup != null)
-            {
-                blackFadeGroup.blocksRaycasts = false;
             }
 
             SelectButton(defaultSelectedButton);
@@ -161,20 +146,18 @@ namespace PolarityBreach.Menus
             isStarting = true;
             DisableMenuInput();
 
-            if (blackFadeGroup != null)
+            if (sceneFader != null)
             {
-                blackFadeGroup.blocksRaycasts = true;
-            }
-
-            yield return FadeCanvasGroup(blackFadeGroup, 0f, 1f, fadeOutDuration);
-
-            if (menuController != null)
-            {
-                menuController.NewGameDialogYes();
+                yield return sceneFader.FadeOutAndLoadSceneRoutine(gameSceneName, fadeOutDuration);
             }
             else
             {
-                Debug.LogWarning("TitleScreenMenu: MenuController is not assigned.");
+                Debug.LogWarning("TitleScreenMenu: SceneFadeIn is not assigned.");
+
+                if (menuController != null)
+                {
+                    menuController.NewGameDialogYes();
+                }
             }
         }
 
@@ -183,12 +166,10 @@ namespace PolarityBreach.Menus
             isStarting = true;
             DisableMenuInput();
 
-            if (blackFadeGroup != null)
+            if (sceneFader != null)
             {
-                blackFadeGroup.blocksRaycasts = true;
+                yield return sceneFader.FadeToBlack(fadeOutDuration);
             }
-
-            yield return FadeCanvasGroup(blackFadeGroup, 0f, 1f, fadeOutDuration);
 
             if (menuController != null)
             {
@@ -213,30 +194,6 @@ namespace PolarityBreach.Menus
             }
         }
 
-        private IEnumerator FadeCanvasGroup(CanvasGroup group, float from, float to, float duration)
-        {
-            if (group == null) yield break;
-
-            if (duration <= 0f)
-            {
-                group.alpha = to;
-                yield break;
-            }
-
-            float timer = 0f;
-            group.alpha = from;
-
-            while (timer < duration)
-            {
-                timer += Time.unscaledDeltaTime;
-                float t = Mathf.Clamp01(timer / duration);
-                group.alpha = Mathf.Lerp(from, to, t);
-                yield return null;
-            }
-
-            group.alpha = to;
-        }
-
         private void SelectButton(Selectable button)
         {
             if (button == null || EventSystem.current == null) return;
@@ -246,5 +203,3 @@ namespace PolarityBreach.Menus
         }
     }
 }
-
-
