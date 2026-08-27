@@ -30,8 +30,22 @@ namespace PolarityBreach.UI
         [SerializeField] private float charDelay = 0.03f;
         [SerializeField] private float inputLockDuration = 0.15f;
 
+        [Header("Skip")]
+        [SerializeField] private GameObject skipBarRoot;
+        [SerializeField] private Image skipBar;
+        [SerializeField] private float skipHoldDuration = 2f;
+
+        [Header("Skip Hint")]
+        [SerializeField] private TMP_Text skipHintText;
+        [SerializeField] private float hintBlinkSpeed = 5f;
+        [SerializeField] private float hintMinAlpha = 0.1f;
+        [SerializeField] private float hintMaxAlpha = 0.5f;
+
         private Sprite sequenceLeftSprite;
         private Sprite sequenceRightSprite;
+
+        private float holdTimer;
+        private bool skipRequested;
 
         private void Awake()
         {
@@ -43,11 +57,24 @@ namespace PolarityBreach.UI
 
             Instance = this;
             if (root != null) root.SetActive(false);
+            if (skipBarRoot != null) skipBarRoot.SetActive(false);
         }
 
         private void OnDestroy()
         {
             if (Instance == this) Instance = null;
+        }
+
+        private void Update()
+        {
+            if (skipHintText == null) return;
+            if (root == null || !root.activeSelf) return;
+
+            float wave = (Mathf.Sin(Time.unscaledTime * hintBlinkSpeed) + 1f) * 0.5f;
+
+            Color c = skipHintText.color;
+            c.a = Mathf.Lerp(hintMinAlpha, hintMaxAlpha, wave);
+            skipHintText.color = c;
         }
 
         public static void Show(DialogueSequence sequence)
@@ -73,8 +100,14 @@ namespace PolarityBreach.UI
         {
             OpenPanel(sequence);
 
+            holdTimer = 0f;
+            skipRequested = false;
+
             for (int i = 0; i < sequence.lines.Length; i++)
+            {
                 yield return PlayLine(sequence.lines[i]);
+                if (skipRequested) break;
+            }
 
             ClosePanel();
         }
@@ -97,6 +130,8 @@ namespace PolarityBreach.UI
         private void ClosePanel()
         {
             if (root != null) root.SetActive(false);
+            if (skipBarRoot != null) skipBarRoot.SetActive(false);
+            if (skipBar != null) skipBar.fillAmount = 0f;
         }
 
         private IEnumerator PlayLine(DialogueLine line)
@@ -116,6 +151,9 @@ namespace PolarityBreach.UI
 
             for (int i = 0; i < content.Length; i++)
             {
+                UpdateSkipHold();
+                if (skipRequested) yield break;
+
                 if (NextPressed())
                 {
                     skipped = true;
@@ -133,9 +171,46 @@ namespace PolarityBreach.UI
             if (nextIndicator != null) nextIndicator.SetActive(true);
 
             while (!NextPressed())
+            {
+                UpdateSkipHold();
+                if (skipRequested) yield break;
+
                 yield return null;
+            }
 
             if (nextIndicator != null) nextIndicator.SetActive(false);
+        }
+
+        private void UpdateSkipHold()
+        {
+            if (HoldPressed())
+            {
+                holdTimer += Time.unscaledDeltaTime;
+
+                if (holdTimer >= skipHoldDuration)
+                    skipRequested = true;
+            }
+            else
+            {
+                holdTimer = 0f;
+            }
+
+            UpdateSkipBar();
+        }
+
+        private void UpdateSkipBar()
+        {
+            float progress = Mathf.Clamp01(holdTimer / skipHoldDuration);
+
+            if (skipBar != null) skipBar.fillAmount = progress;
+            if (skipBarRoot != null) skipBarRoot.SetActive(progress > 0.01f);
+        }
+
+        private bool HoldPressed()
+        {
+            bool keyboard = Keyboard.current != null && Keyboard.current.spaceKey.isPressed;
+            bool gamepad = Gamepad.current != null && Gamepad.current.buttonSouth.isPressed;
+            return keyboard || gamepad;
         }
 
         private void ApplyPortraits(DialogueLine line)

@@ -29,6 +29,18 @@ namespace PolarityBreach.PolaritySystem
         private Camera _cam;
         private PlayerStatsData _playerStats;
 
+        public bool IsCharging => _isCharging;
+        public bool ChargeReady => _chargeReady;
+        public float ChargeProgress
+        {
+            get
+            {
+                if (!_isCharging) return 0f;
+                if (_playerStats.chargeTime <= 0f) return 1f;
+                return Mathf.Clamp01((Time.time - _chargeStartTime) / _playerStats.chargeTime);
+            }
+        }
+
         private void Awake()
         {
             _polarity = GetComponent<PolarityComponent>();
