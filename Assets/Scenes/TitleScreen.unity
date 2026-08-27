@@ -495,7 +495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26a810f16db3e345ba152ab0cac1439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.MenuSelectionPulse
-  target: {fileID: 0}
   pulseSpeed: 5
   selectedScale: 1.06
 --- !u!114 &687321069
@@ -659,7 +658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26a810f16db3e345ba152ab0cac1439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.MenuSelectionPulse
-  target: {fileID: 0}
   pulseSpeed: 5
   selectedScale: 1.06
 --- !u!114 &845648948
@@ -1532,7 +1530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26a810f16db3e345ba152ab0cac1439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.MenuSelectionPulse
-  target: {fileID: 0}
   pulseSpeed: 5
   selectedScale: 1.06
 --- !u!114 &1864676722
@@ -1606,6 +1603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2054705427}
   - component: {fileID: 2054705428}
+  - component: {fileID: 2054705429}
   m_Layer: 0
   m_Name: BalckFadeOverlay
   m_TagString: Untagged
@@ -1641,6 +1639,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2054705429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054705426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43acd3631ac99e4093b245b6f4ea1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.SceneFadeIn
+  blackFadeGroup: {fileID: 2054705428}
+  fadeInOnStart: 0
+  fadeInDuration: 3.5
+  fadeOutDuration: 3
 --- !u!1 &2103473990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1671,16 +1685,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.TitleScreenMenu
   menuController: {fileID: 1994970829}
+  sceneFader: {fileID: 2054705429}
   menuButtonsGroup: {fileID: 643674277}
-  blackFadeGroup: {fileID: 2054705428}
   defaultSelectedButton: {fileID: 1864676718}
   musicSource: {fileID: 1355949629}
+  gameSceneName: Game V2
   optionsPanel: {fileID: 0}
   optionsSelectedButton: {fileID: 0}
-  fadeInDuration: 4
   buttonsDelay: 1
   buttonsFadeDuration: 0.75
-  fadeOutDuration: 4
+  fadeOutDuration: 3
 --- !u!4 &2103473992
 Transform:
   m_ObjectHideFlags: 0
