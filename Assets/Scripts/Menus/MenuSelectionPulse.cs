@@ -7,30 +7,26 @@ namespace PolarityBreach.Menus
     public class MenuSelectionPulse : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [Header("Scale Pulse")]
-        [SerializeField] private RectTransform target;
         [SerializeField] private float pulseSpeed = 4f;
         [SerializeField] private float selectedScale = 1.08f;
 
         private bool isSelected;
+        private RectTransform rectTransform;
         private Vector3 startingScale;
 
         private void Awake()
         {
-            if (target == null)
-            {
-                target = GetComponent<RectTransform>();
-            }
-
-            startingScale = target != null ? target.localScale : Vector3.one;
+            rectTransform = GetComponent<RectTransform>();
+            startingScale = rectTransform != null ? rectTransform.localScale : Vector3.one;
         }
 
         private void Update()
         {
-            if (!isSelected || target == null) return;
+            if (!isSelected || rectTransform == null) return;
 
             float wave = (Mathf.Sin(Time.unscaledTime * pulseSpeed) + 1f) * 0.5f;
             float scale = Mathf.Lerp(1f, selectedScale, wave);
-            target.localScale = startingScale * scale;
+            rectTransform.localScale = startingScale * scale;
         }
 
         public void OnSelect(BaseEventData eventData)
@@ -62,9 +58,9 @@ namespace PolarityBreach.Menus
         {
             isSelected = false;
 
-            if (target != null)
+            if (rectTransform != null)
             {
-                target.localScale = startingScale;
+                rectTransform.localScale = startingScale;
             }
         }
     }
