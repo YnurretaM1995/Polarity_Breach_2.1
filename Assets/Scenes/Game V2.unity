@@ -6903,7 +6903,7 @@ MonoBehaviour:
       spacing: 3
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
@@ -6911,14 +6911,14 @@ MonoBehaviour:
       spacing: 6
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 4
@@ -6926,14 +6926,14 @@ MonoBehaviour:
       spacing: 3
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
     - enemyPool: {fileID: 30625201}
       enemyCount: 4
       pattern: 1
       spacing: 3
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 5
@@ -6941,14 +6941,14 @@ MonoBehaviour:
       spacing: 7
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
     - enemyPool: {fileID: 30625201}
       enemyCount: 5
       pattern: 0
       spacing: 7
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
@@ -6956,35 +6956,35 @@ MonoBehaviour:
       spacing: 8
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 2
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 15
+      spreadAngle: 0
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
@@ -11375,7 +11375,7 @@ MonoBehaviour:
       pattern: 1
       spacing: 3
       polarity: 1
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1023556279}
@@ -11383,14 +11383,14 @@ MonoBehaviour:
       pattern: 0
       spacing: 6
       polarity: 0
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1611390679}
@@ -11405,7 +11405,7 @@ MonoBehaviour:
       pattern: 1
       spacing: 3
       polarity: 1
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1611390679}
@@ -11413,14 +11413,14 @@ MonoBehaviour:
       pattern: 0
       spacing: 7
       polarity: 1
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
     - enemyPool: {fileID: 1023556279}
       enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 0
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 1023556279}
@@ -11428,28 +11428,28 @@ MonoBehaviour:
       pattern: 0
       spacing: 8
       polarity: 1
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 0
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
     - enemyPool: {fileID: 1611390679}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 0
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
     - enemyPool: {fileID: 1611390679}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 1
-      projectilesPerShot: 3
+      projectilesPerShot: 5
       spreadAngle: 15
   autoStart: 1
   timeBetweenSpawns: 0.1
@@ -21513,7 +21513,7 @@ MonoBehaviour:
   levelMusic:
   - {fileID: 8300000, guid: a2235bb0e34560048ae70069bf9c72da, type: 3}
   - {fileID: 8300000, guid: a3329855eb88ba24dbc4b2011239f6a4, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 5ef742943cc645a4fbac8041f6452ed7, type: 3}
   bossMusic: {fileID: 8300000, guid: b8524bc6c0b8c03458b8a74941e49689, type: 3}
   gameOverMusic: {fileID: 8300000, guid: 107b6d7ac8d333e43a7aaed80df0de75, type: 3}
   winScreenMusic: {fileID: 8300000, guid: 2299f33e8fdced24096a7bfb8daa0189, type: 3}
