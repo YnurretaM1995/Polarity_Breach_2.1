@@ -20691,14 +20691,14 @@ MonoBehaviour:
   - {fileID: 222043411}
   - {fileID: 291956482}
   dialogueOnRoomCleared: {fileID: 966996751}
-  musicController: {fileID: 0}
-  playDialogueMusicOnRoomCleared: 0
+  musicController: {fileID: 947918515}
+  playDialogueMusicOnRoomCleared: 1
   playLevelCompleteMusicOnRoomCleared: 0
-  playLevelCompleteMusicAfterRoomClearedDialogue: 0
-  playDialogueMusicOnCross: 0
+  playLevelCompleteMusicAfterRoomClearedDialogue: 1
+  playDialogueMusicOnCross: 1
   playBossMusicAfterCrossDialogues: 0
-  playLevelMusicAfterCrossDialogues: 0
-  levelMusicIndexAfterCrossDialogues: -1
+  playLevelMusicAfterCrossDialogues: 1
+  levelMusicIndexAfterCrossDialogues: 1
 --- !u!1 &901097240
 GameObject:
   m_ObjectHideFlags: 0
@@ -33459,12 +33459,12 @@ MonoBehaviour:
   unlocksChargeShot: 1
   dialoguesOnCross: []
   dialogueOnRoomCleared: {fileID: 1340761485}
-  musicController: {fileID: 0}
+  musicController: {fileID: 947918515}
   playDialogueMusicOnRoomCleared: 0
-  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicOnRoomCleared: 1
   playLevelCompleteMusicAfterRoomClearedDialogue: 0
   playDialogueMusicOnCross: 0
-  playBossMusicAfterCrossDialogues: 0
+  playBossMusicAfterCrossDialogues: 1
   playLevelMusicAfterCrossDialogues: 0
   levelMusicIndexAfterCrossDialogues: -1
 --- !u!4 &1563446877 stripped
@@ -35967,14 +35967,14 @@ MonoBehaviour:
   dialoguesOnCross:
   - {fileID: 1569743649}
   dialogueOnRoomCleared: {fileID: 0}
-  musicController: {fileID: 0}
+  musicController: {fileID: 947918515}
   playDialogueMusicOnRoomCleared: 0
-  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicOnRoomCleared: 1
   playLevelCompleteMusicAfterRoomClearedDialogue: 0
-  playDialogueMusicOnCross: 0
+  playDialogueMusicOnCross: 1
   playBossMusicAfterCrossDialogues: 0
-  playLevelMusicAfterCrossDialogues: 0
-  levelMusicIndexAfterCrossDialogues: -1
+  playLevelMusicAfterCrossDialogues: 1
+  levelMusicIndexAfterCrossDialogues: 2
 --- !u!4 &1684528608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9222408220077309190, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
