@@ -17,6 +17,7 @@ namespace PolarityBreach.UI
         [Header("Panels")]
         [SerializeField] private GameObject root;
         [SerializeField] private CanvasGroup blackBackground;
+        [SerializeField] private CanvasGroup victoryImage;
 
         [Header("Music")]
         [SerializeField] private GameMusicController musicController;
@@ -105,6 +106,7 @@ namespace PolarityBreach.UI
             if (root != null) root.SetActive(true);
             if (musicController != null) musicController.PlayWinScreenMusic();
 
+            yield return Fade(victoryImage, 0f, 1f, fadeInDuration);
             yield return Fade(blackBackground, 0f, 1f, fadeInDuration);
             yield return BlockFall();
             yield return new WaitForSecondsRealtime(holdDuration);
@@ -133,6 +135,7 @@ namespace PolarityBreach.UI
         private void Prepare(float runSeconds, bool isRecord)
         {
             if (blackBackground != null) blackBackground.alpha = 0f;
+            if (victoryImage != null) victoryImage.alpha = 0f;
             if (tableGroup != null) tableGroup.alpha = 0f;
             if (victoryBlockGroup != null) victoryBlockGroup.alpha = 0f;
             if (playAgainButton != null) playAgainButton.gameObject.SetActive(false);
