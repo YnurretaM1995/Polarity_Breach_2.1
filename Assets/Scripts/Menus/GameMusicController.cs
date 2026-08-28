@@ -98,6 +98,9 @@ namespace PolarityBreach.Menus
                 return;
             }
 
+            if (musicSource.clip == clip && musicSource.isPlaying)
+                return;
+
             musicSource.Stop();
             musicSource.clip = clip;
             musicSource.loop = true;
