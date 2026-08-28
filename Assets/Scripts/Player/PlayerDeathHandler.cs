@@ -13,6 +13,11 @@ namespace PolarityBreach.Player
         [SerializeField] private GameMusicController musicController;
         [SerializeField] private MonoBehaviour[] scriptsToDisable;
 
+        [Header("Animation")]
+        [SerializeField] private string deathTriggerName = "Death";
+        [SerializeField] private string deathStateName = "Death";
+        [SerializeField] private float deathTransitionDuration = 0.05f;
+
         [Header("Freeze On Death")]
         [SerializeField] private Transform[] enemyContainers;
         [SerializeField] private GameObject enemyProjectilePool;
@@ -38,11 +43,15 @@ namespace PolarityBreach.Player
 
         private void OnEnable()
         {
+            if (health == null) return;
+
             health.OnDied += HandleDeath;
         }
 
         private void OnDisable()
         {
+            if (health == null) return;
+
             health.OnDied -= HandleDeath;
         }
 
@@ -73,12 +82,32 @@ namespace PolarityBreach.Player
                 rb.angularVelocity = Vector3.zero;
             }
 
-            if (animator != null)
-                animator.SetTrigger("Death");
+            PlayDeathAnimation();
 
-            yield return new WaitForSeconds(deathAnimationDuration + groundHoldDuration);
+            yield return new WaitForSecondsRealtime(deathAnimationDuration + groundHoldDuration);
 
             GameOverScreen.Show();
+        }
+
+        private void PlayDeathAnimation()
+        {
+            if (animator == null)
+            {
+                Debug.LogWarning("PlayerDeathHandler: No Animator assigned for death animation.");
+                return;
+            }
+
+            animator.enabled = true;
+            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            animator.SetFloat("Speed", 0f);
+            animator.ResetTrigger(deathTriggerName);
+            animator.SetTrigger(deathTriggerName);
+
+            int deathStateHash = Animator.StringToHash(deathStateName);
+            if (animator.HasState(0, deathStateHash))
+            {
+                animator.CrossFadeInFixedTime(deathStateHash, deathTransitionDuration, 0, 0f);
+            }
         }
 
         private void FreezeEnemies()
