@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dd4f8086f956f4abe7f031ca0fae0e, type: 3}
   m_Name: 07_Room1Cleared
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.DialogueSequence
-  fullScreenBackground: {fileID: 0}
-  leftPortrait: {fileID: 21300000, guid: 5d19048fe99a87d41ad6bfa480eaabc0, type: 3}
+  fullScreenBackground: {fileID: 21300000, guid: 919360665e9777246bd0b2b3b2454223, type: 3}
+  leftPortrait: {fileID: 21300000, guid: c5a77ef38f5fd0c47ab83e999215f3b6, type: 3}
   rightPortrait: {fileID: 21300000, guid: ea464f51bc1bc1b4e8fcca6c88e5ecde, type: 3}
   lines:
   - text: Deck's quiet. That's all of them.
