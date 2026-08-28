@@ -4706,11 +4706,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8616490787709139147, guid: d96e3ff0793bd824fb6771e987a80a35, type: 3}
   m_PrefabInstance: {fileID: 559954858}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &265612583 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2519076331290097812, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
-  m_PrefabInstance: {fileID: 1817478967}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &267261092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4921,7 +4916,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.15
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -6908,7 +6903,7 @@ MonoBehaviour:
       spacing: 3
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
@@ -6916,14 +6911,14 @@ MonoBehaviour:
       spacing: 6
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 4
@@ -6931,14 +6926,14 @@ MonoBehaviour:
       spacing: 3
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 4
       pattern: 1
       spacing: 3
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 5
@@ -6946,14 +6941,14 @@ MonoBehaviour:
       spacing: 7
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 5
       pattern: 0
       spacing: 7
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
   - groups:
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
@@ -6961,35 +6956,35 @@ MonoBehaviour:
       spacing: 8
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 2
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 1
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 0
       projectilesPerShot: 1
-      spreadAngle: 0
+      spreadAngle: 15
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
@@ -20696,12 +20691,14 @@ MonoBehaviour:
   - {fileID: 222043411}
   - {fileID: 291956482}
   dialogueOnRoomCleared: {fileID: 966996751}
-  musicController: {fileID: 947918515}
-  playLevelCompleteMusicOnRoomCleared: 1
-  playDialogueMusicOnCross: 1
+  musicController: {fileID: 0}
+  playDialogueMusicOnRoomCleared: 0
+  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicAfterRoomClearedDialogue: 0
+  playDialogueMusicOnCross: 0
   playBossMusicAfterCrossDialogues: 0
-  playLevelMusicAfterCrossDialogues: 1
-  levelMusicIndexAfterCrossDialogues: 1
+  playLevelMusicAfterCrossDialogues: 0
+  levelMusicIndexAfterCrossDialogues: -1
 --- !u!1 &901097240
 GameObject:
   m_ObjectHideFlags: 0
@@ -33462,10 +33459,12 @@ MonoBehaviour:
   unlocksChargeShot: 1
   dialoguesOnCross: []
   dialogueOnRoomCleared: {fileID: 1340761485}
-  musicController: {fileID: 947918515}
-  playLevelCompleteMusicOnRoomCleared: 1
+  musicController: {fileID: 0}
+  playDialogueMusicOnRoomCleared: 0
+  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicAfterRoomClearedDialogue: 0
   playDialogueMusicOnCross: 0
-  playBossMusicAfterCrossDialogues: 1
+  playBossMusicAfterCrossDialogues: 0
   playLevelMusicAfterCrossDialogues: 0
   levelMusicIndexAfterCrossDialogues: -1
 --- !u!4 &1563446877 stripped
@@ -33846,7 +33845,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
-          m_FloatArgument: 0.15
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -35968,9 +35967,11 @@ MonoBehaviour:
   dialoguesOnCross:
   - {fileID: 1569743649}
   dialogueOnRoomCleared: {fileID: 0}
-  musicController: {fileID: 947918515}
-  playLevelCompleteMusicOnRoomCleared: 1
-  playDialogueMusicOnCross: 1
+  musicController: {fileID: 0}
+  playDialogueMusicOnRoomCleared: 0
+  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicAfterRoomClearedDialogue: 0
+  playDialogueMusicOnCross: 0
   playBossMusicAfterCrossDialogues: 0
   playLevelMusicAfterCrossDialogues: 0
   levelMusicIndexAfterCrossDialogues: -1
@@ -38175,15 +38176,15 @@ PrefabInstance:
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _muzzle
       value: 
-      objectReference: {fileID: 265612583}
+      objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: shootSound
       value: 
-      objectReference: {fileID: 8300000, guid: 27f0b168c0895ff4b850b88fb2ab925c, type: 3}
+      objectReference: {fileID: 8300000, guid: 822072822fce7b54fba332597276d40f, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: chargeSound
       value: 
-      objectReference: {fileID: 8300000, guid: 73ebbeb29e3ece64f84005f1446781be, type: 3}
+      objectReference: {fileID: 8300000, guid: 65230a01292a2e342abb6573d0276562, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _normalProjectilePool
       value: 
@@ -39867,7 +39868,7 @@ MonoBehaviour:
   bossHealth: {fileID: 0}
   endingDialogue: {fileID: 1508979111}
   gameTimer: {fileID: 0}
-  deathAnimationDuration: 4
+  deathAnimationDuration: 2
   extraDelay: 1
 --- !u!1 &1902701928
 GameObject:

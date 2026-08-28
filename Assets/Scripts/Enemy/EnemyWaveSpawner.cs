@@ -26,7 +26,7 @@ namespace PolarityBreach.Enemy
         public Polarity polarity = Polarity.White;
 
         [Header("Shooting Settings")]
-        public int projectilesPerShot = 3;
+        public int projectilesPerShot = 1;
         public float spreadAngle = 15f;
     }
     [System.Serializable]

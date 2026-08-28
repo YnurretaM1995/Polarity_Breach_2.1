@@ -33,7 +33,9 @@ namespace PolarityBreach.Level
 
         [Header("Music")]
         [SerializeField] private GameMusicController musicController;
+        [SerializeField] private bool playDialogueMusicOnRoomCleared;
         [SerializeField] private bool playLevelCompleteMusicOnRoomCleared;
+        [SerializeField] private bool playLevelCompleteMusicAfterRoomClearedDialogue;
         [SerializeField] private bool playDialogueMusicOnCross;
         [SerializeField] private bool playBossMusicAfterCrossDialogues;
         [SerializeField] private bool playLevelMusicAfterCrossDialogues;
@@ -65,8 +67,22 @@ namespace PolarityBreach.Level
         {
             isOpen = true;
             if (portalVisuals != null) portalVisuals.SetActive(true);
-            if (playLevelCompleteMusicOnRoomCleared && musicController != null) musicController.PlayLevelCompleteMusic();
-            if (dialogueOnRoomCleared != null) dialogueOnRoomCleared.Play();
+
+            if (dialogueOnRoomCleared != null)
+            {
+                if (playDialogueMusicOnRoomCleared && musicController != null)
+                    musicController.PlayDialogueMusic();
+
+                if (playLevelCompleteMusicAfterRoomClearedDialogue)
+                    dialogueOnRoomCleared.Play(PlayLevelCompleteMusic);
+                else
+                    dialogueOnRoomCleared.Play();
+            }
+
+            if (playLevelCompleteMusicOnRoomCleared && !playLevelCompleteMusicAfterRoomClearedDialogue && musicController != null)
+                musicController.PlayLevelCompleteMusic();
+            else if (dialogueOnRoomCleared == null && playLevelCompleteMusicAfterRoomClearedDialogue)
+                PlayLevelCompleteMusic();
         }
 
         public void OnPlayerEntered(Transform playerRoot)
@@ -150,6 +166,13 @@ namespace PolarityBreach.Level
             }
 
             return -1;
+        }
+
+        private void PlayLevelCompleteMusic()
+        {
+            if (musicController == null) return;
+
+            musicController.PlayLevelCompleteMusic();
         }
 
         private void PlayLevelMusicAfterCrossDialogues()
