@@ -20636,6 +20636,12 @@ MonoBehaviour:
   - {fileID: 222043411}
   - {fileID: 291956482}
   dialogueOnRoomCleared: {fileID: 966996751}
+  musicController: {fileID: 947918515}
+  playLevelCompleteMusicOnRoomCleared: 1
+  playDialogueMusicOnCross: 1
+  playBossMusicAfterCrossDialogues: 0
+  playLevelMusicAfterCrossDialogues: 1
+  levelMusicIndexAfterCrossDialogues: 1
 --- !u!1 &901097240
 GameObject:
   m_ObjectHideFlags: 0
@@ -21445,15 +21451,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.GameMusicController
   musicSource: {fileID: 606847616}
-  introMusic: {fileID: 8300000, guid: 48105b9064945ad4294ab218bcc724e7, type: 3}
+  introDialogueMusic: {fileID: 8300000, guid: 48105b9064945ad4294ab218bcc724e7, type: 3}
+  dialogueTutorialMusic: {fileID: 8300000, guid: 6e03163439ae803468f3c242c530dd21, type: 3}
   levelMusic:
   - {fileID: 8300000, guid: a2235bb0e34560048ae70069bf9c72da, type: 3}
   - {fileID: 8300000, guid: a3329855eb88ba24dbc4b2011239f6a4, type: 3}
   - {fileID: 0}
   bossMusic: {fileID: 8300000, guid: b8524bc6c0b8c03458b8a74941e49689, type: 3}
-  gameOverMusic: {fileID: 0}
-  winScreenMusic: {fileID: 0}
-  levelCompleteMusic: {fileID: 0}
+  gameOverMusic: {fileID: 8300000, guid: 107b6d7ac8d333e43a7aaed80df0de75, type: 3}
+  winScreenMusic: {fileID: 8300000, guid: 2299f33e8fdced24096a7bfb8daa0189, type: 3}
+  levelCompleteMusic: {fileID: 8300000, guid: af52690fbaf7469449bc78ef1705509a, type: 3}
 --- !u!4 &947918516
 Transform:
   m_ObjectHideFlags: 0
@@ -25348,6 +25355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.VictoryScreen
   root: {fileID: 884600072}
   blackBackground: {fileID: 961770195}
+  musicController: {fileID: 0}
   victoryBlock: {fileID: 1266159465}
   victoryBlockGroup: {fileID: 1266159463}
   timeText: {fileID: 23474966}
@@ -25401,6 +25409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.GameOverScreen
   root: {fileID: 1085508591}
   blackBackground: {fileID: 1548027958}
+  musicController: {fileID: 0}
   storyImages:
   - {fileID: 2061581090}
   - {fileID: 1997157379}
@@ -33393,6 +33402,12 @@ MonoBehaviour:
   unlocksChargeShot: 1
   dialoguesOnCross: []
   dialogueOnRoomCleared: {fileID: 1340761485}
+  musicController: {fileID: 947918515}
+  playLevelCompleteMusicOnRoomCleared: 1
+  playDialogueMusicOnCross: 0
+  playBossMusicAfterCrossDialogues: 1
+  playLevelMusicAfterCrossDialogues: 0
+  levelMusicIndexAfterCrossDialogues: -1
 --- !u!4 &1563446877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 262889321097380118, guid: ce7e4bd04c6404147b4b1dc694ac9a00, type: 3}
@@ -35857,6 +35872,12 @@ MonoBehaviour:
   dialoguesOnCross:
   - {fileID: 1569743649}
   dialogueOnRoomCleared: {fileID: 0}
+  musicController: {fileID: 947918515}
+  playLevelCompleteMusicOnRoomCleared: 1
+  playDialogueMusicOnCross: 1
+  playBossMusicAfterCrossDialogues: 0
+  playLevelMusicAfterCrossDialogues: 0
+  levelMusicIndexAfterCrossDialogues: -1
 --- !u!4 &1684528608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9222408220077309190, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
@@ -38135,6 +38156,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7087308136952612965, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: musicController
+      value: 
+      objectReference: {fileID: 947918515}
     - target: {fileID: 7087308136952612965, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: enemyProjectilePool
       value: 
