@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -79,6 +80,11 @@ namespace PolarityBreach.UI
 
         public static void Show(DialogueSequence sequence)
         {
+            Show(sequence, null);
+        }
+
+        public static void Show(DialogueSequence sequence, Action onFinished)
+        {
             if (sequence == null || sequence.lines == null || sequence.lines.Length == 0) return;
 
             if (Instance == null)
@@ -93,7 +99,7 @@ namespace PolarityBreach.UI
                 return;
             }
 
-            UIQueue.Instance.Enqueue(new DialogueRequest(Instance, sequence));
+            UIQueue.Instance.Enqueue(new DialogueRequest(Instance, sequence, onFinished));
         }
 
         public IEnumerator PlaySequence(DialogueSequence sequence)
