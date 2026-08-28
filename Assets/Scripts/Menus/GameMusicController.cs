@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PolarityBreach.Menus
 {
@@ -8,7 +9,9 @@ namespace PolarityBreach.Menus
         [SerializeField] private AudioSource musicSource;
 
         [Header("Music")]
-        [SerializeField] private AudioClip introMusic;
+        [FormerlySerializedAs("introMusic")]
+        [SerializeField] private AudioClip introDialogueMusic;
+        [SerializeField] private AudioClip dialogueTutorialMusic;
         [SerializeField] private AudioClip[] levelMusic;
         [SerializeField] private AudioClip bossMusic;
         [SerializeField] private AudioClip gameOverMusic;
@@ -25,17 +28,31 @@ namespace PolarityBreach.Menus
 
         private void Start()
         {
-            PlayIntroMusic();
+            PlayIntroDialogueMusic();
+        }
+
+        public void PlayIntroDialogueMusic()
+        {
+            PlayMusic(introDialogueMusic);
         }
 
         public void PlayIntroMusic()
         {
-            PlayMusic(introMusic);
+            PlayIntroDialogueMusic();
+        }
+
+        public void PlayDialogueMusic()
+        {
+            PlayMusic(dialogueTutorialMusic != null ? dialogueTutorialMusic : introDialogueMusic);
         }
 
         public void PlayLevelMusic(int levelIndex)
         {
-            if (levelMusic == null || levelIndex < 0 || levelIndex >= levelMusic.Length) return;
+            if (levelMusic == null || levelIndex < 0 || levelIndex >= levelMusic.Length)
+            {
+                Debug.LogWarning("GameMusicController: No level music clip exists at index " + levelIndex);
+                return;
+            }
 
             PlayMusic(levelMusic[levelIndex]);
         }
@@ -43,6 +60,21 @@ namespace PolarityBreach.Menus
         public void PlayBossMusic()
         {
             PlayMusic(bossMusic);
+        }
+
+        public void PlayLevelCompleteMusic()
+        {
+            PlayMusic(levelCompleteMusic);
+        }
+
+        public void PlayGameOverMusic()
+        {
+            PlayMusic(gameOverMusic);
+        }
+
+        public void PlayWinScreenMusic()
+        {
+            PlayMusic(winScreenMusic);
         }
 
         public void StopMusic()
@@ -54,7 +86,17 @@ namespace PolarityBreach.Menus
 
         private void PlayMusic(AudioClip clip)
         {
-            if (musicSource == null || clip == null) return;
+            if (musicSource == null)
+            {
+                Debug.LogWarning("GameMusicController: No AudioSource assigned.");
+                return;
+            }
+
+            if (clip == null)
+            {
+                Debug.LogWarning("GameMusicController: Tried to play a missing music clip.");
+                return;
+            }
 
             musicSource.Stop();
             musicSource.clip = clip;

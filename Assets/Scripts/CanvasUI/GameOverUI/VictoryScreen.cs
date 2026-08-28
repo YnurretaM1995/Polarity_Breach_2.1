@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using PolarityBreach.Menus;
 using PolarityBreach.Score;
 
 namespace PolarityBreach.UI
@@ -16,6 +17,9 @@ namespace PolarityBreach.UI
         [Header("Panels")]
         [SerializeField] private GameObject root;
         [SerializeField] private CanvasGroup blackBackground;
+
+        [Header("Music")]
+        [SerializeField] private GameMusicController musicController;
 
         [Header("Victory Block")]
         [SerializeField] private RectTransform victoryBlock;
@@ -58,6 +62,9 @@ namespace PolarityBreach.UI
 
             if (victoryBlock != null) blockCenterY = victoryBlock.anchoredPosition.y;
             if (root != null) root.SetActive(false);
+
+            if (musicController == null)
+                musicController = FindFirstObjectByType<GameMusicController>();
         }
 
         private void OnDestroy()
@@ -96,6 +103,7 @@ namespace PolarityBreach.UI
             Prepare(runSeconds, isRecord);
 
             if (root != null) root.SetActive(true);
+            if (musicController != null) musicController.PlayWinScreenMusic();
 
             yield return Fade(blackBackground, 0f, 1f, fadeInDuration);
             yield return BlockFall();

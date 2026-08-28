@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using PolarityBreach.Menus;
 
 namespace PolarityBreach.UI
 {
@@ -13,6 +14,9 @@ namespace PolarityBreach.UI
         [Header("Panels")]
         [SerializeField] private GameObject root;
         [SerializeField] private CanvasGroup blackBackground;
+
+        [Header("Music")]
+        [SerializeField] private GameMusicController musicController;
 
         [Header("Story Images")]
         [SerializeField] private CanvasGroup[] storyImages;
@@ -44,6 +48,9 @@ namespace PolarityBreach.UI
 
             Instance = this;
             if (root != null) root.SetActive(false);
+
+            if (musicController == null)
+                musicController = FindFirstObjectByType<GameMusicController>();
         }
 
         private void OnDestroy()
@@ -80,6 +87,7 @@ namespace PolarityBreach.UI
             Prepare();
 
             if (root != null) root.SetActive(true);
+            if (musicController != null) musicController.PlayGameOverMusic();
 
             yield return Fade(blackBackground, 0f, 1f, blackFadeDuration);
 
