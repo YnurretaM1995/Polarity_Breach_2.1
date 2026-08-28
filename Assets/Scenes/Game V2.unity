@@ -11376,7 +11376,7 @@ MonoBehaviour:
       spacing: 3
       polarity: 1
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
   - groups:
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
@@ -11384,14 +11384,14 @@ MonoBehaviour:
       spacing: 6
       polarity: 0
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 0
       spacing: 6
       polarity: 0
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
   - groups:
     - enemyPool: {fileID: 1611390679}
       enemyCount: 4
@@ -11406,7 +11406,7 @@ MonoBehaviour:
       spacing: 3
       polarity: 1
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
   - groups:
     - enemyPool: {fileID: 1611390679}
       enemyCount: 4
@@ -11414,14 +11414,14 @@ MonoBehaviour:
       spacing: 7
       polarity: 1
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
     - enemyPool: {fileID: 1023556279}
       enemyCount: 4
       pattern: 0
       spacing: 7
       polarity: 0
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
   - groups:
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
@@ -11429,28 +11429,28 @@ MonoBehaviour:
       spacing: 8
       polarity: 1
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
       pattern: 0
       spacing: 8
       polarity: 0
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
     - enemyPool: {fileID: 1611390679}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 0
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
     - enemyPool: {fileID: 1611390679}
       enemyCount: 8
       pattern: 0
       spacing: 4
       polarity: 1
       projectilesPerShot: 5
-      spreadAngle: 15
+      spreadAngle: 30
   autoStart: 1
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
@@ -39868,6 +39868,7 @@ MonoBehaviour:
   bossHealth: {fileID: 0}
   endingDialogue: {fileID: 1508979111}
   gameTimer: {fileID: 0}
+  musicController: {fileID: 0}
   deathAnimationDuration: 2
   extraDelay: 1
 --- !u!1 &1902701928
