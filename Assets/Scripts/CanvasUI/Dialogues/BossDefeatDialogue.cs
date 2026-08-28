@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using PolarityBreach.Boss;
 using PolarityBreach.Level;
+using PolarityBreach.Menus;
 
 namespace PolarityBreach.UI
 {
@@ -10,6 +11,7 @@ namespace PolarityBreach.UI
         [SerializeField] private BossHealth bossHealth;
         [SerializeField] private DialogueTrigger endingDialogue;
         [SerializeField] private GameTimer gameTimer;
+        [SerializeField] private GameMusicController musicController;
         [SerializeField] private float deathAnimationDuration = 2f;
         [SerializeField] private float extraDelay = 1f;
 
@@ -37,6 +39,12 @@ namespace PolarityBreach.UI
 
         private void PlayEnding()
         {
+            if (musicController == null)
+                musicController = FindFirstObjectByType<GameMusicController>();
+
+            if (musicController != null)
+                musicController.PlayWinScreenMusic();
+
             StartCoroutine(PlayEndingDelayed());
         }
 
