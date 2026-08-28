@@ -25469,7 +25469,7 @@ MonoBehaviour:
   inputLockDuration: 0.15
   skipBarRoot: {fileID: 318248569}
   skipBar: {fileID: 1055131590}
-  skipHoldDuration: 2
+  skipHoldDuration: 1.5
   skipHintText: {fileID: 1310713533}
   hintBlinkSpeed: 6
   hintMinAlpha: 0.1
