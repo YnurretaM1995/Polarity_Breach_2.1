@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -29,10 +30,23 @@ namespace PolarityBreach.UI
 
         public void Play()
         {
-            if (playOnce && hasPlayed) return;
+            Play(null);
+        }
+
+        public void Play(Action onFinished)
+        {
+            if (playOnce && hasPlayed)
+            {
+                onFinished?.Invoke();
+                return;
+            }
 
             hasPlayed = true;
-            DialogueUI.Show(sequence, () => onDialogueFinished?.Invoke());
+            DialogueUI.Show(sequence, () =>
+            {
+                onDialogueFinished?.Invoke();
+                onFinished?.Invoke();
+            });
         }
     }
 }

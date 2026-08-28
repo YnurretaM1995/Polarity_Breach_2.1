@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using PolarityBreach.Menus;
 using PolarityBreach.UI;
 
 namespace PolarityBreach.Player
@@ -9,6 +10,7 @@ namespace PolarityBreach.Player
     {
         [Header("References")]
         [SerializeField] private Animator animator;
+        [SerializeField] private GameMusicController musicController;
         [SerializeField] private MonoBehaviour[] scriptsToDisable;
 
         [Header("Freeze On Death")]
@@ -29,6 +31,9 @@ namespace PolarityBreach.Player
 
             if (animator == null)
                 animator = GetComponentInChildren<Animator>();
+
+            if (musicController == null)
+                musicController = FindFirstObjectByType<GameMusicController>();
         }
 
         private void OnEnable()
@@ -48,6 +53,9 @@ namespace PolarityBreach.Player
 
         private IEnumerator DeathRoutine()
         {
+            if (musicController != null)
+                musicController.StopMusic();
+
             FreezeEnemies();
 
             if (enemyProjectilePool != null)

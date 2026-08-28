@@ -1,4 +1,5 @@
 using PolarityBreach.Enemy;
+using PolarityBreach.Menus;
 using PolarityBreach.Player;
 using PolarityBreach.UI;
 using System.Collections;
@@ -30,11 +31,22 @@ namespace PolarityBreach.Level
         [SerializeField] private DialogueTrigger[] dialoguesOnCross;
         [SerializeField] private DialogueTrigger dialogueOnRoomCleared;
 
+        [Header("Music")]
+        [SerializeField] private GameMusicController musicController;
+        [SerializeField] private bool playLevelCompleteMusicOnRoomCleared;
+        [SerializeField] private bool playDialogueMusicOnCross;
+        [SerializeField] private bool playBossMusicAfterCrossDialogues;
+        [SerializeField] private bool playLevelMusicAfterCrossDialogues;
+        [SerializeField] private int levelMusicIndexAfterCrossDialogues = -1;
+
         private bool isOpen;
 
         private void Awake()
         {
             if (portalVisuals != null) portalVisuals.SetActive(false);
+
+            if (musicController == null)
+                musicController = FindFirstObjectByType<GameMusicController>();
         }
 
         private void OnEnable()
@@ -53,6 +65,7 @@ namespace PolarityBreach.Level
         {
             isOpen = true;
             if (portalVisuals != null) portalVisuals.SetActive(true);
+            if (playLevelCompleteMusicOnRoomCleared && musicController != null) musicController.PlayLevelCompleteMusic();
             if (dialogueOnRoomCleared != null) dialogueOnRoomCleared.Play();
         }
 
@@ -95,15 +108,64 @@ namespace PolarityBreach.Level
             if (nextRoomSpawner != null)
                 nextRoomSpawner.SetActive(true);
 
-            if (dialoguesOnCross != null)
-            {
-                for (int i = 0; i < dialoguesOnCross.Length; i++)
-                    if (dialoguesOnCross[i] != null) dialoguesOnCross[i].Play();
-            }
+            if (playDialogueMusicOnCross && musicController != null)
+                musicController.PlayDialogueMusic();
+
+            PlayDialoguesOnCross();
+
             if (closeAfterUse && portalVisuals != null)
                 portalVisuals.SetActive(false);
             else
                 isOpen = true;
+        }
+
+        private void PlayDialoguesOnCross()
+        {
+            int lastDialogueIndex = GetLastDialogueIndex();
+
+            if (lastDialogueIndex < 0)
+            {
+                PlayLevelMusicAfterCrossDialogues();
+                return;
+            }
+
+            for (int i = 0; i < dialoguesOnCross.Length; i++)
+            {
+                if (dialoguesOnCross[i] == null) continue;
+
+                if (i == lastDialogueIndex)
+                    dialoguesOnCross[i].Play(PlayLevelMusicAfterCrossDialogues);
+                else
+                    dialoguesOnCross[i].Play();
+            }
+        }
+
+        private int GetLastDialogueIndex()
+        {
+            if (dialoguesOnCross == null) return -1;
+
+            for (int i = dialoguesOnCross.Length - 1; i >= 0; i--)
+            {
+                if (dialoguesOnCross[i] != null) return i;
+            }
+
+            return -1;
+        }
+
+        private void PlayLevelMusicAfterCrossDialogues()
+        {
+            if (musicController == null) return;
+
+            if (playBossMusicAfterCrossDialogues)
+            {
+                musicController.PlayBossMusic();
+                return;
+            }
+
+            if (!playLevelMusicAfterCrossDialogues) return;
+            if (levelMusicIndexAfterCrossDialogues < 0) return;
+
+            musicController.PlayLevelMusic(levelMusicIndexAfterCrossDialogues);
         }
     }
 }
