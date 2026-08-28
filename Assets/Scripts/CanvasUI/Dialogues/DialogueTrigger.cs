@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PolarityBreach.UI
 {
@@ -9,6 +10,7 @@ namespace PolarityBreach.UI
         [SerializeField] private bool playOnStart;
         [SerializeField] private float startDelay;
         [SerializeField] private bool playOnce = true;
+        [SerializeField] private UnityEvent onDialogueFinished;
 
         private bool hasPlayed;
 
@@ -30,7 +32,7 @@ namespace PolarityBreach.UI
             if (playOnce && hasPlayed) return;
 
             hasPlayed = true;
-            DialogueUI.Show(sequence);
+            DialogueUI.Show(sequence, () => onDialogueFinished?.Invoke());
         }
     }
 }
