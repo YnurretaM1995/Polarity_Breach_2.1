@@ -46,6 +46,7 @@ namespace PolarityBreach.UI
         private Sprite sequenceRightSprite;
 
         private float holdTimer;
+        private float holdStartTime = -1f;
         private bool skipRequested;
 
         private void Awake()
@@ -107,6 +108,7 @@ namespace PolarityBreach.UI
             OpenPanel(sequence);
 
             holdTimer = 0f;
+            holdStartTime = -1f;
             skipRequested = false;
 
             for (int i = 0; i < sequence.lines.Length; i++)
@@ -155,7 +157,10 @@ namespace PolarityBreach.UI
             bool skipped = false;
             bodyText.text = "";
 
-            for (int i = 0; i < content.Length; i++)
+            float nextCharTime = Time.unscaledTime;
+            int charIndex = 0;
+
+            while (charIndex < content.Length)
             {
                 UpdateSkipHold();
                 if (skipRequested) yield break;
@@ -166,8 +171,14 @@ namespace PolarityBreach.UI
                     break;
                 }
 
-                bodyText.text += content[i];
-                yield return new WaitForSecondsRealtime(charDelay);
+                if (Time.unscaledTime >= nextCharTime)
+                {
+                    bodyText.text += content[charIndex];
+                    charIndex++;
+                    nextCharTime = Time.unscaledTime + charDelay;
+                }
+
+                yield return null;
             }
 
             bodyText.text = content;
@@ -191,13 +202,17 @@ namespace PolarityBreach.UI
         {
             if (HoldPressed())
             {
-                holdTimer += Time.unscaledDeltaTime;
+                if (holdStartTime < 0f)
+                    holdStartTime = Time.unscaledTime;
+
+                holdTimer = Time.unscaledTime - holdStartTime;
 
                 if (holdTimer >= skipHoldDuration)
                     skipRequested = true;
             }
             else
             {
+                holdStartTime = -1f;
                 holdTimer = 0f;
             }
 
