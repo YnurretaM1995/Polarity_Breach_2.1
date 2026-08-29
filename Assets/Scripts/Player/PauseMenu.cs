@@ -61,7 +61,7 @@ namespace PolarityBreach.Player
             OnPauseChanged?.Invoke(true);
         }
 
-        private void Resume()
+        public void Resume()
         {
             if (LevelUpMenu.IsOpen) return;
 

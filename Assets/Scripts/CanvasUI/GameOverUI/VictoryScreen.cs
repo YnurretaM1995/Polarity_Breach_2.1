@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using PolarityBreach.Menus;
 using PolarityBreach.Score;
 
 namespace PolarityBreach.UI
@@ -18,8 +17,14 @@ namespace PolarityBreach.UI
         [SerializeField] private GameObject root;
         [SerializeField] private CanvasGroup blackBackground;
 
-        [Header("Music")]
-        [SerializeField] private GameMusicController musicController;
+        [Header("Story Images")]
+        [SerializeField] private CanvasGroup[] storyImages;
+        [SerializeField] private float[] imageHoldDurations;
+
+        [Header("Dim Overlay")]
+        [SerializeField] private CanvasGroup dimOverlay;
+        [SerializeField] private float dimAlpha = 0.6f;
+        [SerializeField] private float dimFadeDuration = 0.8f;
 
         [Header("Victory Block")]
         [SerializeField] private RectTransform victoryBlock;
@@ -44,7 +49,9 @@ namespace PolarityBreach.UI
         [SerializeField] private Button playAgainButton;
 
         [Header("Timing")]
-        [SerializeField] private float fadeInDuration = 1f;
+        [SerializeField] private float blackFadeDuration = 1.5f;
+        [SerializeField] private float imageFadeDuration = 1f;
+        [SerializeField] private float defaultImageHold = 2.5f;
         [SerializeField] private float tableFadeDuration = 0.4f;
         [SerializeField] private float delayBeforeTable = 0.5f;
 
@@ -62,9 +69,6 @@ namespace PolarityBreach.UI
 
             if (victoryBlock != null) blockCenterY = victoryBlock.anchoredPosition.y;
             if (root != null) root.SetActive(false);
-
-            if (musicController == null)
-                musicController = FindFirstObjectByType<GameMusicController>();
         }
 
         private void OnDestroy()
@@ -103,9 +107,23 @@ namespace PolarityBreach.UI
             Prepare(runSeconds, isRecord);
 
             if (root != null) root.SetActive(true);
-            if (musicController != null) musicController.PlayWinScreenMusic();
 
-            yield return Fade(blackBackground, 0f, 1f, fadeInDuration);
+            yield return Fade(blackBackground, 0f, 1f, blackFadeDuration);
+
+            for (int i = 0; i < storyImages.Length; i++)
+            {
+                if (storyImages[i] == null) continue;
+
+                yield return Fade(storyImages[i], 0f, 1f, imageFadeDuration);
+                yield return new WaitForSecondsRealtime(GetHold(i));
+
+                bool isLast = i == storyImages.Length - 1;
+                if (!isLast)
+                    yield return Fade(storyImages[i], 1f, 0f, imageFadeDuration);
+            }
+
+            yield return Fade(dimOverlay, 0f, dimAlpha, dimFadeDuration);
+
             yield return BlockFall();
             yield return new WaitForSecondsRealtime(holdDuration);
             yield return BlockMoveUp();
@@ -118,6 +136,14 @@ namespace PolarityBreach.UI
 
             while (true)
                 yield return null;
+        }
+
+        private float GetHold(int index)
+        {
+            if (imageHoldDurations != null && index < imageHoldDurations.Length && imageHoldDurations[index] > 0f)
+                return imageHoldDurations[index];
+
+            return defaultImageHold;
         }
 
         private void ShowPlayAgainButton()
@@ -133,9 +159,15 @@ namespace PolarityBreach.UI
         private void Prepare(float runSeconds, bool isRecord)
         {
             if (blackBackground != null) blackBackground.alpha = 0f;
+            if (dimOverlay != null) dimOverlay.alpha = 0f;
             if (tableGroup != null) tableGroup.alpha = 0f;
             if (victoryBlockGroup != null) victoryBlockGroup.alpha = 0f;
             if (playAgainButton != null) playAgainButton.gameObject.SetActive(false);
+
+            for (int i = 0; i < storyImages.Length; i++)
+            {
+                if (storyImages[i] != null) storyImages[i].alpha = 0f;
+            }
 
             if (victoryBlock != null)
             {
