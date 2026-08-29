@@ -42,6 +42,11 @@ namespace PolarityBreach.UI
         [SerializeField] private float hintMinAlpha = 0.1f;
         [SerializeField] private float hintMaxAlpha = 0.5f;
 
+        [Header("SFX")]
+        [SerializeField] private AudioSource typingSfxSource;
+        [SerializeField] private AudioSource nextSfxSource;
+        [SerializeField] private AudioClip nextSound;
+
         private Sprite sequenceLeftSprite;
         private Sprite sequenceRightSprite;
 
@@ -63,6 +68,7 @@ namespace PolarityBreach.UI
 
         private void OnDestroy()
         {
+            StopTypingSfx();
             if (Instance == this) Instance = null;
         }
 
@@ -135,6 +141,7 @@ namespace PolarityBreach.UI
 
         private void ClosePanel()
         {
+            StopTypingSfx();
             if (root != null) root.SetActive(false);
             if (skipBarRoot != null) skipBarRoot.SetActive(false);
             if (skipBar != null) skipBar.fillAmount = 0f;
@@ -154,14 +161,20 @@ namespace PolarityBreach.UI
 
             bool skipped = false;
             bodyText.text = "";
+            if (!string.IsNullOrEmpty(content)) StartTypingSfx();
 
             for (int i = 0; i < content.Length; i++)
             {
                 UpdateSkipHold();
-                if (skipRequested) yield break;
+                if (skipRequested)
+                {
+                    StopTypingSfx();
+                    yield break;
+                }
 
                 if (NextPressed())
                 {
+                    StopTypingSfx();
                     skipped = true;
                     break;
                 }
@@ -170,16 +183,23 @@ namespace PolarityBreach.UI
                 yield return new WaitForSecondsRealtime(charDelay);
             }
 
+            StopTypingSfx();
             bodyText.text = content;
 
             if (skipped) yield return new WaitForSecondsRealtime(inputLockDuration);
 
             if (nextIndicator != null) nextIndicator.SetActive(true);
 
-            while (!NextPressed())
+            while (true)
             {
                 UpdateSkipHold();
                 if (skipRequested) yield break;
+
+                if (NextPressed())
+                {
+                    PlayNextSfx();
+                    break;
+                }
 
                 yield return null;
             }
@@ -262,6 +282,28 @@ namespace PolarityBreach.UI
             bool mouse = Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame;
 
             return keyboard || gamepad || mouse;
+        }
+
+        private void PlayNextSfx()
+        {
+            if (nextSfxSource == null || nextSound == null) return;
+
+            nextSfxSource.PlayOneShot(nextSound);
+        }
+
+        private void StartTypingSfx()
+        {
+            if (typingSfxSource == null) return;
+
+            if (!typingSfxSource.isPlaying)
+                typingSfxSource.Play();
+        }
+
+        private void StopTypingSfx()
+        {
+            if (typingSfxSource == null) return;
+
+            typingSfxSource.Stop();
         }
     }
 }
