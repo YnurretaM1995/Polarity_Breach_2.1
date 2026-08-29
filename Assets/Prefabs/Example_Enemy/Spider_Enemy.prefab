@@ -383,6 +383,7 @@ MonoBehaviour:
   damage: 10
   projectilesPerShot: 5
   spreadAngle: 35
+  shootSounds: []
   shootSound: {fileID: 8300000, guid: f55671d441e5e234ea9e67aa84393daf, type: 3}
 --- !u!114 &3123404587782500808
 MonoBehaviour:
