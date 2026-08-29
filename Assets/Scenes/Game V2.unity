@@ -1289,8 +1289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackMaterial: {fileID: 2100000, guid: cf5a4c6025887f74a8a495cbcf3fad05, type: 2}
-  _whiteMaterial: {fileID: 2100000, guid: f769f7e8a7155ec46b9ae207f265ab40, type: 2}
+  _blackMaterial: {fileID: 0}
+  _whiteMaterial: {fileID: 0}
   flashMaterial: {fileID: 0}
   flashDuration: 0.04
 --- !u!114 &72424264
@@ -10943,8 +10943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackMaterial: {fileID: 2100000, guid: cf5a4c6025887f74a8a495cbcf3fad05, type: 2}
-  _whiteMaterial: {fileID: 2100000, guid: f769f7e8a7155ec46b9ae207f265ab40, type: 2}
+  _blackMaterial: {fileID: 0}
+  _whiteMaterial: {fileID: 0}
   flashMaterial: {fileID: 0}
   flashDuration: 0.04
 --- !u!114 &593373611
@@ -29305,9 +29305,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackMaterial: {fileID: 2100000, guid: d4b7e0cf04fafe54eb64e57ed6a179c5, type: 2}
-  _whiteMaterial: {fileID: 2100000, guid: 6555c584cb3746e4ea5e00f7a50c0ab9, type: 2}
-  flashMaterial: {fileID: 2100000, guid: 05478187139b2c849a8b12b62f07bbab, type: 2}
+  _blackMaterial: {fileID: 0}
+  _whiteMaterial: {fileID: 0}
+  flashMaterial: {fileID: 0}
   flashDuration: 0.04
 --- !u!114 &1312911742
 MonoBehaviour:
@@ -39027,7 +39027,8 @@ PrefabInstance:
       propertyPath: postProcessPulse
       value: 
       objectReference: {fileID: 602002188}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 888351089162473407, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
@@ -39040,6 +39041,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6102381678693926401, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1817478985}
+    - targetCorrespondingSourceObject: {fileID: 6102381678693926401, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1981308081}
   m_SourcePrefab: {fileID: 100100000, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
 --- !u!1 &1817478968 stripped
 GameObject:
@@ -42275,6 +42279,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a083dbc96663f14995110a948c331e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!114 &1981308081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817478968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 131dd7053ec9b464eb8e9eec4bfddc83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PlayerPolarityVisual
+  renderers:
+  - {fileID: 2116211863}
+  invertProperty: _InvertAmount
+  invertedPolarity: 0
+  transitionDuration: 0.15
 --- !u!1001 &1986030325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43907,6 +43928,11 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!137 &2116211863 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2945111285016939718, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+  m_PrefabInstance: {fileID: 1817478967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2117837681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5725000371507048362, guid: b2452a5c2cd649a4db9eebcd16f7b155, type: 3}
