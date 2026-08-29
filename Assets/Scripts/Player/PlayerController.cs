@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using PolarityBreach.UI;
 using System.Collections;
 using UnityEngine;
@@ -23,6 +24,10 @@ namespace PolarityBreach.Player
         [SerializeField] private float acceleration = 12f;   
         [SerializeField] private float deceleration = 16f;
         [SerializeField] private AbilityUIDisplay dashUI;
+
+        [Header("SFX")]
+        [SerializeField] private AudioSource dashSfxSource;
+        [SerializeField] private AudioClip dashSound;
 
         private void Awake()
         {
@@ -164,7 +169,21 @@ namespace PolarityBreach.Player
             }
 
             StartCoroutine(DashCoroutine());
+            PlayDashSfx();
             dashUI.StartCooldownUI();
+        }
+
+        private void PlayDashSfx()
+        {
+            if (dashSound == null) return;
+
+            if (dashSfxSource != null)
+            {
+                dashSfxSource.PlayOneShot(dashSound);
+                return;
+            }
+
+            AudioHandler.Play3DSound(dashSound, transform.position);
         }
 
         private IEnumerator DashCoroutine()
