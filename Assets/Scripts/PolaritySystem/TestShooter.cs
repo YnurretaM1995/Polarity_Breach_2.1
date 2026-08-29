@@ -16,6 +16,7 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private ProjectilePool _normalProjectilePool;
         [SerializeField] private ProjectilePool _chargedProjectilePool;
         
+        [SerializeField] private AudioClip[] shootSounds;
         [SerializeField] private AudioClip shootSound;
         [SerializeField] private AudioClip chargeSound;
         
@@ -139,7 +140,7 @@ namespace PolarityBreach.PolaritySystem
                 _playerStats.attackSpeed,
                 _playerStats.attackDamage,
                 _playerStats.knockBackPower);
-            AudioHandler.Play3DSound(shootSound, transform.position);
+            AudioHandler.Play3DSound(GetRandomShootSound(), transform.position);
         }
         
         private void ChargeShot()
@@ -177,6 +178,16 @@ namespace PolarityBreach.PolaritySystem
             {
                 Shoot();
             }
+        }
+
+        private AudioClip GetRandomShootSound()
+        {
+            if (shootSounds != null && shootSounds.Length > 0)
+            {
+                return shootSounds[Random.Range(0, shootSounds.Length)];
+            }
+
+            return shootSound;
         }
     }
 }
