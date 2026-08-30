@@ -1,5 +1,6 @@
 using PolarityBreach.Audio;
 using PolarityBreach.Boss;
+using PolarityBreach.Enemy;
 using PolarityBreach.Feedback;
 using UnityEngine;
 
@@ -12,7 +13,10 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private float _lifeTime = 3f;
         [SerializeField] private bool _disapearOnHit = true;
         [SerializeField] private GameObject _impactEffect;
+        [SerializeField] private AudioClip[] _impactSounds;
         [SerializeField] private AudioClip _impactSound;
+        [SerializeField, Range(0f, 1f)] private float _impactSoundVolume = 1f;
+        [SerializeField] private bool _playImpactSoundAs2D;
         
         private float _speed;
         private float _damage;
@@ -61,13 +65,18 @@ namespace PolarityBreach.PolaritySystem
                 return;
             }
 
+            EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
             bool hit = DamageSystem.TryApplyDamage(_polarity, other.gameObject, _damage);
             if (hit)
             {
                 Rigidbody rb = other.GetComponent<Rigidbody>();
                 Vector3 impactDirection = transform.forward;
                 FeedbackHandler.SpawnParticles(_impactEffect, transform.position,impactDirection);
-                AudioHandler.Play3DSound(_impactSound, transform.position);
+
+                if (enemyHealth == null || !enemyHealth.IsDead)
+                {
+                    PlayImpactSfx();
+                }
 
                 if (rb != null)
                 {
@@ -85,6 +94,29 @@ namespace PolarityBreach.PolaritySystem
                     gameObject.SetActive(false);
                 }
             }
+        }
+
+        private AudioClip GetRandomImpactSound()
+        {
+            if (_impactSounds != null && _impactSounds.Length > 0)
+            {
+                return _impactSounds[Random.Range(0, _impactSounds.Length)];
+            }
+
+            return _impactSound;
+        }
+
+        private void PlayImpactSfx()
+        {
+            AudioClip clip = GetRandomImpactSound();
+
+            if (_playImpactSoundAs2D)
+            {
+                AudioHandler.Play2DSound(clip, _impactSoundVolume);
+                return;
+            }
+
+            AudioHandler.Play3DSound(clip, transform.position, _impactSoundVolume);
         }
     }
 }

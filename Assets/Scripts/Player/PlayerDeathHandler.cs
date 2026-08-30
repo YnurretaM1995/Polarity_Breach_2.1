@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using PolarityBreach.Menus;
 using PolarityBreach.UI;
+using PolarityBreach.Audio;
+using UnityEngine.Serialization;
 
 namespace PolarityBreach.Player
 {
@@ -25,6 +27,10 @@ namespace PolarityBreach.Player
         [Header("Timing")]
         [SerializeField] private float deathAnimationDuration = 2f;
         [SerializeField] private float groundHoldDuration = 1.5f;
+
+        [FormerlySerializedAs("deathSFX")]
+        [Header("SFX")] 
+        [SerializeField] private AudioClip deathSfx;
 
         private PlayerHealth health;
         private Rigidbody rb;
@@ -65,6 +71,8 @@ namespace PolarityBreach.Player
             if (musicController != null)
                 musicController.StopMusic();
 
+            AudioHandler.Play3DSound(deathSfx, transform.position);
+            
             FreezeEnemies();
 
             if (enemyProjectilePool != null)
@@ -108,6 +116,7 @@ namespace PolarityBreach.Player
             {
                 animator.CrossFadeInFixedTime(deathStateHash, deathTransitionDuration, 0, 0f);
             }
+
         }
 
         private void FreezeEnemies()

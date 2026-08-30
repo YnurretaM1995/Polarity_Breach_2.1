@@ -3,6 +3,7 @@ using PolarityBreach.Player;
 using PolarityBreach.UI;
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 namespace PolarityBreach.PolaritySystem
@@ -19,7 +20,12 @@ namespace PolarityBreach.PolaritySystem
         private float _lastSwitchTime = float.NegativeInfinity;
         private PlayerStatsData _playerStats;
 
+        [Header("SFX")]
         [SerializeField] private AudioClip colorSound;
+        [SerializeField, Range(0f, 1f)] private float colorSoundVolume = 1f;
+        [SerializeField] private bool playColorSoundAs2D = true;
+        [SerializeField] private AudioMixerGroup sfxMixerGroup;
+
         [SerializeField] private AbilityUIDisplay polarityUI;
         [SerializeField] private PolarityPostProcessPulse postProcessPulse;
         public event Action OnPolaritySwitched;
@@ -100,11 +106,22 @@ namespace PolarityBreach.PolaritySystem
             _polarity.Toggle();
             postProcessPulse?.Play(_polarity.CurrentPolarity);
             _lastSwitchTime = Time.time;
-            AudioHandler.Play3DSound(colorSound, transform.position);
+            PlaySwitchSfx();
             polarityUI.StartCooldownUI();
             OnPolaritySwitched?.Invoke();
             OnAnyPlayerPolaritySwitched?.Invoke(transform);
             return true;
+        }
+
+        private void PlaySwitchSfx()
+        {
+            if (playColorSoundAs2D)
+            {
+                AudioHandler.Play2DSound(colorSound, colorSoundVolume, sfxMixerGroup);
+                return;
+            }
+
+            AudioHandler.Play3DSound(colorSound, transform.position, colorSoundVolume, sfxMixerGroup);
         }
         
         private void HandlePause(bool paused)

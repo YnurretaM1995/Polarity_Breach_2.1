@@ -18,6 +18,8 @@ namespace PolarityBreach.PolaritySystem
         
         [SerializeField] private AudioClip[] shootSounds;
         [SerializeField] private AudioClip shootSound;
+        [SerializeField, Range(0f, 1f)] private float shootSoundVolume = 1f;
+        [SerializeField] private bool playShootSoundAs2D;
         [SerializeField] private AudioClip chargeSound;
         
         private bool _isCharging;
@@ -140,7 +142,7 @@ namespace PolarityBreach.PolaritySystem
                 _playerStats.attackSpeed,
                 _playerStats.attackDamage,
                 _playerStats.knockBackPower);
-            AudioHandler.Play3DSound(GetRandomShootSound(), transform.position);
+            PlayShootSfx();
         }
         
         private void ChargeShot()
@@ -188,6 +190,19 @@ namespace PolarityBreach.PolaritySystem
             }
 
             return shootSound;
+        }
+
+        private void PlayShootSfx()
+        {
+            AudioClip clip = GetRandomShootSound();
+
+            if (playShootSoundAs2D)
+            {
+                AudioHandler.Play2DSound(clip, shootSoundVolume);
+                return;
+            }
+
+            AudioHandler.Play3DSound(clip, transform.position, shootSoundVolume);
         }
     }
 }
