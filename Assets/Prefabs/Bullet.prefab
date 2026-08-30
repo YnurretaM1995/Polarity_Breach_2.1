@@ -144,6 +144,8 @@ MonoBehaviour:
   _renderers: []
   _blackMaterial: {fileID: 2100000, guid: cf5a4c6025887f74a8a495cbcf3fad05, type: 2}
   _whiteMaterial: {fileID: 2100000, guid: f769f7e8a7155ec46b9ae207f265ab40, type: 2}
+  flashMaterial: {fileID: 0}
+  flashDuration: 0.04
 --- !u!114 &6054802736122291981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +161,13 @@ MonoBehaviour:
   _lifeTime: 2
   _disapearOnHit: 1
   _impactEffect: {fileID: 1574572644529341202, guid: 73d4bc9b4d1cfbc40b803df0bddcb5f5, type: 3}
+  _impactSounds:
+  - {fileID: 8300000, guid: e997007aed83eb24caff607b9814ed83, type: 3}
+  - {fileID: 8300000, guid: bbde0bbe7b4422e468cb0cd742d8c515, type: 3}
+  - {fileID: 8300000, guid: 2d1af6c47b674fb4691939d39fd38c6e, type: 3}
   _impactSound: {fileID: 8300000, guid: 294a80ae28324834a8c440d81ae67678, type: 3}
+  _impactSoundVolume: 0.2
+  _playImpactSoundAs2D: 1
 --- !u!54 &4789453827344001996
 Rigidbody:
   m_ObjectHideFlags: 0
