@@ -48,6 +48,7 @@ namespace PolarityBreach.Enemy
         private EnemyWave[] waves;
 
         [SerializeField] private bool autoStart = true;
+        [SerializeField] private bool showWarningBeforeFirstWave;
         [SerializeField] private float timeBetweenSpawns = 0.3f;
         [SerializeField] private float timeBetweenWaves = 3f;
         [SerializeField] private float enemySpawnHeight = 0.5f;
@@ -91,7 +92,9 @@ namespace PolarityBreach.Enemy
             {
                 Debug.Log("Starting wave " + (waveIndex + 1));
 
-                if (WaveWarningUI.Instance != null)
+                bool shouldShowWaveWarning = showWarningBeforeFirstWave || waveIndex > 0;
+
+                if (shouldShowWaveWarning && WaveWarningUI.Instance != null)
                     yield return WaveWarningUI.Instance.PlayWarning();
 
                 yield return StartCoroutine(SpawnWave(waves[waveIndex]));
