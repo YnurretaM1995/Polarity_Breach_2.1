@@ -11,6 +11,8 @@ namespace PolarityBreach.Menus
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip navigationClip;
         [SerializeField] private AudioClip selectClip;
+        [SerializeField, Range(0f, 1f)] private float navigationVolume = 0.4f;
+        [SerializeField, Range(0f, 1f)] private float selectVolume = 1f;
 
         private bool hasBeenSelected;
 
@@ -25,29 +27,29 @@ namespace PolarityBreach.Menus
         public void OnSelect(BaseEventData eventData)
         {
             hasBeenSelected = true;
-            Play(navigationClip);
+            Play(navigationClip, navigationVolume);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Play(navigationClip);
+            Play(navigationClip, navigationVolume);
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Play(selectClip);
+            Play(selectClip, selectVolume);
         }
 
         public void OnSubmit(BaseEventData eventData)
         {
-            Play(selectClip);
+            Play(selectClip, selectVolume);
         }
 
-        private void Play(AudioClip clip)
+        private void Play(AudioClip clip, float volume)
         {
             if (audioSource == null || clip == null) return;
 
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, volume);
         }
     }
 }
