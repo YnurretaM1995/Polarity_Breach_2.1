@@ -13,14 +13,18 @@ namespace PolarityBreach
         [SerializeField] private EnemyWaveSpawner waveSpawner;
         [SerializeField] private EnemyWaveSpawner bossSpawner;
 
+        [Header("Room Debug")]
+        [SerializeField] private EnemyWaveSpawner roomClearSpawner;
+
         [Header("Boss Debug")]
         [SerializeField] private Transform player;
         [SerializeField] private Transform bossRoomPoint;
         [SerializeField] private GameObject bossObject;
 
         [Header("Window")]
-        [SerializeField] private float windowWidth = 300f;
-        [SerializeField] private float windowHeight = 600f;
+        [SerializeField] private float windowWidth = 360f;
+        [SerializeField] private float windowHeight = 650f;
+        [SerializeField, Range(0.5f, 3f)] private float menuScale = 1.5f;
 
         [Header("Gamepad Navigation")]
         [Tooltip("Slider range is divided into this many steps. One D-Pad press = one step.")]
@@ -98,7 +102,8 @@ namespace PolarityBreach
                 case 4: playerStats.dashUnlocked = !playerStats.dashUnlocked; break;
                 case 12: playerStats.chargeShotUnlocked = !playerStats.chargeShotUnlocked; break;
                 case 17: KillAllEnemies(); break;
-                case 18: GoToBossFight(); break;
+                case 18: ClearRoomForDebug(); break;
+                case 19: GoToBossFight(); break;
             }
         }
 
@@ -154,6 +159,9 @@ namespace PolarityBreach
             BuildStyles();
             currentIndex = 0;
 
+            Matrix4x4 previousMatrix = GUI.matrix;
+            GUIUtility.ScaleAroundPivot(Vector2.one * menuScale, Vector2.zero);
+
             GUILayout.BeginArea(new Rect(20, 20, windowWidth, windowHeight), "Debug Menu", GUI.skin.window);
             GUILayout.Space(20);
 
@@ -196,17 +204,21 @@ namespace PolarityBreach
             GUILayout.Label("Wave Debug", boldStyle);
             if (NavButton("Kill all enemies"))                                           // 17
                 KillAllEnemies();
+            if (NavButton("Clear room"))                                                  // 18
+                ClearRoomForDebug();
 
             GUILayout.Space(10);
 
             GUILayout.Label("Boss Debug", boldStyle);
-            if (NavButton("Go to Boss Fight"))                                                                  // 18
+            if (NavButton("Go to Boss Fight"))                                                                  // 19
                 GoToBossFight();
 
             GUILayout.Space(10);
 
             GUILayout.EndScrollView();
             GUILayout.EndArea();
+
+            GUI.matrix = previousMatrix;
 
             itemCount = currentIndex;
             FollowSelectionWithScroll();
@@ -335,6 +347,15 @@ namespace PolarityBreach
 
             foreach (EnemyWaveSpawner spawner in spawners)
                 spawner.DebugCompleteCurrentWave();
+        }
+
+        private void ClearRoomForDebug()
+        {
+            EnemyWaveSpawner targetSpawner = roomClearSpawner != null ? roomClearSpawner : waveSpawner;
+
+            if (targetSpawner == null) return;
+
+            targetSpawner.DebugClearRoom();
         }
     }
 }

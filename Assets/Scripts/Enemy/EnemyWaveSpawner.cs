@@ -287,6 +287,13 @@ namespace PolarityBreach.Enemy
             enemyPoolsByEnemy.Clear();
         }
 
+        [ContextMenu("Debug Clear Room")]
+        public void DebugClearRoom()
+        {
+            DebugStopAndClearEnemies();
+            OnRoomCleared?.Invoke();
+        }
+
         public void SkipCurrentWave()
         {
             for (int i = activeEnemies.Count - 1; i >= 0; i--)
