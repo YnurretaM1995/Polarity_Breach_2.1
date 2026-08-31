@@ -10,6 +10,10 @@ namespace PolarityBreach.PolaritySystem
     [RequireComponent(typeof(PolarityComponent))]
     public class ShootProjectile : MonoBehaviour
     {
+        [SerializeField] private TrailRenderer trail;
+        [SerializeField] private ParticleSystem particles;
+
+
         [SerializeField] private float _lifeTime = 3f;
         [SerializeField] private bool _disapearOnHit = true;
         [SerializeField] private GameObject _impactEffect;
@@ -26,7 +30,16 @@ namespace PolarityBreach.PolaritySystem
         private float _spawnTime;
 
         private void Awake() => _polarity = GetComponent<PolarityComponent>();
-        private void OnEnable() => _spawnTime = Time.time;
+        private void OnEnable()
+        {
+            _spawnTime = Time.time;
+            if (trail != null) trail.Clear();
+            if (particles != null)
+            {
+                particles.Clear();
+                particles.Play();
+            }
+        }
 
         private void Update()
         {
@@ -34,6 +47,7 @@ namespace PolarityBreach.PolaritySystem
             if (Time.time - _spawnTime >= _lifeTime) gameObject.SetActive(false);
         }
 
+        
         public void SetStats(float speed, float damage, float knockbackForce)
         {
             _speed = speed;
