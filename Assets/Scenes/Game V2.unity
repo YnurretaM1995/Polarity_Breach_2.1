@@ -833,11 +833,13 @@ MonoBehaviour:
   playerStats: {fileID: 1817478972}
   waveSpawner: {fileID: 412696441}
   bossSpawner: {fileID: 0}
+  roomClearSpawner: {fileID: 0}
   player: {fileID: 1817478970}
   bossRoomPoint: {fileID: 525857100}
   bossObject: {fileID: 1015451772}
   windowWidth: 300
   windowHeight: 600
+  menuScale: 1.5
   sliderSteps: 20
 --- !u!114 &53516371
 MonoBehaviour:
@@ -1234,6 +1236,148 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65799287}
   m_CullTransparentMesh: 1
+--- !u!1 &66134601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66134603}
+  - component: {fileID: 66134602}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!96 &66134602
+TrailRenderer:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66134601}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Time: 5
+  m_PreviewTimeScale: 1
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_MinVertexDistance: 0.1
+  m_Autodestruct: 0
+  m_Emitting: 1
+  m_ApplyActiveColorSpace: 1
+--- !u!4 &66134603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66134601}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -264.49506, y: 3.07102, z: 0.17175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &72159649 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 520191364533119547, guid: cd855204aa12c124189ffacf02f440d2, type: 3}
@@ -2605,11 +2749,11 @@ AudioSource:
   m_GameObject: {fileID: 139747091}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5817289336624428924, guid: c2624b65132acdf4d8a605e0d481f0cf, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 9c4761edd86e8694d8c56e4778d0a898, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7119,6 +7263,7 @@ MonoBehaviour:
       projectilesPerShot: 1
       spreadAngle: 0
   autoStart: 1
+  showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
@@ -7892,7 +8037,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8711,6 +8856,7 @@ MonoBehaviour:
       projectilesPerShot: 3
       spreadAngle: 15
   autoStart: 1
+  showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
@@ -9282,6 +9428,8 @@ MonoBehaviour:
   audioSource: {fileID: 478683705}
   navigationClip: {fileID: 8300000, guid: a291bfff4499ffd49805bb256f501348, type: 3}
   selectClip: {fileID: 8300000, guid: f930c88fddfddd84d94d91f4565bcc1e, type: 3}
+  navigationVolume: 0.5
+  selectVolume: 1
 --- !u!114 &517392764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9726,7 +9874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d8ae8be6a526d047b6b8dfe13482c5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31c8d40f40656eb43baa77c59a120ef1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11869,6 +12017,7 @@ MonoBehaviour:
       projectilesPerShot: 5
       spreadAngle: 30
   autoStart: 1
+  showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
@@ -23456,6 +23605,10 @@ MonoBehaviour:
   projectilePool: {fileID: 1216575194}
   firePoint: {fileID: 1015451774}
   phaseData: {fileID: 11400000, guid: 28e3c82d2a93451db0297cb2372b1933, type: 2}
+  normalShotSounds:
+  - {fileID: 0}
+  normalShotSoundVolume: 1
+  playNormalShotSoundAs2D: 0
 --- !u!114 &1015451776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23561,6 +23714,7 @@ MonoBehaviour:
       projectilesPerShot: 3
       spreadAngle: 15
   autoStart: 0
+  showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.3
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
@@ -25993,6 +26147,8 @@ MonoBehaviour:
   startScale: 2
   blinkSpeed: 5
   blinkMinAlpha: 0.15
+  warningSound: {fileID: 8300000, guid: d5015d29845aa964faf2303a0249361e, type: 3}
+  warningSoundVolume: 0.1
 --- !u!114 &1132328035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29381,9 +29537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackMaterial: {fileID: 0}
-  _whiteMaterial: {fileID: 0}
-  flashMaterial: {fileID: 0}
+  _blackMaterial: {fileID: 2100000, guid: d4b7e0cf04fafe54eb64e57ed6a179c5, type: 2}
+  _whiteMaterial: {fileID: 2100000, guid: 6555c584cb3746e4ea5e00f7a50c0ab9, type: 2}
+  flashMaterial: {fileID: 2100000, guid: 05478187139b2c849a8b12b62f07bbab, type: 2}
   flashDuration: 0.04
 --- !u!114 &1312911742
 MonoBehaviour:
@@ -34131,9 +34287,9 @@ MonoBehaviour:
   dialoguesOnCross: []
   dialogueOnRoomCleared: {fileID: 1340761485}
   musicController: {fileID: 947918515}
-  playDialogueMusicOnRoomCleared: 0
-  playLevelCompleteMusicOnRoomCleared: 1
-  playLevelCompleteMusicAfterRoomClearedDialogue: 0
+  playDialogueMusicOnRoomCleared: 1
+  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicAfterRoomClearedDialogue: 1
   playDialogueMusicOnCross: 0
   playBossMusicAfterCrossDialogues: 1
   playLevelMusicAfterCrossDialogues: 0
@@ -37745,6 +37901,8 @@ MonoBehaviour:
   audioSource: {fileID: 478683705}
   navigationClip: {fileID: 8300000, guid: a291bfff4499ffd49805bb256f501348, type: 3}
   selectClip: {fileID: 8300000, guid: f930c88fddfddd84d94d91f4565bcc1e, type: 3}
+  navigationVolume: 0.5
+  selectVolume: 1
 --- !u!114 &1742878732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38263,11 +38421,11 @@ AudioSource:
   m_GameObject: {fileID: 1777254724}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5817289336624428924, guid: c2624b65132acdf4d8a605e0d481f0cf, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -38977,6 +39135,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: menuScale
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: bossObject
       value: 
       objectReference: {fileID: 1015451772}
@@ -39159,11 +39321,19 @@ PrefabInstance:
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: shootSound
       value: 
-      objectReference: {fileID: 8300000, guid: 822072822fce7b54fba332597276d40f, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: chargeSound
       value: 
       objectReference: {fileID: 8300000, guid: 65230a01292a2e342abb6573d0276562, type: 3}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: shootSoundVolume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: playShootSoundAs2D
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _normalProjectilePool
       value: 
@@ -39174,24 +39344,24 @@ PrefabInstance:
       objectReference: {fileID: 1951798309}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: shootSounds.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: 'shootSounds.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 829be1b8add843646a40312d08830137, type: 3}
+      objectReference: {fileID: 8300000, guid: 47d8d364fc54eff47a0fa2edb35b4f19, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: 'shootSounds.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: b1fec1cdb80b4644bbc9c08e19554320, type: 3}
+      objectReference: {fileID: 8300000, guid: c36858f954aacc64ea374f51575bc04a, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: 'shootSounds.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 16231bd66dcf8004ca3cbb15108fafcb, type: 3}
+      objectReference: {fileID: 8300000, guid: e346fb446fff35f4e90663a968f4af20, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: 'shootSounds.Array.data[3]'
       value: 
-      objectReference: {fileID: 8300000, guid: 209fefaa30c39214bbc39f18092cf0bc, type: 3}
+      objectReference: {fileID: 8300000, guid: a0efd62f0a9396f40b50298d750c1ec7, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: 'shootSounds.Array.data[4]'
       value: 
@@ -41902,6 +42072,8 @@ MonoBehaviour:
   audioSource: {fileID: 478683705}
   navigationClip: {fileID: 8300000, guid: a291bfff4499ffd49805bb256f501348, type: 3}
   selectClip: {fileID: 8300000, guid: f930c88fddfddd84d94d91f4565bcc1e, type: 3}
+  navigationVolume: 0.5
+  selectVolume: 1
 --- !u!114 &1941363043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45118,3 +45290,4 @@ SceneRoots:
   - {fileID: 947918516}
   - {fileID: 775767572}
   - {fileID: 584218160}
+  - {fileID: 66134603}
