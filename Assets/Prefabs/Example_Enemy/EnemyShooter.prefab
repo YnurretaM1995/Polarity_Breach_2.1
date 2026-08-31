@@ -281,8 +281,15 @@ MonoBehaviour:
   damage: 10
   projectilesPerShot: 5
   spreadAngle: 35
-  shootSounds: []
+  shootSounds:
+  - {fileID: 8300000, guid: 3627b04609e3e3b449fbf9710e4fdac8, type: 3}
+  - {fileID: 8300000, guid: f2fba7eea64623447872ed285e76d2fd, type: 3}
+  - {fileID: 8300000, guid: 48b35e57954fe5d4c815cc4bbce8df11, type: 3}
+  - {fileID: 8300000, guid: 6d99043a163c29646b085c7ebb3aafd1, type: 3}
+  - {fileID: 8300000, guid: 9bd2e85d75c1ce74580b39dec6a32012, type: 3}
   shootSound: {fileID: 8300000, guid: f55671d441e5e234ea9e67aa84393daf, type: 3}
+  shootSoundVolume: 0.9
+  playShootSoundAs2D: 0
 --- !u!114 &2957162250898593318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,9 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyHealth
   maxHealth: 30
   deathSounds:
-  - {fileID: 8300000, guid: 6a93fa3f0a6f5b546ae97e14dba0e129, type: 3}
-  - {fileID: 8300000, guid: bade8f8374d02f345b4da2851517319b, type: 3}
-  - {fileID: 8300000, guid: eb3a6b747b6563d42923d89935be1d56, type: 3}
+  - {fileID: 8300000, guid: 415d272222bfc244f933b2bfb28eb8c0, type: 3}
+  - {fileID: 8300000, guid: a776b97e38026bd46899860383e2eda1, type: 3}
+  - {fileID: 8300000, guid: 170c6b3087d16f64881f0c5754f79181, type: 3}
   deathSound: {fileID: 8300000, guid: 28d3018e225a0ff4ba8a7dc236409713, type: 3}
   deathSoundVolume: 0.18
   playDeathSoundAs2D: 1

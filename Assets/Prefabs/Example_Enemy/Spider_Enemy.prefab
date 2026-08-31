@@ -385,6 +385,8 @@ MonoBehaviour:
   spreadAngle: 35
   shootSounds: []
   shootSound: {fileID: 8300000, guid: f55671d441e5e234ea9e67aa84393daf, type: 3}
+  shootSoundVolume: 1
+  playShootSoundAs2D: 0
 --- !u!114 &3123404587782500808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,9 +435,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyHealth
   maxHealth: 30
-  deathSounds: []
+  deathSounds:
+  - {fileID: 8300000, guid: 415d272222bfc244f933b2bfb28eb8c0, type: 3}
+  - {fileID: 8300000, guid: a776b97e38026bd46899860383e2eda1, type: 3}
+  - {fileID: 8300000, guid: 170c6b3087d16f64881f0c5754f79181, type: 3}
   deathSound: {fileID: 0}
-  deathSoundVolume: 1
+  deathSoundVolume: 0.13
   playDeathSoundAs2D: 1
 --- !u!82 &3008388319431290670
 AudioSource:

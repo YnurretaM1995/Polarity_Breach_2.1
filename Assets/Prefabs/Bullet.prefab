@@ -162,11 +162,12 @@ MonoBehaviour:
   _disapearOnHit: 1
   _impactEffect: {fileID: 1574572644529341202, guid: 73d4bc9b4d1cfbc40b803df0bddcb5f5, type: 3}
   _impactSounds:
-  - {fileID: 8300000, guid: e997007aed83eb24caff607b9814ed83, type: 3}
-  - {fileID: 8300000, guid: bbde0bbe7b4422e468cb0cd742d8c515, type: 3}
-  - {fileID: 8300000, guid: 2d1af6c47b674fb4691939d39fd38c6e, type: 3}
-  _impactSound: {fileID: 8300000, guid: 294a80ae28324834a8c440d81ae67678, type: 3}
-  _impactSoundVolume: 0.2
+  - {fileID: 8300000, guid: d474f1dce5a0ccb438a045174a5e2d3f, type: 3}
+  - {fileID: 8300000, guid: 5196e2cac792f174bbcf3e20201f76af, type: 3}
+  - {fileID: 8300000, guid: f8292850902f70d4ebef39db27ee7adf, type: 3}
+  - {fileID: 8300000, guid: 9867954b1d2c5c1468999e44e2984ab9, type: 3}
+  _impactSound: {fileID: 0}
+  _impactSoundVolume: 0.15
   _playImpactSoundAs2D: 1
 --- !u!54 &4789453827344001996
 Rigidbody:
