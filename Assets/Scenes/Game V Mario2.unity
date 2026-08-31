@@ -162,10 +162,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -225}
+  m_SizeDelta: {x: 900, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &23474965
 CanvasRenderer:
@@ -3916,6 +3916,9 @@ MonoBehaviour:
   playOnStart: 0
   startDelay: 0
   playOnce: 1
+  onDialogueFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &228777531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4801,6 +4804,9 @@ MonoBehaviour:
   playOnStart: 0
   startDelay: 0
   playOnce: 1
+  onDialogueFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &293249766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14334,6 +14340,9 @@ MonoBehaviour:
   playOnStart: 1
   startDelay: 0.1
   playOnce: 1
+  onDialogueFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &836680418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6935459031938432818, guid: f27fcf47b279da042ae6ff22c72d9949, type: 3}
@@ -20218,6 +20227,14 @@ MonoBehaviour:
   - {fileID: 222043411}
   - {fileID: 291956482}
   dialogueOnRoomCleared: {fileID: 966996751}
+  musicController: {fileID: 0}
+  playDialogueMusicOnRoomCleared: 0
+  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicAfterRoomClearedDialogue: 0
+  playDialogueMusicOnCross: 0
+  playBossMusicAfterCrossDialogues: 0
+  playLevelMusicAfterCrossDialogues: 0
+  levelMusicIndexAfterCrossDialogues: -1
 --- !u!1 &905260845
 GameObject:
   m_ObjectHideFlags: 0
@@ -21307,6 +21324,9 @@ MonoBehaviour:
   playOnStart: 0
   startDelay: 0
   playOnce: 1
+  onDialogueFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &967627292
 GameObject:
   m_ObjectHideFlags: 0
@@ -24690,7 +24710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1132328028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24807,6 +24827,9 @@ MonoBehaviour:
   hintBlinkSpeed: 5
   hintMinAlpha: 0.1
   hintMaxAlpha: 0.5
+  typingSfxSource: {fileID: 0}
+  nextSfxSource: {fileID: 0}
+  nextSound: {fileID: 0}
 --- !u!114 &1132328033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24821,6 +24844,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.VictoryScreen
   root: {fileID: 884600072}
   blackBackground: {fileID: 961770195}
+  storyImages: []
+  imageHoldDurations: []
+  dimOverlay: {fileID: 0}
+  dimAlpha: 0.6
+  dimFadeDuration: 0.8
   victoryBlock: {fileID: 1266159465}
   victoryBlockGroup: {fileID: 1266159463}
   timeText: {fileID: 23474966}
@@ -24835,7 +24863,9 @@ MonoBehaviour:
   rowPrefab: {fileID: 4450998983686572425, guid: 5b33314c2721f6a4283671233d801d2b, type: 3}
   rowsToShow: 10
   playAgainButton: {fileID: 335209519}
-  fadeInDuration: 1
+  blackFadeDuration: 1.5
+  imageFadeDuration: 1
+  defaultImageHold: 2.5
   tableFadeDuration: 0.4
   delayBeforeTable: 0.5
 --- !u!114 &1132328034
@@ -24874,6 +24904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.GameOverScreen
   root: {fileID: 184214049}
   blackBackground: {fileID: 1928947745}
+  musicController: {fileID: 0}
   storyImages:
   - {fileID: 81723918}
   - {fileID: 706117623}
@@ -28230,6 +28261,9 @@ MonoBehaviour:
   playOnStart: 0
   startDelay: 0
   playOnce: 1
+  onDialogueFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1345390496
 GameObject:
   m_ObjectHideFlags: 0
@@ -31267,6 +31301,9 @@ MonoBehaviour:
   playOnStart: 0
   startDelay: 0
   playOnce: 1
+  onDialogueFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1518652377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32090,6 +32127,14 @@ MonoBehaviour:
   unlocksChargeShot: 1
   dialoguesOnCross: []
   dialogueOnRoomCleared: {fileID: 1340761485}
+  musicController: {fileID: 0}
+  playDialogueMusicOnRoomCleared: 0
+  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicAfterRoomClearedDialogue: 0
+  playDialogueMusicOnCross: 0
+  playBossMusicAfterCrossDialogues: 0
+  playLevelMusicAfterCrossDialogues: 0
+  levelMusicIndexAfterCrossDialogues: -1
 --- !u!4 &1563446877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 262889321097380118, guid: ce7e4bd04c6404147b4b1dc694ac9a00, type: 3}
@@ -32298,10 +32343,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -160}
+  m_SizeDelta: {x: 900, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1567987482
 MonoBehaviour:
@@ -32433,6 +32478,9 @@ MonoBehaviour:
   playOnStart: 0
   startDelay: 0
   playOnce: 1
+  onDialogueFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1573785957
 GameObject:
   m_ObjectHideFlags: 0
@@ -34485,6 +34533,14 @@ MonoBehaviour:
   dialoguesOnCross:
   - {fileID: 1569743649}
   dialogueOnRoomCleared: {fileID: 0}
+  musicController: {fileID: 0}
+  playDialogueMusicOnRoomCleared: 0
+  playLevelCompleteMusicOnRoomCleared: 0
+  playLevelCompleteMusicAfterRoomClearedDialogue: 0
+  playDialogueMusicOnCross: 0
+  playBossMusicAfterCrossDialogues: 0
+  playLevelMusicAfterCrossDialogues: 0
+  levelMusicIndexAfterCrossDialogues: -1
 --- !u!4 &1684528608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9222408220077309190, guid: 1b2e0c15a34b5e24ea266246ee7534f8, type: 3}
@@ -35536,7 +35592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788890075c89313458be316b38207f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.ProjectilePool
-  projectilePrefab: {fileID: 6054802736122291981, guid: dc6798321246b0a48b4d6a6a62f2a5bf, type: 3}
+  projectilePrefab: {fileID: 6164800162348906370, guid: 5b66f7bb53b8dc74db958b5658d19f23, type: 3}
   poolSize: 100
 --- !u!4 &1755451375
 Transform:
@@ -36697,6 +36753,10 @@ PrefabInstance:
       propertyPath: chargeSound
       value: 
       objectReference: {fileID: 8300000, guid: 73ebbeb29e3ece64f84005f1446781be, type: 3}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: _projectilePrefab
+      value: 
+      objectReference: {fileID: 7904767460515784113, guid: 5b66f7bb53b8dc74db958b5658d19f23, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _normalProjectilePool
       value: 
@@ -38320,6 +38380,9 @@ MonoBehaviour:
   playOnStart: 1
   startDelay: 0
   playOnce: 1
+  onDialogueFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1883833984
 GameObject:
   m_ObjectHideFlags: 0
@@ -38530,6 +38593,7 @@ MonoBehaviour:
   bossHealth: {fileID: 0}
   endingDialogue: {fileID: 1508979111}
   gameTimer: {fileID: 0}
+  musicController: {fileID: 0}
   deathAnimationDuration: 4
   extraDelay: 1
 --- !u!1 &1902701928
@@ -41893,10 +41957,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -265}
+  m_SizeDelta: {x: 900, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2140296996
 MonoBehaviour:
