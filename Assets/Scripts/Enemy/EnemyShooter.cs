@@ -20,8 +20,11 @@ namespace PolarityBreach.Enemy
         [SerializeField] private int projectilesPerShot = 3;
         [SerializeField] private float spreadAngle = 15f;
 
+        [Header("SFX")]
         [SerializeField] private AudioClip[] shootSounds;
         [SerializeField] private AudioClip shootSound;
+        [SerializeField, Range(0f, 1f)] private float shootSoundVolume = 1f;
+        [SerializeField] private bool playShootSoundAs2D;
 
         private EnemyPursuitAI pursuitAI;
         private float fireCooldown;
@@ -81,7 +84,7 @@ namespace PolarityBreach.Enemy
         {
             if (projectilePool == null || pursuitAI.Target == null) return;
             if (enemyAnimation != null) enemyAnimation.PlayAttack();
-            AudioHandler.Play3DSound(GetRandomShootSound(), transform.position);
+            PlayShootSfx();
 
             Vector3 targetPoint = pursuitAI.Target.position + Vector3.up * 0.5f;
             Vector3 baseDirection = (targetPoint - firePoint.position).normalized;
@@ -124,6 +127,20 @@ namespace PolarityBreach.Enemy
             }
 
             return shootSound;
+        }
+
+        private void PlayShootSfx()
+        {
+            AudioClip clip = GetRandomShootSound();
+            if (clip == null) return;
+
+            if (playShootSoundAs2D)
+            {
+                AudioHandler.Play2DSound(clip, shootSoundVolume);
+                return;
+            }
+
+            AudioHandler.Play3DSound(clip, transform.position, shootSoundVolume);
         }
     }
 }
