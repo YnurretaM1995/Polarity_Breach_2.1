@@ -1,4 +1,5 @@
 using System.Collections;
+using PolarityBreach.Audio;
 using UnityEngine;
 
 namespace PolarityBreach.UI
@@ -22,6 +23,10 @@ namespace PolarityBreach.UI
         [SerializeField] private float startScale = 1.4f;
         [SerializeField] private float blinkSpeed = 10f;
         [SerializeField] private float blinkMinAlpha = 0.25f;
+
+        [Header("SFX")]
+        [SerializeField] private AudioClip warningSound;
+        [SerializeField, Range(0f, 1f)] private float warningSoundVolume = 1f;
 
         private Coroutine current;
 
@@ -63,6 +68,8 @@ namespace PolarityBreach.UI
 
             if (startDelay > 0f)
                 yield return new WaitForSecondsRealtime(startDelay);
+
+            PlayWarningSfx();
 
             float t = 0f;
 
@@ -112,6 +119,12 @@ namespace PolarityBreach.UI
 
             current = null;
         }
+
+        private void PlayWarningSfx()
+        {
+            AudioHandler.Play2DSound(warningSound, warningSoundVolume);
+        }
+
         public void HideNow()
         {
             if (current != null)
