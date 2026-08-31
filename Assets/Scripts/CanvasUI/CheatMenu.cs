@@ -204,7 +204,7 @@ namespace PolarityBreach
             GUILayout.Label("Wave Debug", boldStyle);
             if (NavButton("Kill all enemies"))                                           // 17
                 KillAllEnemies();
-            if (NavButton("Clear room"))                                                  // 18
+            if (NavButton("Clear current room"))                                          // 18
                 ClearRoomForDebug();
 
             GUILayout.Space(10);
@@ -351,11 +351,49 @@ namespace PolarityBreach
 
         private void ClearRoomForDebug()
         {
-            EnemyWaveSpawner targetSpawner = roomClearSpawner != null ? roomClearSpawner : waveSpawner;
+            EnemyWaveSpawner targetSpawner = FindCurrentRoomSpawnerForDebug();
 
-            if (targetSpawner == null) return;
+            if (targetSpawner == null)
+            {
+                Debug.LogWarning("CheatMenu: no active room spawner found to clear.");
+                return;
+            }
 
             targetSpawner.DebugClearRoom();
+        }
+
+        private EnemyWaveSpawner FindCurrentRoomSpawnerForDebug()
+        {
+            EnemyWaveSpawner[] spawners = FindObjectsByType<EnemyWaveSpawner>(FindObjectsSortMode.None);
+
+            foreach (EnemyWaveSpawner spawner in spawners)
+            {
+                if (!CanDebugClearSpawner(spawner)) continue;
+                if (spawner.HasEnemiesRemaining) return spawner;
+            }
+
+            foreach (EnemyWaveSpawner spawner in spawners)
+            {
+                if (!CanDebugClearSpawner(spawner)) continue;
+                if (spawner.IsRunning) return spawner;
+            }
+
+            if (CanDebugClearSpawner(roomClearSpawner)) return roomClearSpawner;
+            if (CanDebugClearSpawner(waveSpawner)) return waveSpawner;
+
+            return null;
+        }
+
+        private bool CanDebugClearSpawner(EnemyWaveSpawner spawner)
+        {
+            if (spawner == null) return false;
+            if (!spawner.gameObject.activeInHierarchy) return false;
+            if (!spawner.enabled) return false;
+            if (spawner.RoomCleared) return false;
+            if (spawner == bossSpawner) return false;
+            if (bossObject != null && spawner.transform.IsChildOf(bossObject.transform)) return false;
+
+            return true;
         }
     }
 }

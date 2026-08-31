@@ -68,6 +68,11 @@ namespace PolarityBreach.Enemy
         public bool HasEnemiesRemaining => EnemiesRemaining > 0;
         public EnemyPool Pool => enemyPool;
         private int spawningEnemies;
+        private bool isRunning;
+        private bool roomCleared;
+
+        public bool IsRunning => isRunning;
+        public bool RoomCleared => roomCleared;
 
         private void Start()
         {
@@ -79,6 +84,9 @@ namespace PolarityBreach.Enemy
 
         private IEnumerator RunWaves()
         {
+            isRunning = true;
+            roomCleared = false;
+
             for (int waveIndex = 0; waveIndex < waves.Length; waveIndex++)
             {
                 Debug.Log("Starting wave " + (waveIndex + 1));
@@ -96,6 +104,8 @@ namespace PolarityBreach.Enemy
             }
 
             Debug.Log("Room cleared!");
+            isRunning = false;
+            roomCleared = true;
             OnRoomCleared?.Invoke();
         }
 
@@ -290,7 +300,11 @@ namespace PolarityBreach.Enemy
         [ContextMenu("Debug Clear Room")]
         public void DebugClearRoom()
         {
+            if (roomCleared) return;
+
             DebugStopAndClearEnemies();
+            isRunning = false;
+            roomCleared = true;
             OnRoomCleared?.Invoke();
         }
 
