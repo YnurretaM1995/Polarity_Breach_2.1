@@ -288,7 +288,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6d99043a163c29646b085c7ebb3aafd1, type: 3}
   - {fileID: 8300000, guid: 9bd2e85d75c1ce74580b39dec6a32012, type: 3}
   shootSound: {fileID: 8300000, guid: f55671d441e5e234ea9e67aa84393daf, type: 3}
-  shootSoundVolume: 0.9
+  shootSoundVolume: 0.2
   playShootSoundAs2D: 0
 --- !u!114 &2957162250898593318
 MonoBehaviour:
@@ -343,8 +343,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a776b97e38026bd46899860383e2eda1, type: 3}
   - {fileID: 8300000, guid: 170c6b3087d16f64881f0c5754f79181, type: 3}
   deathSound: {fileID: 8300000, guid: 28d3018e225a0ff4ba8a7dc236409713, type: 3}
-  deathSoundVolume: 0.18
-  playDeathSoundAs2D: 1
+  deathSoundVolume: 0.7
+  playDeathSoundAs2D: 0
 --- !u!82 &7897765957596988311
 AudioSource:
   m_ObjectHideFlags: 0

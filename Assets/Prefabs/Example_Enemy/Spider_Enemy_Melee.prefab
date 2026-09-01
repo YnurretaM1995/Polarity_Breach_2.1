@@ -377,9 +377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyHealth
   maxHealth: 1
   deathSounds:
-  - {fileID: 8300000, guid: 6a93fa3f0a6f5b546ae97e14dba0e129, type: 3}
-  - {fileID: 8300000, guid: bade8f8374d02f345b4da2851517319b, type: 3}
-  - {fileID: 8300000, guid: eb3a6b747b6563d42923d89935be1d56, type: 3}
+  - {fileID: 8300000, guid: 415d272222bfc244f933b2bfb28eb8c0, type: 3}
+  - {fileID: 8300000, guid: a776b97e38026bd46899860383e2eda1, type: 3}
+  - {fileID: 8300000, guid: 170c6b3087d16f64881f0c5754f79181, type: 3}
   deathSound: {fileID: 8300000, guid: 6a93fa3f0a6f5b546ae97e14dba0e129, type: 3}
   deathSoundVolume: 0.13
   playDeathSoundAs2D: 1

@@ -440,8 +440,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a776b97e38026bd46899860383e2eda1, type: 3}
   - {fileID: 8300000, guid: 170c6b3087d16f64881f0c5754f79181, type: 3}
   deathSound: {fileID: 0}
-  deathSoundVolume: 0.13
-  playDeathSoundAs2D: 1
+  deathSoundVolume: 0.6
+  playDeathSoundAs2D: 0
 --- !u!82 &3008388319431290670
 AudioSource:
   m_ObjectHideFlags: 0

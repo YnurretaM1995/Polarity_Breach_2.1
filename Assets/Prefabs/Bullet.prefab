@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1afc79b3c9eec4eaf71f6eb8ca88f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.TestProjectile
+  trail: {fileID: 0}
+  particles: {fileID: 0}
   _lifeTime: 2
   _disapearOnHit: 1
   _impactEffect: {fileID: 1574572644529341202, guid: 73d4bc9b4d1cfbc40b803df0bddcb5f5, type: 3}
@@ -167,8 +169,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f8292850902f70d4ebef39db27ee7adf, type: 3}
   - {fileID: 8300000, guid: 9867954b1d2c5c1468999e44e2984ab9, type: 3}
   _impactSound: {fileID: 0}
-  _impactSoundVolume: 0.15
-  _playImpactSoundAs2D: 1
+  _impactSoundVolume: 0.6
+  _playImpactSoundAs2D: 0
 --- !u!54 &4789453827344001996
 Rigidbody:
   m_ObjectHideFlags: 0
