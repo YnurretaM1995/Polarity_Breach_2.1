@@ -2753,7 +2753,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 9c4761edd86e8694d8c56e4778d0a898, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7270,6 +7270,21 @@ MonoBehaviour:
   whiteSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
   blackSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   spawnWarningDuration: 3
+  spawnWarningSounds:
+  - {fileID: 8300000, guid: 2ccc0fe3fd8056a41bb93434efc81d5b, type: 3}
+  - {fileID: 8300000, guid: 889e3cfd56fcc064989e80c7ccea326f, type: 3}
+  - {fileID: 8300000, guid: eee91fb1cd1243c4f977b6dc11a715b7, type: 3}
+  - {fileID: 8300000, guid: 2d5b827fdf63a4a4fbe9d5f74b073d56, type: 3}
+  spawnWarningSound: {fileID: 0}
+  spawnWarningSoundVolume: 1
+  playSpawnWarningSoundAs2D: 0
+  playSpawnWarningSoundOncePerGroup: 1
+  appearSounds:
+  - {fileID: 8300000, guid: 62e375908f26bc6459a5371053916c7c, type: 3}
+  appearSound: {fileID: 0}
+  appearSoundVolume: 1
+  playAppearSoundAs2D: 0
+  playAppearSoundOncePerGroup: 1
   clusterRadius: 6
 --- !u!4 &412696442
 Transform:
@@ -8863,6 +8878,16 @@ MonoBehaviour:
   whiteSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
   blackSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   spawnWarningDuration: 3
+  spawnWarningSounds: []
+  spawnWarningSound: {fileID: 0}
+  spawnWarningSoundVolume: 1
+  playSpawnWarningSoundAs2D: 0
+  playSpawnWarningSoundOncePerGroup: 1
+  appearSounds: []
+  appearSound: {fileID: 0}
+  appearSoundVolume: 1
+  playAppearSoundAs2D: 0
+  playAppearSoundOncePerGroup: 1
   clusterRadius: 6
 --- !u!1001 &497622121
 PrefabInstance:
@@ -9852,7 +9877,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 500}
+  m_SizeDelta: {x: 950, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540350609
 MonoBehaviour:
@@ -12024,6 +12049,16 @@ MonoBehaviour:
   whiteSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
   blackSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   spawnWarningDuration: 3
+  spawnWarningSounds: []
+  spawnWarningSound: {fileID: 0}
+  spawnWarningSoundVolume: 1
+  playSpawnWarningSoundAs2D: 0
+  playSpawnWarningSoundOncePerGroup: 1
+  appearSounds: []
+  appearSound: {fileID: 0}
+  appearSoundVolume: 1
+  playAppearSoundAs2D: 0
+  playAppearSoundOncePerGroup: 1
   clusterRadius: 6
 --- !u!4 &638365804
 Transform:
@@ -23721,6 +23756,16 @@ MonoBehaviour:
   whiteSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
   blackSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   spawnWarningDuration: 1
+  spawnWarningSounds: []
+  spawnWarningSound: {fileID: 0}
+  spawnWarningSoundVolume: 1
+  playSpawnWarningSoundAs2D: 0
+  playSpawnWarningSoundOncePerGroup: 1
+  appearSounds: []
+  appearSound: {fileID: 0}
+  appearSoundVolume: 1
+  playAppearSoundAs2D: 0
+  playAppearSoundOncePerGroup: 1
   clusterRadius: 5
 --- !u!114 &1015451785
 MonoBehaviour:
@@ -26148,7 +26193,7 @@ MonoBehaviour:
   blinkSpeed: 5
   blinkMinAlpha: 0.15
   warningSound: {fileID: 8300000, guid: d5015d29845aa964faf2303a0249361e, type: 3}
-  warningSoundVolume: 0.1
+  warningSoundVolume: 0.05
 --- !u!114 &1132328035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38425,7 +38470,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -39328,11 +39373,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 65230a01292a2e342abb6573d0276562, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: shootSoundVolume
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: playShootSoundAs2D
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _normalProjectilePool
@@ -39467,9 +39512,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1458567498}
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: colorSoundVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: postProcessPulse
       value: 
       objectReference: {fileID: 602002188}
+    - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: playColorSoundAs2D
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 888351089162473407, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
     m_RemovedGameObjects: []
