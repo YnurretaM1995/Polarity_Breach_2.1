@@ -1,9 +1,11 @@
+using PolarityBreach.Audio;
 using PolarityBreach.PolaritySystem;
 using PolarityBreach.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PolarityBreach.Enemy
 {
@@ -58,6 +60,24 @@ namespace PolarityBreach.Enemy
         [SerializeField] private GameObject blackSpawnWarningPrefab;
         [SerializeField] private float spawnWarningDuration = 1f;
 
+        [Header("Spawn Warning SFX")]
+        [SerializeField] private AudioClip[] spawnWarningSounds;
+        [SerializeField] private AudioClip spawnWarningSound;
+        [SerializeField, Range(0f, 1f)] private float spawnWarningSoundVolume = 1f;
+        [SerializeField] private bool playSpawnWarningSoundAs2D;
+        [SerializeField] private bool playSpawnWarningSoundOncePerGroup = true;
+
+        [Header("Enemy Appears SFX")]
+        [FormerlySerializedAs("phaseInSounds")]
+        [SerializeField] private AudioClip[] appearSounds;
+        [FormerlySerializedAs("phaseInSound")]
+        [SerializeField] private AudioClip appearSound;
+        [FormerlySerializedAs("phaseInSoundVolume")]
+        [SerializeField, Range(0f, 1f)] private float appearSoundVolume = 1f;
+        [FormerlySerializedAs("playPhaseInSoundAs2D")]
+        [SerializeField] private bool playAppearSoundAs2D;
+        [SerializeField] private bool playAppearSoundOncePerGroup = true;
+
         [Header("Random Cluster Settings")] [SerializeField]
         private float clusterRadius = 3f;
 
@@ -85,11 +105,15 @@ namespace PolarityBreach.Enemy
 
         private IEnumerator RunWaves()
         {
+            yield return null;
+
             isRunning = true;
             roomCleared = false;
 
             for (int waveIndex = 0; waveIndex < waves.Length; waveIndex++)
             {
+                yield return WaitForGameplayReady();
+
                 Debug.Log("Starting wave " + (waveIndex + 1));
 
                 bool shouldShowWaveWarning = showWarningBeforeFirstWave || waveIndex > 0;
@@ -110,6 +134,14 @@ namespace PolarityBreach.Enemy
             isRunning = false;
             roomCleared = true;
             OnRoomCleared?.Invoke();
+        }
+
+        private IEnumerator WaitForGameplayReady()
+        {
+            while (Time.timeScale <= 0f || UIQueue.IsBlocking)
+            {
+                yield return null;
+            }
         }
 
         private IEnumerator SpawnWave(EnemyWave wave)
@@ -146,10 +178,29 @@ namespace PolarityBreach.Enemy
 
                 yield return StartCoroutine(ShowSpawnWarnings(spawnPositions, group.polarity));
 
+                bool playedAppearSoundForGroup = false;
+
                 for (int i = 0; i < spawnPositions.Length; i++)
                 {
                     spawningEnemies = Mathf.Max(0, spawningEnemies - 1);
-                    SpawnEnemyAtPosition(spawnPositions[i], group.polarity, groupEnemyPool, group);
+                    bool spawnedEnemy = SpawnEnemyAtPosition(spawnPositions[i], group.polarity, groupEnemyPool, group);
+
+                    if (spawnedEnemy)
+                    {
+                        if (playAppearSoundOncePerGroup)
+                        {
+                            if (!playedAppearSoundForGroup)
+                            {
+                                PlayAppearSfx(spawnPositions[i]);
+                                playedAppearSoundForGroup = true;
+                            }
+                        }
+                        else
+                        {
+                            PlayAppearSfx(spawnPositions[i]);
+                        }
+                    }
+
                     yield return new WaitForSeconds(timeBetweenSpawns);
                 }
             }
@@ -171,6 +222,16 @@ namespace PolarityBreach.Enemy
             for (int i = 0; i < spawnPositions.Length; i++)
             {
                 warnings[i] = Instantiate(spawnWarningPrefab, spawnPositions[i], Quaternion.identity);
+
+                if (!playSpawnWarningSoundOncePerGroup)
+                {
+                    PlaySpawnWarningSfx(spawnPositions[i]);
+                }
+            }
+
+            if (playSpawnWarningSoundOncePerGroup && spawnPositions.Length > 0)
+            {
+                PlaySpawnWarningSfx(GetAveragePosition(spawnPositions));
             }
 
             yield return new WaitForSeconds(spawnWarningDuration);
@@ -194,14 +255,14 @@ namespace PolarityBreach.Enemy
             return possibleSpawnPoints[randomIndex];
         }
 
-        private void SpawnEnemyAtPosition(Vector3 spawnPosition, Polarity polarity, EnemyPool pool, EnemySpawnGroup group)
+        private bool SpawnEnemyAtPosition(Vector3 spawnPosition, Polarity polarity, EnemyPool pool, EnemySpawnGroup group)
         {
             Enemy enemy = pool.GetEnemy(spawnPosition);
 
             if (enemy == null)
             {
                 Debug.LogWarning("EnemyPool did not return an enemy.");
-                return;
+                return false;
             }
 
             PolarityComponent polarityComponent = enemy.GetComponent<PolarityComponent>();
@@ -222,6 +283,67 @@ namespace PolarityBreach.Enemy
             enemy.Spawn(this);
             activeEnemies.Add(enemy);
             enemyPoolsByEnemy[enemy] = pool;
+            return true;
+        }
+
+        private void PlaySpawnWarningSfx(Vector3 position)
+        {
+            AudioClip clip = GetRandomSpawnWarningSound();
+            if (clip == null) return;
+
+            if (playSpawnWarningSoundAs2D)
+            {
+                AudioHandler.Play2DSound(clip, spawnWarningSoundVolume);
+                return;
+            }
+
+            AudioHandler.Play3DSound(clip, position, spawnWarningSoundVolume);
+        }
+
+        private AudioClip GetRandomSpawnWarningSound()
+        {
+            if (spawnWarningSounds != null && spawnWarningSounds.Length > 0)
+            {
+                return spawnWarningSounds[UnityEngine.Random.Range(0, spawnWarningSounds.Length)];
+            }
+
+            return spawnWarningSound;
+        }
+
+        private void PlayAppearSfx(Vector3 position)
+        {
+            AudioClip clip = GetRandomAppearSound();
+            if (clip == null) return;
+
+            if (playAppearSoundAs2D)
+            {
+                AudioHandler.Play2DSound(clip, appearSoundVolume);
+                return;
+            }
+
+            AudioHandler.Play3DSound(clip, position, appearSoundVolume);
+        }
+
+        private AudioClip GetRandomAppearSound()
+        {
+            if (appearSounds != null && appearSounds.Length > 0)
+            {
+                return appearSounds[UnityEngine.Random.Range(0, appearSounds.Length)];
+            }
+
+            return appearSound;
+        }
+
+        private Vector3 GetAveragePosition(Vector3[] positions)
+        {
+            Vector3 average = Vector3.zero;
+
+            for (int i = 0; i < positions.Length; i++)
+            {
+                average += positions[i];
+            }
+
+            return average / positions.Length;
         }
 
         private Vector3[] GetPatternOffsets(SpawnPattern pattern, int enemyCount, float spacing)
