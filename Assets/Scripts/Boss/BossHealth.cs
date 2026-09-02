@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using System;
 using UnityEngine;
 using System.Collections;
@@ -31,6 +32,14 @@ namespace PolarityBreach.Boss
 
         [Header("Death")]
         [SerializeField] private float deathAnimationDuration = 2f;
+
+        [Header("SFX")]
+        [SerializeField] private AudioClip[] bossScreamSounds;
+        [SerializeField] private AudioClip bossScreamSound;
+        [SerializeField, Range(0f, 1f)] private float bossScreamSoundVolume = 1f;
+        [SerializeField] private AudioClip bossDefeatedSound;
+        [SerializeField, Range(0f, 1f)] private float bossDefeatedSoundVolume = 1f;
+        [SerializeField] private bool playBossSoundsAs2D;
 
         void Awake()
         {
@@ -69,6 +78,7 @@ namespace PolarityBreach.Boss
             if (currentHealth <= 0f && !isDead)
             {
                 isDead = true;
+                PlayBossSfx(bossDefeatedSound, bossDefeatedSoundVolume);
                 OnDied?.Invoke();
                 Debug.Log("Boss Defeated");
                 //StartCoroutine(DisableAfterDeathAnimation());
@@ -88,6 +98,7 @@ namespace PolarityBreach.Boss
 
             if (!isDead)
             {
+                PlayBossSfx(GetRandomBossScreamSound(), bossScreamSoundVolume);
                 OnWeakPointDestroyed?.Invoke();
             }
         }
@@ -101,6 +112,28 @@ namespace PolarityBreach.Boss
         {
             if (isDead) return;
             OnDamaged?.Invoke();
+        }
+
+        private void PlayBossSfx(AudioClip clip, float volume)
+        {
+            if (playBossSoundsAs2D)
+            {
+                AudioHandler.Play2DSound(clip, volume);
+            }
+            else
+            {
+                AudioHandler.Play3DSound(clip, transform.position, volume);
+            }
+        }
+
+        private AudioClip GetRandomBossScreamSound()
+        {
+            if (bossScreamSounds != null && bossScreamSounds.Length > 0)
+            {
+                return bossScreamSounds[UnityEngine.Random.Range(0, bossScreamSounds.Length)];
+            }
+
+            return bossScreamSound;
         }
     }
 }
