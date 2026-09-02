@@ -1,4 +1,5 @@
 using System.Collections;
+using PolarityBreach.Audio;
 using UnityEngine;
 
 namespace PolarityBreach.Boss
@@ -12,6 +13,12 @@ namespace PolarityBreach.Boss
         [SerializeField] private float beamDuration = 4f;
         [SerializeField] private float timeBetweenBeamAttacks = 2f;
         [SerializeField] private float rotationSpeed = 20f;
+
+        [Header("SFX")]
+        [SerializeField] private AudioSource beamSfxSource;
+        [SerializeField] private AudioClip beamAttackSound;
+        [SerializeField, Range(0f, 1f)] private float beamAttackSoundVolume = 1f;
+        [SerializeField] private bool playBeamAttackSoundAs2D;
         
         private bool isActive;
         private Coroutine phaseRoutine;
@@ -21,6 +28,9 @@ namespace PolarityBreach.Boss
 
         private void Awake()
         {
+            if (beamSfxSource == null)
+                beamSfxSource = CreateBeamSfxSource();
+
             SetWarningBeamsActive(false);
             SetBeamsActive(false);
         }
@@ -104,6 +114,9 @@ namespace PolarityBreach.Boss
                     beams[i].SetActive(active);
                 }
             }
+
+            if (active)
+                PlayBeamSfx();
         }
 
         private void SetWarningBeamsActive(bool active)
@@ -115,6 +128,28 @@ namespace PolarityBreach.Boss
                     warningBeams[i].SetActive(active);
                 }
             }
+        }
+
+        private void PlayBeamSfx()
+        {
+            if (beamAttackSound == null || beamSfxSource == null) return;
+
+            beamSfxSource.volume = beamAttackSoundVolume;
+            beamSfxSource.loop = false;
+            beamSfxSource.spatialBlend = playBeamAttackSoundAs2D ? 0f : 1f;
+            beamSfxSource.outputAudioMixerGroup = AudioHandler.DefaultSfxMixerGroup;
+            beamSfxSource.PlayOneShot(beamAttackSound, beamAttackSoundVolume);
+        }
+
+        private AudioSource CreateBeamSfxSource()
+        {
+            GameObject sourceObject = new GameObject("Boss Beam Attack Audio");
+            sourceObject.transform.SetParent(transform);
+            sourceObject.transform.localPosition = Vector3.zero;
+
+            AudioSource source = sourceObject.AddComponent<AudioSource>();
+            source.playOnAwake = false;
+            return source;
         }
 
     }
