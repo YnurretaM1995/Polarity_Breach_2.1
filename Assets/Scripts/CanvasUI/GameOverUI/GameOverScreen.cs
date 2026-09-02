@@ -18,6 +18,10 @@ namespace PolarityBreach.UI
         [Header("Music")]
         [SerializeField] private GameMusicController musicController;
 
+        [Header("Scenes")]
+        [SerializeField] private string gameSceneName = "Game V2";
+        [SerializeField] private string titleScreenSceneName = "TitleScreen";
+
         [Header("Story Images")]
         [SerializeField] private CanvasGroup[] storyImages;
         [SerializeField] private float[] imageHoldDurations;
@@ -25,6 +29,7 @@ namespace PolarityBreach.UI
         [Header("Game Over Block")]
         [SerializeField] private CanvasGroup gameOverBlock;
         [SerializeField] private Button retryButton;
+        [SerializeField] private Button mainMenuButton;
 
         [Header("Timing")]
         [SerializeField] private float blackFadeDuration = 1.5f;
@@ -78,8 +83,13 @@ namespace PolarityBreach.UI
         public void Retry()
         {
             Time.timeScale = 1f;
-            Scene current = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(current.buildIndex);
+            LoadScene(gameSceneName);
+        }
+
+        public void MainMenu()
+        {
+            Time.timeScale = 1f;
+            LoadScene(titleScreenSceneName);
         }
 
         public IEnumerator PlaySequence()
@@ -108,7 +118,7 @@ namespace PolarityBreach.UI
             yield return Fade(gameOverBlock, 0f, 1f, gameOverFadeDuration);
 
             yield return new WaitForSecondsRealtime(delayBeforeButton);
-            ShowRetryButton();
+            ShowButtons();
 
             while (true)
                 yield return null;
@@ -126,7 +136,8 @@ namespace PolarityBreach.UI
         {
             if (blackBackground != null) blackBackground.alpha = 0f;
             if (gameOverBlock != null) gameOverBlock.alpha = 0f;
-            if (retryButton != null) retryButton.gameObject.SetActive(false);
+            SetButtonVisible(retryButton, false);
+            SetButtonVisible(mainMenuButton, false);
             if (dimOverlay != null) dimOverlay.alpha = 0f;
 
             for (int i = 0; i < storyImages.Length; i++)
@@ -135,14 +146,35 @@ namespace PolarityBreach.UI
             }
         }
 
-        private void ShowRetryButton()
+        private void ShowButtons()
         {
-            if (retryButton == null) return;
+            SetButtonVisible(retryButton, true);
+            SetButtonVisible(mainMenuButton, true);
 
-            retryButton.gameObject.SetActive(true);
-
-            if (EventSystem.current != null)
+            if (retryButton != null && EventSystem.current != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(retryButton.gameObject);
+            }
+        }
+
+        private void SetButtonVisible(Button button, bool visible)
+        {
+            if (button == null) return;
+
+            button.gameObject.SetActive(visible);
+            button.interactable = visible;
+        }
+
+        private void LoadScene(string sceneName)
+        {
+            if (string.IsNullOrWhiteSpace(sceneName))
+            {
+                Debug.LogWarning("GameOverScreen: scene name is empty.");
+                return;
+            }
+
+            SceneManager.LoadScene(sceneName);
         }
 
         private IEnumerator Fade(CanvasGroup group, float from, float to, float duration)
