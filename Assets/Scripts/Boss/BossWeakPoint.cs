@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using PolarityBreach.PolaritySystem;
 using UnityEngine;
 using PolarityBreach.PolaritySystem.Interfaces;
@@ -24,6 +25,11 @@ namespace PolarityBreach.Boss
         [Header("Destroyed Indicator")]
         [SerializeField] private Renderer orbRenderer;
         [SerializeField] private Material deadMaterial;
+
+        [Header("SFX")]
+        [SerializeField] private AudioClip destroyedSound;
+        [SerializeField, Range(0f, 1f)] private float destroyedSoundVolume = 1f;
+        [SerializeField] private bool playDestroyedSoundAs2D;
 
         void Awake()
         {
@@ -66,6 +72,7 @@ namespace PolarityBreach.Boss
         private void DestroyWeakPoint()
         {
             isDestroyed = true;
+            PlayDestroyedSfx();
 
             if (weakPointCollider != null)
             {
@@ -76,6 +83,18 @@ namespace PolarityBreach.Boss
             bossHealth.WeakPointDestroyed();
             
             Debug.Log(gameObject.name + " weak point destroyed.");
+        }
+
+        private void PlayDestroyedSfx()
+        {
+            if (playDestroyedSoundAs2D)
+            {
+                AudioHandler.Play2DSound(destroyedSound, destroyedSoundVolume);
+            }
+            else
+            {
+                AudioHandler.Play3DSound(destroyedSound, transform.position, destroyedSoundVolume);
+            }
         }
 
         private void SetOrbDead()
