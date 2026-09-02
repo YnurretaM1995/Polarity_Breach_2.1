@@ -155,6 +155,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 750037733}
+  - {fileID: 461312621}
   - {fileID: 522130382}
   m_Father: {fileID: 1023041012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7284,7 +7285,7 @@ MonoBehaviour:
   appearSounds:
   - {fileID: 8300000, guid: 62e375908f26bc6459a5371053916c7c, type: 3}
   appearSound: {fileID: 0}
-  appearSoundVolume: 0.7
+  appearSoundVolume: 0.8
   playAppearSoundAs2D: 0
   playAppearSoundOncePerGroup: 1
   clusterRadius: 6
@@ -7333,6 +7334,9 @@ MonoBehaviour:
   currentHealth: 0
   orbRenderer: {fileID: 829682730}
   deadMaterial: {fileID: 2100000, guid: 425251dcb61f2074db14749c95dfa986, type: 2}
+  destroyedSound: {fileID: 0}
+  destroyedSoundVolume: 1
+  playDestroyedSoundAs2D: 0
 --- !u!114 &412968186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7782,6 +7786,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 475970862407206292, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
   m_PrefabInstance: {fileID: 880002367}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &461312620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461312621}
+  - component: {fileID: 461312623}
+  - component: {fileID: 461312622}
+  m_Layer: 5
+  m_Name: ChooseAnUpgradeText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &461312621
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461312620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10.37, y: 10.37, z: 10.37}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 8707661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 230}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &461312622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461312620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0e8bb5428a80d2c438ca855e488afb88, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &461312623
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461312620}
+  m_CullTransparentMesh: 1
 --- !u!1001 &461755460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8054,7 +8133,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8892,7 +8971,7 @@ MonoBehaviour:
   appearSounds:
   - {fileID: 8300000, guid: 62e375908f26bc6459a5371053916c7c, type: 3}
   appearSound: {fileID: 0}
-  appearSoundVolume: 0.7
+  appearSoundVolume: 0.8
   playAppearSoundAs2D: 0
   playAppearSoundOncePerGroup: 1
   clusterRadius: 6
@@ -9592,7 +9671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -423, y: -15.9}
+  m_AnchoredPosition: {x: -423, y: -45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522130383
@@ -12068,7 +12147,7 @@ MonoBehaviour:
   appearSounds:
   - {fileID: 8300000, guid: 62e375908f26bc6459a5371053916c7c, type: 3}
   appearSound: {fileID: 0}
-  appearSoundVolume: 0.7
+  appearSoundVolume: 0.8
   playAppearSoundAs2D: 0
   playAppearSoundOncePerGroup: 1
   clusterRadius: 6
@@ -14118,7 +14197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &750037733
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15711,6 +15790,9 @@ MonoBehaviour:
   currentHealth: 0
   orbRenderer: {fileID: 1450499223}
   deadMaterial: {fileID: 2100000, guid: 425251dcb61f2074db14749c95dfa986, type: 2}
+  destroyedSound: {fileID: 0}
+  destroyedSoundVolume: 1
+  playDestroyedSoundAs2D: 0
 --- !u!114 &839705818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20743,6 +20825,9 @@ MonoBehaviour:
   currentHealth: 0
   orbRenderer: {fileID: 916969273}
   deadMaterial: {fileID: 2100000, guid: 425251dcb61f2074db14749c95dfa986, type: 2}
+  destroyedSound: {fileID: 0}
+  destroyedSoundVolume: 1
+  playDestroyedSoundAs2D: 0
 --- !u!114 &854909405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23653,8 +23738,12 @@ MonoBehaviour:
   firePoint: {fileID: 1015451774}
   phaseData: {fileID: 11400000, guid: 28e3c82d2a93451db0297cb2372b1933, type: 2}
   normalShotSounds:
-  - {fileID: 0}
-  normalShotSoundVolume: 1
+  - {fileID: 8300000, guid: 3627b04609e3e3b449fbf9710e4fdac8, type: 3}
+  - {fileID: 8300000, guid: f2fba7eea64623447872ed285e76d2fd, type: 3}
+  - {fileID: 8300000, guid: 48b35e57954fe5d4c815cc4bbce8df11, type: 3}
+  - {fileID: 8300000, guid: 6d99043a163c29646b085c7ebb3aafd1, type: 3}
+  - {fileID: 8300000, guid: 9bd2e85d75c1ce74580b39dec6a32012, type: 3}
+  normalShotSoundVolume: 0.8
   playNormalShotSoundAs2D: 0
 --- !u!114 &1015451776
 MonoBehaviour:
@@ -23696,6 +23785,15 @@ MonoBehaviour:
   - {fileID: 839705817}
   - {fileID: 412968185}
   deathAnimationDuration: 4
+  bossScreamSounds:
+  - {fileID: 8300000, guid: 38ce1046e684d5741a010ab673b431fc, type: 3}
+  - {fileID: 8300000, guid: 8f6122ecd1152034681f96cff57ed336, type: 3}
+  - {fileID: 8300000, guid: 2f1ac9c86f7492344a516db3ce61e969, type: 3}
+  bossScreamSound: {fileID: 0}
+  bossScreamSoundVolume: 1
+  bossDefeatedSound: {fileID: 8300000, guid: b744e2b6beab5e745b038724d25556c1, type: 3}
+  bossDefeatedSoundVolume: 1
+  playBossSoundsAs2D: 0
 --- !u!114 &1015451782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23780,7 +23878,7 @@ MonoBehaviour:
   appearSounds:
   - {fileID: 8300000, guid: 62e375908f26bc6459a5371053916c7c, type: 3}
   appearSound: {fileID: 0}
-  appearSoundVolume: 0.7
+  appearSoundVolume: 0.8
   playAppearSoundAs2D: 0
   playAppearSoundOncePerGroup: 1
   clusterRadius: 5
@@ -23807,6 +23905,10 @@ MonoBehaviour:
   beamDuration: 4
   timeBetweenBeamAttacks: 2
   rotationSpeed: 75
+  beamSfxSource: {fileID: 0}
+  beamAttackSound: {fileID: 8300000, guid: 3e5f1eb1c2ff99443abd92b44d871d27, type: 3}
+  beamAttackSoundVolume: 0.8
+  playBeamAttackSoundAs2D: 0
 --- !u!95 &1015451786 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5317844241567601785, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
@@ -26208,8 +26310,8 @@ MonoBehaviour:
   startScale: 2
   blinkSpeed: 5
   blinkMinAlpha: 0.15
-  warningSound: {fileID: 8300000, guid: d5015d29845aa964faf2303a0249361e, type: 3}
-  warningSoundVolume: 0.05
+  warningSound: {fileID: 8300000, guid: 85dbc801ae0215f4198e6b625af68c32, type: 3}
+  warningSoundVolume: 0.12
 --- !u!114 &1132328035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29620,6 +29722,16 @@ MonoBehaviour:
   maxHealth: 50
   enemyPool: {fileID: 30625201}
   enemyWaveSpawner: {fileID: 1015451782}
+  vulnerableHitSounds:
+  - {fileID: 8300000, guid: 4a6e292606bed8a46941e3f018ad48ef, type: 3}
+  - {fileID: 8300000, guid: 375407f277a2a6349b7cf42bdc5c19cb, type: 3}
+  - {fileID: 8300000, guid: 46c5e3a03d92a2448839c415786f70b8, type: 3}
+  - {fileID: 8300000, guid: 9d23e69b2149baf45be4761a34bde154, type: 3}
+  vulnerableHitSound: {fileID: 8300000, guid: 89ce202103b226846ac1963099381606, type: 3}
+  vulnerableHitSoundVolume: 1
+  breakSound: {fileID: 8300000, guid: 844b8f12734acd347a1218503452231a, type: 3}
+  breakSoundVolume: 1
+  playShieldSoundsAs2D: 0
 --- !u!114 &1312911741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39298,6 +39410,10 @@ PrefabInstance:
       propertyPath: dashSfxSource
       value: 
       objectReference: {fileID: 1466711692}
+    - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: dashSoundVolume
+      value: 0.293
+      objectReference: {fileID: 0}
     - target: {fileID: 2056703623934425185, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -39421,10 +39537,30 @@ PrefabInstance:
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: chargeSound
       value: 
-      objectReference: {fileID: 8300000, guid: 65230a01292a2e342abb6573d0276562, type: 3}
+      objectReference: {fileID: 8300000, guid: 2d14af329a679054ba13513e1fd0ab81, type: 3}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: heldChargeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a967ff042849a4549a9e83e5fbea4d37, type: 3}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: chargeLoopSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: chargedShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 039605a6d687bac4095007288cb8ed5e, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: shootSoundVolume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: chargeCancelSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dadbe2dffdddbd240950695b8d260867, type: 3}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: chargeSoundVolume
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: playShootSoundAs2D
@@ -39435,12 +39571,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1755451374}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: heldChargeSoundVolume
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _chargedProjectilePool
       value: 
       objectReference: {fileID: 1951798309}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: chargedShotSoundVolume
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: shootSounds.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: chargeCancelSoundVolume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: heldChargeSoundStartTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: 'shootSounds.Array.data[0]'
@@ -39557,14 +39709,14 @@ PrefabInstance:
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: colorSound
       value: 
-      objectReference: {fileID: 8300000, guid: cb6a08fef3f75844e88fde47fae06058, type: 3}
+      objectReference: {fileID: 8300000, guid: 703682df4222bcb47a72fa1456d8271e, type: 3}
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: polarityUI
       value: 
       objectReference: {fileID: 1458567498}
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: colorSoundVolume
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: postProcessPulse
@@ -39574,6 +39726,30 @@ PrefabInstance:
       propertyPath: playColorSoundAs2D
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: colorSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: 'colorSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 33d1754114e73aa47891bfa79b50b731, type: 3}
+    - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: 'colorSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 254d9195cbfdacf42bfcc0125bb89aea, type: 3}
+    - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: 'colorSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bbc8b5e29accd544ebc69482997640e1, type: 3}
+    - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: 'colorSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 53a0818657e6b0f4096294409ec0042b, type: 3}
+    - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: 'colorSounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b1c74e7326a189c43832d877f5a7d20f, type: 3}
     m_RemovedComponents:
     - {fileID: 888351089162473407, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
     m_RemovedGameObjects: []
@@ -43537,6 +43713,9 @@ MonoBehaviour:
   currentHealth: 0
   orbRenderer: {fileID: 2080277751}
   deadMaterial: {fileID: 2100000, guid: 425251dcb61f2074db14749c95dfa986, type: 2}
+  destroyedSound: {fileID: 0}
+  destroyedSoundVolume: 1
+  playDestroyedSoundAs2D: 0
 --- !u!114 &2018716258
 MonoBehaviour:
   m_ObjectHideFlags: 0
