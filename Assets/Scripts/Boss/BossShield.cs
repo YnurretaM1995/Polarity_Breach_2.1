@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using PolarityBreach.Enemy;
 using PolarityBreach.PolaritySystem.Interfaces;
 using UnityEngine;
@@ -10,6 +11,14 @@ namespace PolarityBreach.Boss
         [SerializeField] private float maxHealth = 100f;
         [SerializeField] private EnemyPool enemyPool;
         [SerializeField] private EnemyWaveSpawner enemyWaveSpawner;
+
+        [Header("SFX")]
+        [SerializeField] private AudioClip[] vulnerableHitSounds;
+        [SerializeField] private AudioClip vulnerableHitSound;
+        [SerializeField, Range(0f, 1f)] private float vulnerableHitSoundVolume = 1f;
+        [SerializeField] private AudioClip breakSound;
+        [SerializeField, Range(0f, 1f)] private float breakSoundVolume = 1f;
+        [SerializeField] private bool playShieldSoundsAs2D;
         
         private float currentHealth;
 
@@ -42,9 +51,35 @@ namespace PolarityBreach.Boss
 
             if (currentHealth <= 0f)
             {
+                PlayShieldSfx(breakSound, breakSoundVolume);
                 OnShieldDestroyed?.Invoke();
                 gameObject.SetActive(false);
+                return;
             }
+
+            PlayShieldSfx(GetRandomVulnerableHitSound(), vulnerableHitSoundVolume);
+        }
+
+        private void PlayShieldSfx(AudioClip clip, float volume)
+        {
+            if (playShieldSoundsAs2D)
+            {
+                AudioHandler.Play2DSound(clip, volume);
+            }
+            else
+            {
+                AudioHandler.Play3DSound(clip, transform.position, volume);
+            }
+        }
+
+        private AudioClip GetRandomVulnerableHitSound()
+        {
+            if (vulnerableHitSounds != null && vulnerableHitSounds.Length > 0)
+            {
+                return vulnerableHitSounds[UnityEngine.Random.Range(0, vulnerableHitSounds.Length)];
+            }
+
+            return vulnerableHitSound;
         }
 
         private bool HasEnemiesAlive()
