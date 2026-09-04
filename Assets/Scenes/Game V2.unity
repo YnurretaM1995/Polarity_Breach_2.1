@@ -21073,7 +21073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470209024630969529, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2246429786413174275, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       propertyPath: m_LocalScale.x
@@ -23743,7 +23743,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 48b35e57954fe5d4c815cc4bbce8df11, type: 3}
   - {fileID: 8300000, guid: 6d99043a163c29646b085c7ebb3aafd1, type: 3}
   - {fileID: 8300000, guid: 9bd2e85d75c1ce74580b39dec6a32012, type: 3}
-  normalShotSoundVolume: 0.8
+  normalShotSoundVolume: 0.3
   playNormalShotSoundAs2D: 0
 --- !u!114 &1015451776
 MonoBehaviour:
@@ -23789,7 +23789,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 38ce1046e684d5741a010ab673b431fc, type: 3}
   - {fileID: 8300000, guid: 8f6122ecd1152034681f96cff57ed336, type: 3}
   - {fileID: 8300000, guid: 2f1ac9c86f7492344a516db3ce61e969, type: 3}
-  bossScreamSound: {fileID: 0}
+  bossScreamSound: {fileID: 8300000, guid: 85dbc801ae0215f4198e6b625af68c32, type: 3}
   bossScreamSoundVolume: 1
   bossDefeatedSound: {fileID: 8300000, guid: b744e2b6beab5e745b038724d25556c1, type: 3}
   bossDefeatedSoundVolume: 1
@@ -25924,7 +25924,7 @@ RectTransform:
   m_Father: {fileID: 356999501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -32462,11 +32462,11 @@ AudioSource:
   m_GameObject: {fileID: 1466711690}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5817289336624428924, guid: c2624b65132acdf4d8a605e0d481f0cf, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.65
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -39397,7 +39397,7 @@ PrefabInstance:
     - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: dashSound
       value: 
-      objectReference: {fileID: 8300000, guid: f63d64ad90187ea4b830a9bf1ac99ac9, type: 3}
+      objectReference: {fileID: 8300000, guid: ea7feda3d44ff2444a2f5a2c5f60d4bd, type: 3}
     - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: acceleration
       value: 75
