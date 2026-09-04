@@ -669,11 +669,13 @@ MonoBehaviour:
   playerStats: {fileID: 1817478972}
   waveSpawner: {fileID: 412696441}
   bossSpawner: {fileID: 1015451782}
+  roomClearSpawner: {fileID: 0}
   player: {fileID: 1817478970}
   bossRoomPoint: {fileID: 525857100}
   bossObject: {fileID: 1015451772}
   windowWidth: 300
   windowHeight: 600
+  menuScale: 1.5
   sliderSteps: 20
 --- !u!114 &53516371
 MonoBehaviour:
@@ -7124,12 +7126,23 @@ MonoBehaviour:
       projectilesPerShot: 3
       spreadAngle: 15
   autoStart: 1
+  showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
   whiteSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
   blackSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   spawnWarningDuration: 3
+  spawnWarningSounds: []
+  spawnWarningSound: {fileID: 0}
+  spawnWarningSoundVolume: 1
+  playSpawnWarningSoundAs2D: 0
+  playSpawnWarningSoundOncePerGroup: 1
+  appearSounds: []
+  appearSound: {fileID: 0}
+  appearSoundVolume: 1
+  playAppearSoundAs2D: 0
+  playAppearSoundOncePerGroup: 1
   clusterRadius: 6
 --- !u!4 &412696442
 Transform:
@@ -7176,6 +7189,9 @@ MonoBehaviour:
   currentHealth: 0
   orbRenderer: {fileID: 829682730}
   deadMaterial: {fileID: 2100000, guid: 425251dcb61f2074db14749c95dfa986, type: 2}
+  destroyedSound: {fileID: 0}
+  destroyedSoundVolume: 1
+  playDestroyedSoundAs2D: 0
 --- !u!114 &412968186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8392,12 +8408,23 @@ MonoBehaviour:
       projectilesPerShot: 3
       spreadAngle: 15
   autoStart: 1
+  showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
   whiteSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
   blackSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   spawnWarningDuration: 3
+  spawnWarningSounds: []
+  spawnWarningSound: {fileID: 0}
+  spawnWarningSoundVolume: 1
+  playSpawnWarningSoundAs2D: 0
+  playSpawnWarningSoundOncePerGroup: 1
+  appearSounds: []
+  appearSound: {fileID: 0}
+  appearSoundVolume: 1
+  playAppearSoundAs2D: 0
+  playAppearSoundOncePerGroup: 1
   clusterRadius: 6
 --- !u!1001 &497622121
 PrefabInstance:
@@ -11051,12 +11078,23 @@ MonoBehaviour:
       projectilesPerShot: 3
       spreadAngle: 15
   autoStart: 1
+  showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
   whiteSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
   blackSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   spawnWarningDuration: 3
+  spawnWarningSounds: []
+  spawnWarningSound: {fileID: 0}
+  spawnWarningSoundVolume: 1
+  playSpawnWarningSoundAs2D: 0
+  playSpawnWarningSoundOncePerGroup: 1
+  appearSounds: []
+  appearSound: {fileID: 0}
+  appearSoundVolume: 1
+  playAppearSoundAs2D: 0
+  playAppearSoundOncePerGroup: 1
   clusterRadius: 6
 --- !u!4 &638365804
 Transform:
@@ -14025,6 +14063,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6269635625250689571, guid: 1b890216c6645c648bfde4c7ba8f0b08, type: 3}
   m_PrefabInstance: {fileID: 813143054}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &814338349 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2945111285016939718, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+  m_PrefabInstance: {fileID: 1817478967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &816700532
 GameObject:
   m_ObjectHideFlags: 0
@@ -14440,6 +14483,9 @@ MonoBehaviour:
   currentHealth: 0
   orbRenderer: {fileID: 1450499223}
   deadMaterial: {fileID: 2100000, guid: 425251dcb61f2074db14749c95dfa986, type: 2}
+  destroyedSound: {fileID: 0}
+  destroyedSoundVolume: 1
+  playDestroyedSoundAs2D: 0
 --- !u!114 &839705818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19472,6 +19518,9 @@ MonoBehaviour:
   currentHealth: 0
   orbRenderer: {fileID: 916969273}
   deadMaterial: {fileID: 2100000, guid: 425251dcb61f2074db14749c95dfa986, type: 2}
+  destroyedSound: {fileID: 0}
+  destroyedSoundVolume: 1
+  playDestroyedSoundAs2D: 0
 --- !u!114 &854909405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22361,6 +22410,9 @@ MonoBehaviour:
   projectilePool: {fileID: 1216575194}
   firePoint: {fileID: 1015451774}
   phaseData: {fileID: 11400000, guid: 28e3c82d2a93451db0297cb2372b1933, type: 2}
+  normalShotSounds: []
+  normalShotSoundVolume: 1
+  playNormalShotSoundAs2D: 0
 --- !u!114 &1015451776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22401,6 +22453,12 @@ MonoBehaviour:
   - {fileID: 839705817}
   - {fileID: 412968185}
   deathAnimationDuration: 4
+  bossScreamSounds: []
+  bossScreamSound: {fileID: 0}
+  bossScreamSoundVolume: 1
+  bossDefeatedSound: {fileID: 0}
+  bossDefeatedSoundVolume: 1
+  playBossSoundsAs2D: 0
 --- !u!114 &1015451782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22466,12 +22524,23 @@ MonoBehaviour:
       projectilesPerShot: 3
       spreadAngle: 15
   autoStart: 0
+  showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.3
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
   whiteSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
   blackSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   spawnWarningDuration: 1
+  spawnWarningSounds: []
+  spawnWarningSound: {fileID: 0}
+  spawnWarningSoundVolume: 1
+  playSpawnWarningSoundAs2D: 0
+  playSpawnWarningSoundOncePerGroup: 1
+  appearSounds: []
+  appearSound: {fileID: 0}
+  appearSoundVolume: 1
+  playAppearSoundAs2D: 0
+  playAppearSoundOncePerGroup: 1
   clusterRadius: 5
 --- !u!114 &1015451785
 MonoBehaviour:
@@ -22496,6 +22565,10 @@ MonoBehaviour:
   beamDuration: 4
   timeBetweenBeamAttacks: 2
   rotationSpeed: 75
+  beamSfxSource: {fileID: 0}
+  beamAttackSound: {fileID: 0}
+  beamAttackSoundVolume: 1
+  playBeamAttackSoundAs2D: 0
 --- !u!95 &1015451786 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5317844241567601785, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
@@ -24890,6 +24963,8 @@ MonoBehaviour:
   startScale: 2
   blinkSpeed: 5
   blinkMinAlpha: 0.15
+  warningSound: {fileID: 0}
+  warningSoundVolume: 1
 --- !u!114 &1132328035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24905,6 +24980,8 @@ MonoBehaviour:
   root: {fileID: 184214049}
   blackBackground: {fileID: 1928947745}
   musicController: {fileID: 0}
+  gameSceneName: Game V2
+  titleScreenSceneName: TitleScreen
   storyImages:
   - {fileID: 81723918}
   - {fileID: 706117623}
@@ -24912,6 +24989,7 @@ MonoBehaviour:
   imageHoldDurations: []
   gameOverBlock: {fileID: 2122385976}
   retryButton: {fileID: 1345390497}
+  mainMenuButton: {fileID: 0}
   blackFadeDuration: 1.5
   imageFadeDuration: 1
   defaultImageHold: 2.5
@@ -27769,6 +27847,12 @@ MonoBehaviour:
   maxHealth: 50
   enemyPool: {fileID: 30625201}
   enemyWaveSpawner: {fileID: 1015451782}
+  vulnerableHitSounds: []
+  vulnerableHitSound: {fileID: 0}
+  vulnerableHitSoundVolume: 1
+  breakSound: {fileID: 0}
+  breakSoundVolume: 1
+  playShieldSoundsAs2D: 0
 --- !u!114 &1312911741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36649,6 +36733,14 @@ PrefabInstance:
       propertyPath: _whiteMaterial
       value: 
       objectReference: {fileID: 2100000, guid: f769f7e8a7155ec46b9ae207f265ab40, type: 2}
+    - target: {fileID: 888351089162473407, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: _renderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 888351089162473407, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: '_renderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 814338349}
     - target: {fileID: 1212378622664087315, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -40915,6 +41007,9 @@ MonoBehaviour:
   currentHealth: 0
   orbRenderer: {fileID: 2080277751}
   deadMaterial: {fileID: 2100000, guid: 425251dcb61f2074db14749c95dfa986, type: 2}
+  destroyedSound: {fileID: 0}
+  destroyedSoundVolume: 1
+  playDestroyedSoundAs2D: 0
 --- !u!114 &2018716258
 MonoBehaviour:
   m_ObjectHideFlags: 0
