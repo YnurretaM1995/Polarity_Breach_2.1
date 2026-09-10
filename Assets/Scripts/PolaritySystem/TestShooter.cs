@@ -42,6 +42,7 @@ namespace PolarityBreach.PolaritySystem
         private float _lastShotTime = float.NegativeInfinity;
         private Camera _cam;
         private PlayerStatsData _playerStats;
+        private bool _canShoot = true;
 
         public bool IsCharging => _isCharging;
         public bool ChargeReady => _chargeReady;
@@ -90,6 +91,7 @@ namespace PolarityBreach.PolaritySystem
 
         private void Update()
         {
+            if (!_canShoot) return;
             if (UIQueue.IsBlocking || PauseMenu.IsPaused) return;
             if (_playerStats.chargeShotUnlocked)
             {
@@ -123,6 +125,24 @@ namespace PolarityBreach.PolaritySystem
                 CancelCharge(false);
             }
             else _fireAction.Enable();
+        }
+
+        public void SetShootingEnabled(bool enabled)
+        {
+            _canShoot = enabled;
+
+            if (_canShoot)
+            {
+                if (!UIQueue.IsBlocking && !PauseMenu.IsPaused)
+                {
+                    _fireAction.Enable();
+                }
+
+                return;
+            }
+
+            CancelCharge(false);
+            _fireAction.Disable();
         }
         
         private void StartCharging()

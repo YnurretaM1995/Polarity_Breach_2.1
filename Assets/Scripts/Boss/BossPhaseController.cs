@@ -20,6 +20,9 @@ namespace PolarityBreach.Boss
         [SerializeField] private int firstTransitionWaveIndex;
         [SerializeField] private int phase4WaveIndex = 3;
 
+        [Header("Player Shooting")]
+        [SerializeField] private TestShooter playerShooter;
+
         private BossHealth health;
         private PolarityComponent shieldPolarity;
         private int currentPhase = 1;
@@ -43,6 +46,11 @@ namespace PolarityBreach.Boss
             if (enemyWaveSpawner == null)
             {
                 enemyWaveSpawner = GetComponent<EnemyWaveSpawner>();
+            }
+
+            if (playerShooter == null)
+            {
+                playerShooter = FindFirstObjectByType<TestShooter>();
             }
 
             if (bossShield != null)
@@ -212,6 +220,11 @@ namespace PolarityBreach.Boss
         private void HandleBossDied()
         {
             StopAllAttacks();
+
+            if (playerShooter != null)
+            {
+                playerShooter.SetShootingEnabled(false);
+            }
 
             if (enemyWaveSpawner != null)
             {
