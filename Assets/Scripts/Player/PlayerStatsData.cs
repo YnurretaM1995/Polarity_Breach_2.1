@@ -34,7 +34,7 @@ namespace PolarityBreach.Player
         [Header("Unlock ChargeShot Skill")]
         public bool chargeShotUnlocked;
         [Header("ChargeShot Stats")] 
-        public float chargeShotDamage;
+        public float chargeShotDamageMultiplier = 1.5f;
         public float chargeShotSpeed;
         public float chargeShotKnockBackPower;
         public float chargeTime;

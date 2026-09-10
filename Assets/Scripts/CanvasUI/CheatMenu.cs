@@ -194,7 +194,7 @@ namespace PolarityBreach
 
             GUILayout.Label("Charge Shot", boldStyle);
             playerStats.chargeShotUnlocked = NavToggle(playerStats.chargeShotUnlocked, "Charge Shot Unlocked"); // 12
-            playerStats.chargeShotDamage = NavSlider("Charge Damage", playerStats.chargeShotDamage, 0f, 300f);  // 13
+            playerStats.chargeShotDamageMultiplier = NavSlider("Charge Damage Multiplier", playerStats.chargeShotDamageMultiplier, 1f, 5f); // 13
             playerStats.chargeShotSpeed = NavSlider("Charge Speed", playerStats.chargeShotSpeed, 0f, 50f);      // 14
             playerStats.chargeShotKnockBackPower = NavSlider("Charge Knockback", playerStats.chargeShotKnockBackPower, 0f, 200f); // 15
             playerStats.chargeTime = NavSlider("Charge Time", playerStats.chargeTime, 0f, 5f);                  // 16

@@ -175,9 +175,11 @@ namespace PolarityBreach.PolaritySystem
         
         private void ChargeShot()
         {
+            float chargeShotDamage = _playerStats.attackDamage * _playerStats.chargeShotDamageMultiplier;
+
             ShootFromPool(_chargedProjectilePool,
                 _playerStats.chargeShotSpeed,
-                _playerStats.chargeShotDamage,
+                chargeShotDamage,
                 _playerStats.chargeShotKnockBackPower);
             PlayChargeShotSfx();
         }
