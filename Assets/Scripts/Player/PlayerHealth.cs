@@ -63,6 +63,12 @@ namespace PolarityBreach.Player
             CurrentHealth = playerStats.maxHealth;
         }
 
+        public void ReplenishHealth(float amount)
+        {
+            if (playerStats == null || IsDead) return;
+            CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+        }
+
         private void Die()
         {
             Debug.Log("Player has died.");
@@ -72,7 +78,7 @@ namespace PolarityBreach.Player
         public void IncreaseMaxHealth(float amount)
         {
             if (playerStats == null) return;
-            CurrentHealth += amount;
+            ReplenishHealth(amount);
         }
     }
 }

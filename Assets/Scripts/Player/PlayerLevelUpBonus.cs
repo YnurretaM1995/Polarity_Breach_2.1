@@ -11,6 +11,7 @@ namespace PolarityBreach.Player
         [SerializeField] private float attackDamageIncrease = 5f;
         [SerializeField] private float attackSpeedIncrease = 10f;
         [SerializeField] private float maxHealthIncrease = 30f;
+        [SerializeField] private float healthReplenishAmount = 30f;
         [SerializeField] private float attackSpeedDelayReduction = 0.15f; // cooldown between attacks
 
         [Header("UI")]
@@ -72,9 +73,9 @@ namespace PolarityBreach.Player
         {
             stats.maxHealth += maxHealthIncrease;
 
-            health.IncreaseMaxHealth(maxHealthIncrease);
+            health.ReplenishHealth(healthReplenishAmount);
 
-            Debug.Log("Max health upgraded. MaxHP:" + stats.maxHealth);
+            Debug.Log("Max health upgraded. MaxHP:" + stats.maxHealth + " Replenished:" + healthReplenishAmount);
         }
     }
 }
