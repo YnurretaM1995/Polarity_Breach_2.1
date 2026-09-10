@@ -1,6 +1,7 @@
 using PolarityBreach.Enemy;
 using PolarityBreach.Menus;
 using PolarityBreach.Player;
+using PolarityBreach.PolaritySystem;
 using PolarityBreach.UI;
 using System.Collections;
 using UnityEngine;
@@ -21,6 +22,9 @@ namespace PolarityBreach.Level
 
         [Header("Next Room")]
         [SerializeField] private GameObject nextRoomSpawner;
+
+        [Header("Player Shooting")]
+        [SerializeField] private TestShooter playerShooter;
 
         [Header("Unlock On Cross")]
         [SerializeField] private PlayerStatsData playerStats;
@@ -49,6 +53,9 @@ namespace PolarityBreach.Level
 
             if (musicController == null)
                 musicController = FindFirstObjectByType<GameMusicController>();
+
+            if (playerShooter == null)
+                playerShooter = FindFirstObjectByType<TestShooter>();
         }
 
         private void OnEnable()
@@ -66,6 +73,7 @@ namespace PolarityBreach.Level
         private void OpenPortal()
         {
             isOpen = true;
+            SetPlayerShooting(false);
             if (portalVisuals != null) portalVisuals.SetActive(true);
 
             if (dialogueOnRoomCleared != null)
@@ -124,6 +132,8 @@ namespace PolarityBreach.Level
             if (nextRoomSpawner != null)
                 nextRoomSpawner.SetActive(true);
 
+            SetPlayerShooting(true);
+
             if (playDialogueMusicOnCross && musicController != null)
                 musicController.PlayDialogueMusic();
 
@@ -141,7 +151,7 @@ namespace PolarityBreach.Level
 
             if (lastDialogueIndex < 0)
             {
-                PlayLevelMusicAfterCrossDialogues();
+                FinishCrossTransition();
                 return;
             }
 
@@ -150,7 +160,7 @@ namespace PolarityBreach.Level
                 if (dialoguesOnCross[i] == null) continue;
 
                 if (i == lastDialogueIndex)
-                    dialoguesOnCross[i].Play(PlayLevelMusicAfterCrossDialogues);
+                    dialoguesOnCross[i].Play(FinishCrossTransition);
                 else
                     dialoguesOnCross[i].Play();
             }
@@ -189,6 +199,21 @@ namespace PolarityBreach.Level
             if (levelMusicIndexAfterCrossDialogues < 0) return;
 
             musicController.PlayLevelMusic(levelMusicIndexAfterCrossDialogues);
+        }
+
+        private void FinishCrossTransition()
+        {
+            PlayLevelMusicAfterCrossDialogues();
+            SetPlayerShooting(true);
+        }
+
+        private void SetPlayerShooting(bool enabled)
+        {
+            if (playerShooter == null)
+                playerShooter = FindFirstObjectByType<TestShooter>();
+
+            if (playerShooter != null)
+                playerShooter.SetShootingEnabled(enabled);
         }
     }
 }
