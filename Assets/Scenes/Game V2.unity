@@ -291,10 +291,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -365.87042}
-  m_SizeDelta: {x: 900, y: 9.419725}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &23474965
 CanvasRenderer:
@@ -2518,7 +2518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: -50.9}
+  m_AnchoredPosition: {x: -2, y: -50.7}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106447381
@@ -2541,11 +2541,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Recover 5%
+  m_text: 'Recover 50 HP
 
     +
 
-    Max Health +25
+    Max Health +25 HP
 
 '
   m_isRightToLeft: 0
@@ -7549,42 +7549,6 @@ MonoBehaviour:
       polarity: 0
       projectilesPerShot: 1
       spreadAngle: 0
-  - groups:
-    - enemyPool: {fileID: 30625201}
-      enemyCount: 2
-      pattern: 0
-      spacing: 8
-      polarity: 1
-      projectilesPerShot: 1
-      spreadAngle: 0
-    - enemyPool: {fileID: 30625201}
-      enemyCount: 2
-      pattern: 0
-      spacing: 2
-      polarity: 0
-      projectilesPerShot: 1
-      spreadAngle: 0
-    - enemyPool: {fileID: 30625201}
-      enemyCount: 2
-      pattern: 0
-      spacing: 4
-      polarity: 0
-      projectilesPerShot: 1
-      spreadAngle: 0
-    - enemyPool: {fileID: 30625201}
-      enemyCount: 2
-      pattern: 0
-      spacing: 4
-      polarity: 1
-      projectilesPerShot: 1
-      spreadAngle: 0
-    - enemyPool: {fileID: 30625201}
-      enemyCount: 2
-      pattern: 0
-      spacing: 4
-      polarity: 0
-      projectilesPerShot: 1
-      spreadAngle: 0
   autoStart: 1
   showWarningBeforeFirstWave: 0
   timeBetweenSpawns: 0.1
@@ -7881,6 +7845,120 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5786055057229267670, guid: e02a45feff251dc44bcb22375712232e, type: 3}
   m_PrefabInstance: {fileID: 1196782280}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &423081074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423081077}
+  - component: {fileID: 423081076}
+  - component: {fileID: 423081075}
+  m_Layer: 0
+  m_Name: EnemyShotsAnim_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &423081075
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423081074}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d29eb500d92cf934883c77be0cfcdab2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &423081076
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423081074}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -1390833232, guid: 8c6fe9075eae1b740b5583c458c56920, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.21, y: 4.43}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &423081077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423081074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &424676924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8910,7 +8988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack damage
+  m_text: Damage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9439,6 +9517,42 @@ MonoBehaviour:
       polarity: 0
       projectilesPerShot: 3
       spreadAngle: 15
+  - groups:
+    - enemyPool: {fileID: 1251293097}
+      enemyCount: 3
+      pattern: 0
+      spacing: 8
+      polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
+    - enemyPool: {fileID: 1251293097}
+      enemyCount: 3
+      pattern: 0
+      spacing: 8
+      polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
+    - enemyPool: {fileID: 2039347782}
+      enemyCount: 3
+      pattern: 0
+      spacing: 8
+      polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
+    - enemyPool: {fileID: 2039347782}
+      enemyCount: 3
+      pattern: 0
+      spacing: 8
+      polarity: 1
+      projectilesPerShot: 3
+      spreadAngle: 15
+    - enemyPool: {fileID: 1251293097}
+      enemyCount: 2
+      pattern: 0
+      spacing: 4
+      polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
     - enemyPool: {fileID: 1251293097}
       enemyCount: 2
       pattern: 0
@@ -9851,10 +9965,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -170.58028}
-  m_SizeDelta: {x: 900, y: 341.16055}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &511395502
 MonoBehaviour:
@@ -10336,6 +10450,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d96e3ff0793bd824fb6771e987a80a35, type: 3}
+--- !u!1 &524083284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524083287}
+  - component: {fileID: 524083286}
+  - component: {fileID: 524083285}
+  m_Layer: 0
+  m_Name: EnemyShotsAnim_8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!95 &524083285
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524083284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 25414e6065938c84aaf9fa292b70bf50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &524083286
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524083284}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 503745967, guid: 8c6fe9075eae1b740b5583c458c56920, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.21, y: 4.43}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &524083287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524083284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525857099
 GameObject:
   m_ObjectHideFlags: 0
@@ -12571,22 +12799,71 @@ MonoBehaviour:
   waves:
   - groups:
     - enemyPool: {fileID: 1023556279}
-      enemyCount: 3
+      enemyCount: 2
       pattern: 1
       spacing: 3
       polarity: 1
       projectilesPerShot: 5
       spreadAngle: 30
-  - groups:
     - enemyPool: {fileID: 1023556279}
       enemyCount: 2
+      pattern: 1
+      spacing: 3
+      polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1611390679}
+      enemyCount: 8
+      pattern: 1
+      spacing: 3
+      polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1611390679}
+      enemyCount: 8
+      pattern: 1
+      spacing: 3
+      polarity: 0
+      projectilesPerShot: 5
+      spreadAngle: 30
+  - groups:
+    - enemyPool: {fileID: 1023556279}
+      enemyCount: 3
       pattern: 0
       spacing: 6
       polarity: 0
       projectilesPerShot: 5
       spreadAngle: 30
     - enemyPool: {fileID: 1023556279}
+      enemyCount: 3
+      pattern: 0
+      spacing: 6
+      polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1611390679}
+      enemyCount: 3
+      pattern: 0
+      spacing: 6
+      polarity: 0
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1611390679}
+      enemyCount: 3
+      pattern: 0
+      spacing: 6
+      polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1023556279}
       enemyCount: 2
+      pattern: 0
+      spacing: 6
+      polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1023556279}
+      enemyCount: 3
       pattern: 0
       spacing: 6
       polarity: 0
@@ -12601,37 +12878,65 @@ MonoBehaviour:
       projectilesPerShot: 3
       spreadAngle: 15
     - enemyPool: {fileID: 1023556279}
-      enemyCount: 2
+      enemyCount: 4
       pattern: 1
       spacing: 3
       polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1611390679}
+      enemyCount: 4
+      pattern: 1
+      spacing: 3
+      polarity: 0
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1023556279}
+      enemyCount: 4
+      pattern: 1
+      spacing: 3
+      polarity: 0
       projectilesPerShot: 5
       spreadAngle: 30
   - groups:
     - enemyPool: {fileID: 1611390679}
       enemyCount: 4
       pattern: 0
-      spacing: 7
+      spacing: 6
       polarity: 1
       projectilesPerShot: 5
       spreadAngle: 30
     - enemyPool: {fileID: 1023556279}
-      enemyCount: 4
+      enemyCount: 6
       pattern: 0
       spacing: 7
       polarity: 0
       projectilesPerShot: 5
       spreadAngle: 30
+    - enemyPool: {fileID: 1023556279}
+      enemyCount: 6
+      pattern: 0
+      spacing: 7
+      polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1023556279}
+      enemyCount: 6
+      pattern: 0
+      spacing: 7
+      polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
   - groups:
     - enemyPool: {fileID: 1023556279}
-      enemyCount: 2
+      enemyCount: 10
       pattern: 0
       spacing: 8
       polarity: 1
       projectilesPerShot: 5
       spreadAngle: 30
     - enemyPool: {fileID: 1023556279}
-      enemyCount: 2
+      enemyCount: 10
       pattern: 0
       spacing: 8
       polarity: 0
@@ -12646,6 +12951,20 @@ MonoBehaviour:
       spreadAngle: 30
     - enemyPool: {fileID: 1611390679}
       enemyCount: 8
+      pattern: 0
+      spacing: 4
+      polarity: 1
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1023556279}
+      enemyCount: 4
+      pattern: 0
+      spacing: 4
+      polarity: 0
+      projectilesPerShot: 5
+      spreadAngle: 30
+    - enemyPool: {fileID: 1023556279}
+      enemyCount: 4
       pattern: 0
       spacing: 4
       polarity: 1
@@ -22199,6 +22518,7 @@ MonoBehaviour:
   closeAfterUse: 1
   cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 495826143}
+  playerShooter: {fileID: 0}
   playerStats: {fileID: 0}
   unlocksDash: 1
   unlocksChargeShot: 0
@@ -24638,6 +24958,7 @@ MonoBehaviour:
   spawnWaveOnStart: 1
   firstTransitionWaveIndex: 0
   phase4WaveIndex: 3
+  playerShooter: {fileID: 0}
 --- !u!114 &1015451780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24650,7 +24971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4fedc4ab5a6da3438aad533fc2052c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossHealth
-  maxHealth: 400
+  maxHealth: 1000
   currentHealth: 0
   weakPoints:
   - {fileID: 2018716257}
@@ -27000,7 +27321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1132328028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28181,7 +28502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.5, y: -30}
+  m_AnchoredPosition: {x: -0.5, y: -28.2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180213349
@@ -28204,7 +28525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack Speed
+  m_text: Speed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29731,7 +30052,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 31.999855, y: 0, z: 30.568829, w: -9.080457}
+  m_margin: {x: 31.999855, y: -10.7416525, z: 30.568829, w: -9.080457}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -31316,6 +31637,11 @@ MonoBehaviour:
   onDialogueFinished:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &1344599331 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1275958782165307169, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+  m_PrefabInstance: {fileID: 1817478967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1347855158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35441,6 +35767,7 @@ MonoBehaviour:
   closeAfterUse: 1
   cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 1015451772}
+  playerShooter: {fileID: 0}
   playerStats: {fileID: 0}
   unlocksDash: 1
   unlocksChargeShot: 1
@@ -36922,7 +37249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: -30.4}
+  m_AnchoredPosition: {x: -2, y: -28.8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1621846306
@@ -36945,7 +37272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Max Health '
+  m_text: 'Health '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -38047,6 +38374,7 @@ MonoBehaviour:
   closeAfterUse: 1
   cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 638365802}
+  playerShooter: {fileID: 0}
   playerStats: {fileID: 0}
   unlocksDash: 1
   unlocksChargeShot: 1
@@ -40375,12 +40703,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: -3615009978512641162, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: maxHealthIncrease
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -3615009978512641162, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: attackSpeedIncrease
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -3615009978512641162, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: attackDamageIncrease
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3615009978512641162, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: healthReplenishAmount
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -3615009978512641162, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: attackSpeedDelayReduction
@@ -40451,6 +40787,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: ea7feda3d44ff2444a2f5a2c5f60d4bd, type: 3}
     - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: aimReticle
+      value: 
+      objectReference: {fileID: 1344599331}
+    - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: maxAimRange
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: acceleration
       value: 75
       objectReference: {fileID: 0}
@@ -40465,6 +40809,10 @@ PrefabInstance:
     - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: dashSoundVolume
       value: 0.293
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: mousePixelsForMaxRange
+      value: 615
       objectReference: {fileID: 0}
     - target: {fileID: 2056703623934425185, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_IsActive
@@ -40677,6 +41025,10 @@ PrefabInstance:
     - target: {fileID: 6102381678693926401, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236854901365836115, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: xpCurveMultiplier
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalScale.x
@@ -46122,10 +46474,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1266159465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -395.29016}
-  m_SizeDelta: {x: 900, y: 9.419725}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2140296996
 MonoBehaviour:
@@ -46730,3 +47082,5 @@ SceneRoots:
   - {fileID: 775767572}
   - {fileID: 584218160}
   - {fileID: 66134603}
+  - {fileID: 423081077}
+  - {fileID: 524083287}
