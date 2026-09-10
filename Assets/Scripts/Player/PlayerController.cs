@@ -14,6 +14,9 @@ namespace PolarityBreach.Player
         private Vector3 lookDirection;
         private PlayerInputActions controls;
         private bool isUsingGamepad = false;
+        private float aimStrength = 1f;
+        private float currentAimRange;
+        private float aimRangeVelocity;
 
         private bool isDashing = false;
         private bool canDash = true;
@@ -25,14 +28,40 @@ namespace PolarityBreach.Player
         [SerializeField] private float deceleration = 16f;
         [SerializeField] private AbilityUIDisplay dashUI;
 
+        [Header("Aim Range")]
+        [SerializeField] private Transform aimReticle;
+        [SerializeField] private float minAimRange = 1f;
+        [SerializeField] private float maxAimRange = 9.59f;
+        [SerializeField] private bool useReticleStartDistanceAsMax = true;
+        [SerializeField] private float mousePixelsForMaxRange = 350f;
+        [SerializeField] private float gamepadAimDeadZone = 0.1f;
+        [SerializeField] private float reticleSmoothTime = 0.05f;
+
         [Header("SFX")]
         [SerializeField] private AudioSource dashSfxSource;
         [SerializeField] private AudioClip dashSound;
+
+        public Vector3 AimDirection => lookDirection;
+        public float AimStrength => aimStrength;
+        public float CurrentAimRange => currentAimRange;
 
         private void Awake()
         {
             InitializeInputSystem();
             _playerStats = GetComponent<PlayerStatsData>();
+            FindAimReticleIfMissing();
+            InitializeAimRange();
+        }
+
+        private void InitializeAimRange()
+        {
+            if (aimReticle != null && useReticleStartDistanceAsMax)
+            {
+                maxAimRange = Mathf.Abs(aimReticle.localPosition.z);
+            }
+
+            maxAimRange = Mathf.Max(maxAimRange, minAimRange);
+            currentAimRange = maxAimRange;
         }
 
         private void OnEnable()
@@ -61,6 +90,7 @@ namespace PolarityBreach.Player
             ReadMovementInput();
             CalculateAimDirection();
             RotatePlayerTowardAim();
+            UpdateAimReticle();
         }
 
         private void FixedUpdate()
@@ -109,7 +139,10 @@ namespace PolarityBreach.Player
 
             if (isUsingGamepad)
             {
-                if (stickInput.magnitude > 0.1f)
+                float stickMagnitude = stickInput.magnitude;
+                aimStrength = Mathf.InverseLerp(gamepadAimDeadZone, 1f, stickMagnitude);
+
+                if (stickMagnitude > gamepadAimDeadZone)
                 {
                     lookDirection = new Vector3(stickInput.x, 0f, stickInput.y).normalized;
                 }
@@ -120,8 +153,14 @@ namespace PolarityBreach.Player
 
                 float deltaX = mouseScreenPos.x - playerScreenPos.x;
                 float deltaY = mouseScreenPos.y - playerScreenPos.y;
+                float mouseDistance = new Vector2(deltaX, deltaY).magnitude;
 
-                lookDirection = new Vector3(deltaX, 0f, deltaY).normalized;
+                aimStrength = Mathf.Clamp01(mouseDistance / Mathf.Max(mousePixelsForMaxRange, 1f));
+
+                if (mouseDistance > 0.01f)
+                {
+                    lookDirection = new Vector3(deltaX, 0f, deltaY).normalized;
+                }
             }
         }
 
@@ -131,6 +170,33 @@ namespace PolarityBreach.Player
             if (lookDirection != Vector3.zero)
             {
                 transform.forward = lookDirection;
+            }
+        }
+
+        private void UpdateAimReticle()
+        {
+            if (aimReticle == null) return;
+
+            float targetRange = Mathf.Lerp(minAimRange, maxAimRange, aimStrength);
+            currentAimRange = Mathf.SmoothDamp(currentAimRange, targetRange, ref aimRangeVelocity, reticleSmoothTime);
+
+            Vector3 localPosition = aimReticle.localPosition;
+            localPosition.z = currentAimRange;
+            aimReticle.localPosition = localPosition;
+        }
+
+        private void FindAimReticleIfMissing()
+        {
+            if (aimReticle != null) return;
+
+            Transform[] children = GetComponentsInChildren<Transform>(true);
+            for (int i = 0; i < children.Length; i++)
+            {
+                if (children[i].name == "SimpleAimReticle")
+                {
+                    aimReticle = children[i];
+                    return;
+                }
             }
         }
 

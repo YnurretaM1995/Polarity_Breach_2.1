@@ -3,6 +3,7 @@ using UnityEngine;
 public class CameraControlScript : MonoBehaviour
 {
     public GameObject player;
+    private PolarityBreach.Player.PlayerController playerController;
 
     public float offsetX = -5f;
     public float offsetZ = 0f;
@@ -29,6 +30,9 @@ public class CameraControlScript : MonoBehaviour
     void LateUpdate()
     {
         if (player is null) return;
+
+        if (playerController == null)
+            playerController = player.GetComponent<PolarityBreach.Player.PlayerController>();
             
         Vector3 targetPosition = new Vector3(player.transform.position.x + offsetX, player.transform.position.y + offsetY, player.transform.position.z + offsetZ);
         
@@ -40,7 +44,8 @@ public class CameraControlScript : MonoBehaviour
             aimDirection.Normalize();
         }
 
-        Vector3 targetAimOffset = aimDirection * aimOffsetDistance;
+        float aimStrength = playerController != null ? playerController.AimStrength : 1f;
+        Vector3 targetAimOffset = aimDirection * (aimOffsetDistance * aimStrength);
 
         currentAimOffset = Vector3.SmoothDamp(currentAimOffset, targetAimOffset, ref aimOffsetVelocity, aimOffsetSmoothTime);
 
@@ -71,11 +76,26 @@ public class CameraControlScript : MonoBehaviour
     {
         if (player == null) return;
 
+        if (playerController == null)
+            playerController = player.GetComponent<PolarityBreach.Player.PlayerController>();
+
+        Vector3 aimDirection = player.transform.forward;
+        aimDirection.y = 0f;
+
+        if (aimDirection.sqrMagnitude > 0.01f)
+        {
+            aimDirection.Normalize();
+        }
+
+        float aimStrength = playerController != null ? playerController.AimStrength : 1f;
+        currentAimOffset = aimDirection * (aimOffsetDistance * aimStrength);
+
         transform.position = new Vector3(
             player.transform.position.x + offsetX,
             player.transform.position.y + offsetY,
-            player.transform.position.z + offsetZ);
+            player.transform.position.z + offsetZ) + currentAimOffset;
 
         velocity = Vector3.zero;
+        aimOffsetVelocity = Vector3.zero;
     }
 }
