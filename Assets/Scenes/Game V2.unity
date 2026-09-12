@@ -9972,9 +9972,9 @@ RectTransform:
   - {fileID: 246889484}
   m_Father: {fileID: 522130382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 190, y: -72.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &517392760
@@ -14610,7 +14610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Feedback.SpawnsDamagePopups
   damageLabelPrefab: {fileID: 65799289}
-  displayLength: 1
+  displayLength: 1.048
 --- !u!4 &711734267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6269635625250689571, guid: 1b890216c6645c648bfde4c7ba8f0b08, type: 3}
@@ -25346,7 +25346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1023041008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31814,8 +31814,6 @@ MonoBehaviour:
   playerPolarity: {fileID: 1981308061}
   whiteBorder: {fileID: 1915041618}
   blackBorder: {fileID: 1227792304}
-  whiteBorderObject: {fileID: 0}
-  blackBorderObject: {fileID: 0}
   activeAlpha: 1
   inactiveAlpha: 0
   smoothFade: 1
@@ -39614,9 +39612,9 @@ RectTransform:
   - {fileID: 106447380}
   m_Father: {fileID: 522130382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -72.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1742878729
@@ -40957,9 +40955,29 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1212378622664087315, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 56eafc46f80be6547b2b654891982666, type: 2}
+    - target: {fileID: 1275958782165307169, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275958782165307169, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275958782165307169, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 1275958782165307169, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.11
+      value: 0.971
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275958782165307169, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: dashUI
@@ -43851,9 +43869,9 @@ RectTransform:
   - {fileID: 1251856243}
   m_Father: {fileID: 522130382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -72.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1941363039
