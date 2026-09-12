@@ -22,9 +22,10 @@ namespace PolarityBreach.Enemy
         private NavMeshAgent agent;
         private NavMeshAgentPusher pusher;
         private EnemyPursuitAI pursuitAI;
-        private Collider enemyCollider;
         private PlayerStatsData targetPlayerStats;
         private Coroutine knockbackRoutine;
+        private bool pursuitWasEnabledBeforeKnockback;
+        private bool pursuitDisabledForKnockback;
 
         private void Awake()
         {
@@ -32,7 +33,6 @@ namespace PolarityBreach.Enemy
             pusher = GetComponent<NavMeshAgentPusher>();
             if (pusher == null) pusher = gameObject.AddComponent<NavMeshAgentPusher>();
             pursuitAI = GetComponent<EnemyPursuitAI>();
-            enemyCollider = GetComponent<Collider>();
         }
 
         private void OnEnable()
@@ -115,6 +115,7 @@ namespace PolarityBreach.Enemy
         private void KnockbackFromPlayer(Transform player)
         {
             if (agent == null) return;
+            if (!agent.enabled || !agent.isOnNavMesh) return;
             if (knockbackRoutine != null) return;
 
             Vector3 direction = transform.position - player.position;
@@ -130,16 +131,12 @@ namespace PolarityBreach.Enemy
 
         private IEnumerator KnockbackRoutine(Vector3 knockbackDirection)
         {
-            bool pursuitWasEnabled = pursuitAI != null && pursuitAI.enabled;
-
-            if (enemyCollider != null)
-            {
-                enemyCollider.enabled = false;
-            }
+            pursuitWasEnabledBeforeKnockback = pursuitAI != null && pursuitAI.enabled;
 
             if (pursuitAI != null)
             {
                 pursuitAI.enabled = false;
+                pursuitDisabledForKnockback = true;
             }
 
             agent.ResetPath();
@@ -153,19 +150,32 @@ namespace PolarityBreach.Enemy
 
             yield return new WaitForSeconds(stunDuration);
 
+            RecoverFromKnockback();
+            knockbackRoutine = null;
+        }
+
+        private void RecoverFromKnockback()
+        {
+            if (agent != null && agent.enabled)
+            {
+                if (!agent.isOnNavMesh && NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 2f, agent.areaMask))
+                {
+                    agent.Warp(hit.position);
+                }
+
+                if (agent.isOnNavMesh)
+                {
+                    agent.ResetPath();
+                    agent.isStopped = false;
+                }
+            }
+
             if (pursuitAI != null)
             {
-                pursuitAI.enabled = pursuitWasEnabled;
+                pursuitAI.enabled = pursuitWasEnabledBeforeKnockback;
             }
 
-            agent.isStopped = false;
-
-            if (enemyCollider != null)
-            {
-                enemyCollider.enabled = true;
-            }
-
-            knockbackRoutine = null;
+            pursuitDisabledForKnockback = false;
         }
 
         private void OnDisable()
@@ -176,6 +186,11 @@ namespace PolarityBreach.Enemy
             {
                 StopCoroutine(knockbackRoutine);
                 knockbackRoutine = null;
+            }
+
+            if (pursuitDisabledForKnockback)
+            {
+                RecoverFromKnockback();
             }
         }
     }
