@@ -50,7 +50,7 @@ namespace PolarityBreach.Feedback
             _mainCamera = Camera.main;
         }
         
-        public void DamageDone(int damage, Vector3 position, bool isCrit)
+        public void DamageDone(float damage, Vector3 position, bool isCrit)
         {
             Vector3 screenPosition = _mainCamera.WorldToScreenPoint(position);
             screenPosition.z = 0;
@@ -59,7 +59,7 @@ namespace PolarityBreach.Feedback
             SpawnDamagePopup(damage, screenPosition, direction, isCrit);
         }
         
-        private void SpawnDamagePopup(int damage, Vector3 position, bool direction, bool isCrit)
+        private void SpawnDamagePopup(float damage, Vector3 position, bool direction, bool isCrit)
         {
             DamageLabel damageLabel = _damageLabelPopupPool.Get();
             damageLabel.Display(damage, position, direction, isCrit);

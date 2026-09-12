@@ -102,13 +102,13 @@ namespace PolarityBreach.Feedback
             OrientCurveBasedOnDirection();
         }
 
-        public void Display(int damage, Vector3 objPosition, bool direction, bool isCrit)
+        public void Display(float damage, Vector3 objPosition, bool direction, bool isCrit)
         {
             transform.position = objPosition;
             _startingPositionForVisualization = objPosition;
             _direction = direction;
             
-            damageText.SetText(damage.ToString());
+            damageText.SetText(damage.ToString("0.#"));
 
             damageText.color = normalFontColor;
             damageText.enableVertexGradient = isCrit;
