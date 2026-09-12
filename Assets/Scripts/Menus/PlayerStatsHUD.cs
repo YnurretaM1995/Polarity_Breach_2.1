@@ -25,7 +25,7 @@ namespace PolarityBreach.Menus
 
             if (attackDamageText != null)
             {
-                attackDamageText.text = Mathf.RoundToInt(playerStats.attackDamage).ToString();
+                attackDamageText.text = playerStats.attackDamage.ToString("0.0");
             }
 
             if (attackSpeedText != null)

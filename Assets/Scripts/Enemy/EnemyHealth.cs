@@ -36,12 +36,11 @@ namespace PolarityBreach.Enemy
 
             currentHealth -= amount;
             
-            int integerDamageValue = Mathf.RoundToInt(amount);
             Vector3 spawnPosition = transform.position + new Vector3(0f, 1.5f, 0f);
             
             if (SpawnsDamagePopups.Instance != null)
             {
-                SpawnsDamagePopups.Instance.DamageDone(integerDamageValue, spawnPosition, false);
+                SpawnsDamagePopups.Instance.DamageDone(amount, spawnPosition, false);
             }
 
             if (currentHealth <= 0f)
