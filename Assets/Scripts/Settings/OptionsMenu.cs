@@ -91,9 +91,9 @@ namespace PolarityBreach.Settings
         {
             isRefreshing = true;
 
-            if (masterSlider != null) masterSlider.value = GameSettings.MasterVolume;
-            if (musicSlider != null) musicSlider.value = GameSettings.MusicVolume;
-            if (sfxSlider != null) sfxSlider.value = GameSettings.SfxVolume;
+            if (masterSlider != null) masterSlider.SetValueWithoutNotify(GameSettings.MasterVolume);
+            if (musicSlider != null) musicSlider.SetValueWithoutNotify(GameSettings.MusicVolume);
+            if (sfxSlider != null) sfxSlider.SetValueWithoutNotify(GameSettings.SfxVolume);
 
             UpdateVolumeLabels();
             RefreshDifficulty();
@@ -115,23 +115,32 @@ namespace PolarityBreach.Settings
 
         private void OnMasterChanged(float value)
         {
+            if (isRefreshing) return;
+
             GameSettings.SetMasterVolume(value);
             if (audioApplier != null) audioApplier.ApplyMaster(value);
             UpdateVolumeLabels();
+            GameSettings.Save();
         }
 
         private void OnMusicChanged(float value)
         {
+            if (isRefreshing) return;
+
             GameSettings.SetMusicVolume(value);
             if (audioApplier != null) audioApplier.ApplyMusic(value);
             UpdateVolumeLabels();
+            GameSettings.Save();
         }
 
         private void OnSfxChanged(float value)
         {
+            if (isRefreshing) return;
+
             GameSettings.SetSfxVolume(value);
             if (audioApplier != null) audioApplier.ApplySfx(value);
             UpdateVolumeLabels();
+            GameSettings.Save();
         }
 
         private void PreviousDifficulty()
