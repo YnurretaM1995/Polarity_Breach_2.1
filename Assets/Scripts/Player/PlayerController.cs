@@ -21,6 +21,7 @@ namespace PolarityBreach.Player
         private bool isDashing = false;
         private bool canDash = true;
         private Vector3 dashDirection;
+        private Coroutine dashCoroutine;
         private PlayerStatsData _playerStats;
         
         [Header("Movement Feel")]
@@ -66,6 +67,7 @@ namespace PolarityBreach.Player
 
         private void OnEnable()
         {
+            ResetDashState();
             controls.Player.Enable();
             PauseMenu.OnPauseChanged += HandlePause;
             UIQueue.OnBlockingChanged += HandlePause;
@@ -73,6 +75,7 @@ namespace PolarityBreach.Player
 
         private void OnDisable()
         {
+            ResetDashState();
             controls.Player.Disable();
             PauseMenu.OnPauseChanged -= HandlePause;
             UIQueue.OnBlockingChanged -= HandlePause;
@@ -234,9 +237,9 @@ namespace PolarityBreach.Player
                 dashDirection = transform.forward;
             }
 
-            StartCoroutine(DashCoroutine());
+            dashCoroutine = StartCoroutine(DashCoroutine());
             PlayDashSfx();
-            dashUI.StartCooldownUI();
+            dashUI?.StartCooldownUI();
         }
 
         private void PlayDashSfx()
@@ -262,6 +265,19 @@ namespace PolarityBreach.Player
         
             yield return new WaitForSeconds(_playerStats.dashCooldown);
         
+            canDash = true;
+            dashCoroutine = null;
+        }
+
+        private void ResetDashState()
+        {
+            if (dashCoroutine != null)
+            {
+                StopCoroutine(dashCoroutine);
+                dashCoroutine = null;
+            }
+
+            isDashing = false;
             canDash = true;
         }
 
