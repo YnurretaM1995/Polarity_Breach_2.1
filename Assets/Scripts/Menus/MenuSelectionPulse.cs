@@ -7,30 +7,34 @@ namespace PolarityBreach.Menus
     public class MenuSelectionPulse : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [Header("Scale Pulse")]
+        [SerializeField] private RectTransform pulseTarget;
         [SerializeField] private float pulseSpeed = 4f;
         [SerializeField] private float selectedScale = 1.08f;
 
         private bool isSelected;
         private bool isPointerOver;
-        private RectTransform rectTransform;
         private Vector3 startingScale;
 
         private void Awake()
         {
-            rectTransform = GetComponent<RectTransform>();
-            startingScale = rectTransform != null ? rectTransform.localScale : Vector3.one;
+            if (pulseTarget == null)
+            {
+                pulseTarget = GetComponent<RectTransform>();
+            }
+
+            startingScale = pulseTarget != null ? pulseTarget.localScale : Vector3.one;
         }
 
         private void Update()
         {
-            if (rectTransform == null) return;
+            if (pulseTarget == null) return;
 
             bool selectedByEventSystem = EventSystem.current != null &&
                                          EventSystem.current.currentSelectedGameObject == gameObject;
 
             if (!isSelected && !selectedByEventSystem)
             {
-                rectTransform.localScale = startingScale;
+                pulseTarget.localScale = startingScale;
                 return;
             }
 
@@ -42,7 +46,7 @@ namespace PolarityBreach.Menus
 
             float wave = (Mathf.Sin(Time.unscaledTime * pulseSpeed) + 1f) * 0.5f;
             float scale = Mathf.Lerp(1f, selectedScale, wave);
-            rectTransform.localScale = startingScale * scale;
+            pulseTarget.localScale = startingScale * scale;
         }
 
         public void OnSelect(BaseEventData eventData)
@@ -82,9 +86,9 @@ namespace PolarityBreach.Menus
         {
             isSelected = false;
 
-            if (rectTransform != null)
+            if (pulseTarget != null)
             {
-                rectTransform.localScale = startingScale;
+                pulseTarget.localScale = startingScale;
             }
         }
     }
