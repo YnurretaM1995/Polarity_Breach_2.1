@@ -151,6 +151,7 @@ namespace PolarityBreach.Settings
             int index = ((int)GameSettings.Difficulty - 1 + count) % count;
 
             GameSettings.SetDifficulty((DifficultyLevel)index);
+            GameSettings.Save();
             RefreshDifficulty();
         }
 
@@ -162,6 +163,7 @@ namespace PolarityBreach.Settings
             int index = ((int)GameSettings.Difficulty + 1) % count;
 
             GameSettings.SetDifficulty((DifficultyLevel)index);
+            GameSettings.Save();
             RefreshDifficulty();
         }
 

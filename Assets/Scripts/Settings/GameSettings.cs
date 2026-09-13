@@ -63,10 +63,10 @@ namespace PolarityBreach.Settings
         {
             switch (Difficulty)
             {
-                case DifficultyLevel.Easy: return 200f;
+                case DifficultyLevel.Easy: return 300f;
                 case DifficultyLevel.Normal: return 100f;
                 case DifficultyLevel.Hard: return 50f;
-                case DifficultyLevel.God: return 1f;
+                case DifficultyLevel.God: return 10f;
                 default: return 100f;
             }
         }

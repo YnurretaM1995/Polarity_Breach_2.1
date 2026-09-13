@@ -1,5 +1,6 @@
 using System;
 using PolarityBreach.Feedback;
+using PolarityBreach.Settings;
 using UnityEngine;
 using PolarityBreach.PolaritySystem.Interfaces;
 
@@ -25,6 +26,12 @@ namespace PolarityBreach.Player
         private void Awake()
         {
             playerStats = GetComponent<PlayerStatsData>();
+
+            if (playerStats != null)
+            {
+                GameSettings.Load();
+                playerStats.maxHealth = GameSettings.GetStartingHealth();
+            }
         }
 
         private void Start()
