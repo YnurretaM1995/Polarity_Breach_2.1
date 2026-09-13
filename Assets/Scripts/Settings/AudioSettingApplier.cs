@@ -13,6 +13,9 @@ namespace PolarityBreach.Settings
         [SerializeField] private string musicParameter = "MusicVolume";
         [SerializeField] private string sfxParameter = "SFXVolume";
         [SerializeField] private float minDecibels = -80f;
+        [SerializeField] private float masterMaxDecibels = 0f;
+        [SerializeField] private float musicMaxDecibels = 0f;
+        [SerializeField] private float sfxMaxDecibels = 20f;
 
         private void Awake()
         {
@@ -42,15 +45,15 @@ namespace PolarityBreach.Settings
             ApplySfx(GameSettings.SfxVolume);
         }
 
-        public void ApplyMaster(float value) => SetVolume(masterParameter, value);
-        public void ApplyMusic(float value) => SetVolume(musicParameter, value);
-        public void ApplySfx(float value) => SetVolume(sfxParameter, value);
+        public void ApplyMaster(float value) => SetVolume(masterParameter, value, masterMaxDecibels);
+        public void ApplyMusic(float value) => SetVolume(musicParameter, value, musicMaxDecibels);
+        public void ApplySfx(float value) => SetVolume(sfxParameter, value, sfxMaxDecibels);
 
-        private void SetVolume(string parameter, float value)
+        private void SetVolume(string parameter, float value, float maxDecibels)
         {
             if (mixer == null || string.IsNullOrEmpty(parameter)) return;
 
-            float decibels = value <= 0.0001f ? minDecibels : Mathf.Log10(Mathf.Clamp01(value)) * 20f;
+            float decibels = value <= 0.0001f ? minDecibels : Mathf.Log10(Mathf.Clamp01(value)) * 20f + maxDecibels;
             mixer.SetFloat(parameter, decibels);
         }
     }

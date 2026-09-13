@@ -1,4 +1,5 @@
 using PolarityBreach.Enemy;
+using PolarityBreach.Settings;
 using PolarityBreach.UI;
 using System;
 using UnityEngine;
@@ -10,7 +11,8 @@ namespace PolarityBreach.Player
         [Header("Panels")]
         [SerializeField] private GameObject pausePanel;
         [SerializeField] private GameObject cheatPanel;
-        
+        [SerializeField] private PolarityBreach.Settings.OptionsMenu optionsMenu;
+
         [Header("Cheat")]
         [SerializeField] private CheatMenu cheatMenu;
 
@@ -57,6 +59,7 @@ namespace PolarityBreach.Player
 
             IsPaused = true;
             pausePanel.SetActive(true);
+            if (optionsMenu != null) optionsMenu.Open();
             Time.timeScale = 0f;
             OnPauseChanged?.Invoke(true);
         }
@@ -67,7 +70,8 @@ namespace PolarityBreach.Player
 
             IsPaused = false;
             pausePanel.SetActive(false);
-            if (cheatPanel != null) cheatPanel.SetActive(false); 
+            if (cheatPanel != null) cheatPanel.SetActive(false);
+            if (optionsMenu != null) optionsMenu.Close();
             if (cheatMenu != null) cheatMenu.CloseMenu();
             Time.timeScale = 1f;
             OnPauseChanged?.Invoke(false);

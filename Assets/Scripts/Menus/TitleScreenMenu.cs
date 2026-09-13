@@ -146,6 +146,9 @@ namespace PolarityBreach.Menus
             isStarting = true;
             DisableMenuInput();
 
+            if (musicSource != null) musicSource.Stop();
+            Destroy(musicSource.gameObject);
+
             if (sceneFader != null)
             {
                 yield return sceneFader.FadeOutAndLoadSceneRoutine(gameSceneName, fadeOutDuration);
