@@ -25545,47 +25545,75 @@ MonoBehaviour:
   - groups: []
   - groups:
     - enemyPool: {fileID: 30625201}
+      enemyCount: 5
+      pattern: 0
+      spacing: 4
+      polarity: 0
+      projectilesPerShot: 6
+      spreadAngle: 45
+    - enemyPool: {fileID: 30625201}
+      enemyCount: 5
+      pattern: 0
+      spacing: 4
+      polarity: 1
+      projectilesPerShot: 6
+      spreadAngle: 45
+  - groups:
+    - enemyPool: {fileID: 30625201}
       enemyCount: 3
       pattern: 0
       spacing: 4
       polarity: 0
-      projectilesPerShot: 3
-      spreadAngle: 15
+      projectilesPerShot: 6
+      spreadAngle: 45
+    - enemyPool: {fileID: 1520353061}
+      enemyCount: 5
+      pattern: 0
+      spacing: 4
+      polarity: 1
+      projectilesPerShot: 6
+      spreadAngle: 45
     - enemyPool: {fileID: 30625201}
       enemyCount: 3
       pattern: 0
       spacing: 4
       polarity: 1
-      projectilesPerShot: 3
-      spreadAngle: 15
-  - groups:
+      projectilesPerShot: 6
+      spreadAngle: 45
     - enemyPool: {fileID: 30625201}
       enemyCount: 2
       pattern: 0
       spacing: 4
-      polarity: 0
-      projectilesPerShot: 3
-      spreadAngle: 15
-    - enemyPool: {fileID: 1520353061}
-      enemyCount: 2
-      pattern: 0
-      spacing: 4
       polarity: 1
-      projectilesPerShot: 3
-      spreadAngle: 15
+      projectilesPerShot: 6
+      spreadAngle: 45
   - groups:
     - enemyPool: {fileID: 1520353061}
-      enemyCount: 2
+      enemyCount: 6
       pattern: 0
       spacing: 8
       polarity: 1
-      projectilesPerShot: 3
-      spreadAngle: 15
+      projectilesPerShot: 6
+      spreadAngle: 45
     - enemyPool: {fileID: 30625201}
-      enemyCount: 4
+      enemyCount: 5
       pattern: 0
       spacing: 4
       polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 45
+    - enemyPool: {fileID: 1520353061}
+      enemyCount: 5
+      pattern: 0
+      spacing: 4
+      polarity: 0
+      projectilesPerShot: 3
+      spreadAngle: 15
+    - enemyPool: {fileID: 1520353061}
+      enemyCount: 5
+      pattern: 0
+      spacing: 4
+      polarity: 1
       projectilesPerShot: 3
       spreadAngle: 15
   autoStart: 0
@@ -31765,7 +31793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11dd5e00d3972bc4abb6a5292f398516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossShield
-  maxHealth: 50
+  maxHealth: 100
   enemyPool: {fileID: 30625201}
   enemyWaveSpawner: {fileID: 1015451782}
   vulnerableHitSounds:
