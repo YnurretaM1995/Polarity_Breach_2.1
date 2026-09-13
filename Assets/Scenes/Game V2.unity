@@ -7209,7 +7209,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 393074688}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 53516364}
+        m_TargetAssemblyTypeName: PolarityBreach.Player.PauseMenu, Assembly-CSharp
+        m_MethodName: OpenSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &393074688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12227,6 +12239,9 @@ MonoBehaviour:
   musicParameter: MusicVolume
   sfxParameter: SFXVolume
   minDecibels: -80
+  masterMaxDecibels: 0
+  musicMaxDecibels: 0
+  sfxMaxDecibels: 20
 --- !u!1 &584802609
 GameObject:
   m_ObjectHideFlags: 0
@@ -27963,10 +27978,8 @@ MonoBehaviour:
   hintMinAlpha: 0.1
   hintMaxAlpha: 0.5
   typingSfxSource: {fileID: 139747093}
-  typingSfxVolume: 1
   nextSfxSource: {fileID: 1777254726}
   nextSound: {fileID: 8300000, guid: 2f10bcf09558ff84e8f15b98c108e1b1, type: 3}
-  nextSfxVolume: 1
 --- !u!114 &1132328033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28254,65 +28267,6 @@ Transform:
   - {fileID: 360590878}
   m_Father: {fileID: 1003845658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1137255625 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5121270856661676163, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-  m_PrefabInstance: {fileID: 1769419099}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1137255626 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3996241121865002482, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-  m_PrefabInstance: {fileID: 1769419099}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137255625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &1137255627 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9213547621757276166, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-  m_PrefabInstance: {fileID: 1769419099}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137255625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!114 &1137255628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137255625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58087a9968b25c745862adfea0a08910, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.MenuButtonSFX
-  audioSource: {fileID: 0}
-  navigationClip: {fileID: 8300000, guid: a291bfff4499ffd49805bb256f501348, type: 3}
-  selectClip: {fileID: 8300000, guid: e711e836417de7b428dedae4447d904f, type: 3}
-  navigationVolume: 0.4
-  selectVolume: 1
---- !u!114 &1137255629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137255625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26a810f16db3e345ba152ab0cac1439, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.MenuSelectionPulse
-  pulseTarget: {fileID: 0}
-  pulseSpeed: 5
-  selectedScale: 1.06
 --- !u!1001 &1138685807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41125,7 +41079,7 @@ PrefabInstance:
     - target: {fileID: 2956388602924963341, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 1137255626}
+      objectReference: {fileID: 0}
     - target: {fileID: 2956388602924963341, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Colors.m_SelectedColor.g
       value: 0.8117647
@@ -41269,7 +41223,7 @@ PrefabInstance:
     - target: {fileID: 3996241121865002482, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 1137255627}
+      objectReference: {fileID: 0}
     - target: {fileID: 3996241121865002482, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -41321,7 +41275,7 @@ PrefabInstance:
     - target: {fileID: 3996241121865002482, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
-      objectReference: {fileID: 2097230898}
+      objectReference: {fileID: 0}
     - target: {fileID: 3996241121865002482, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 1
@@ -41421,7 +41375,7 @@ PrefabInstance:
     - target: {fileID: 5207876791964857797, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 2097230899}
+      objectReference: {fileID: 0}
     - target: {fileID: 5207876791964857797, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -41473,7 +41427,7 @@ PrefabInstance:
     - target: {fileID: 5207876791964857797, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
-      objectReference: {fileID: 1137255626}
+      objectReference: {fileID: 0}
     - target: {fileID: 5207876791964857797, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 1
@@ -41621,7 +41575,7 @@ PrefabInstance:
     - target: {fileID: 6349328897364416742, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 1137255626}
+      objectReference: {fileID: 0}
     - target: {fileID: 6349328897364416742, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 1
@@ -41795,7 +41749,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b92023a9386149141863a96cad1e4c87, type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5121270856661676163, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
+    - {fileID: 6843503847249704309, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7950932854759897120, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
@@ -41825,18 +41781,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8217446444016912260, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1780761162}
-    - targetCorrespondingSourceObject: {fileID: 6843503847249704309, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2097230901}
-    - targetCorrespondingSourceObject: {fileID: 6843503847249704309, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2097230900}
-    - targetCorrespondingSourceObject: {fileID: 5121270856661676163, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1137255629}
-    - targetCorrespondingSourceObject: {fileID: 5121270856661676163, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1137255628}
   m_SourcePrefab: {fileID: 100100000, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
 --- !u!1 &1769538156 stripped
 GameObject:
@@ -45383,9 +45327,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1132328035}
-        m_TargetAssemblyTypeName: PolarityBreach.UI.GameOverScreen, Assembly-CSharp
-        m_MethodName: MainMenu
+      - m_Target: {fileID: 53516364}
+        m_TargetAssemblyTypeName: PolarityBreach.Player.PauseMenu, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -48097,65 +48041,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2097230897 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6843503847249704309, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-  m_PrefabInstance: {fileID: 1769419099}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2097230898 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5207876791964857797, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-  m_PrefabInstance: {fileID: 1769419099}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097230897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &2097230899 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4496303745007745781, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
-  m_PrefabInstance: {fileID: 1769419099}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097230897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!114 &2097230900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097230897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58087a9968b25c745862adfea0a08910, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.MenuButtonSFX
-  audioSource: {fileID: 0}
-  navigationClip: {fileID: 8300000, guid: a291bfff4499ffd49805bb256f501348, type: 3}
-  selectClip: {fileID: 8300000, guid: e711e836417de7b428dedae4447d904f, type: 3}
-  navigationVolume: 0.4
-  selectVolume: 1
---- !u!114 &2097230901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097230897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26a810f16db3e345ba152ab0cac1439, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Menus.MenuSelectionPulse
-  pulseTarget: {fileID: 0}
-  pulseSpeed: 5
-  selectedScale: 1.06
 --- !u!1 &2104024397
 GameObject:
   m_ObjectHideFlags: 0
@@ -49154,7 +49039,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2142805196}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 53516364}
+        m_TargetAssemblyTypeName: PolarityBreach.Player.PauseMenu, Assembly-CSharp
+        m_MethodName: ResumeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2142805196
 MonoBehaviour:
   m_ObjectHideFlags: 0
