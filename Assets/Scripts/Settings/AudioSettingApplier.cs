@@ -23,9 +23,16 @@ namespace PolarityBreach.Settings
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             GameSettings.Load();
             ApplyAll();
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                Instance = null;
+            }
         }
 
         public void ApplyAll()
