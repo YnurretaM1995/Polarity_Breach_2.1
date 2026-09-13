@@ -11,6 +11,7 @@ namespace PolarityBreach.Menus
         [SerializeField] private float selectedScale = 1.08f;
 
         private bool isSelected;
+        private bool isPointerOver;
         private RectTransform rectTransform;
         private Vector3 startingScale;
 
@@ -22,7 +23,22 @@ namespace PolarityBreach.Menus
 
         private void Update()
         {
-            if (!isSelected || rectTransform == null) return;
+            if (rectTransform == null) return;
+
+            bool selectedByEventSystem = EventSystem.current != null &&
+                                         EventSystem.current.currentSelectedGameObject == gameObject;
+
+            if (!isSelected && !selectedByEventSystem)
+            {
+                rectTransform.localScale = startingScale;
+                return;
+            }
+
+            if (isSelected && !selectedByEventSystem && !isPointerOver)
+            {
+                StopPulse();
+                return;
+            }
 
             float wave = (Mathf.Sin(Time.unscaledTime * pulseSpeed) + 1f) * 0.5f;
             float scale = Mathf.Lerp(1f, selectedScale, wave);
@@ -41,11 +57,19 @@ namespace PolarityBreach.Menus
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            isPointerOver = true;
             isSelected = true;
+
+            if (EventSystem.current != null)
+            {
+                EventSystem.current.SetSelectedGameObject(gameObject);
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            isPointerOver = false;
+
             if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject == gameObject)
             {
                 return;
