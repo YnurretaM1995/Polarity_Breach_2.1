@@ -146,8 +146,10 @@ namespace PolarityBreach.Menus
             isStarting = true;
             DisableMenuInput();
 
-            if (musicSource != null) musicSource.Stop();
-            Destroy(musicSource.gameObject);
+            if (musicSource != null)
+            {
+                StartCoroutine(FadeOutMusic(fadeOutDuration));
+            }
 
             if (sceneFader != null)
             {
@@ -161,6 +163,36 @@ namespace PolarityBreach.Menus
                 {
                     menuController.NewGameDialogYes();
                 }
+            }
+        }
+
+        private IEnumerator FadeOutMusic(float duration)
+        {
+            if (musicSource == null) yield break;
+
+            float startVolume = musicSource.volume;
+
+            if (duration <= 0f)
+            {
+                musicSource.volume = 0f;
+                musicSource.Stop();
+                yield break;
+            }
+
+            float timer = 0f;
+
+            while (timer < duration && musicSource != null)
+            {
+                timer += Time.unscaledDeltaTime;
+                float t = Mathf.Clamp01(timer / duration);
+                musicSource.volume = Mathf.Lerp(startVolume, 0f, t);
+                yield return null;
+            }
+
+            if (musicSource != null)
+            {
+                musicSource.volume = 0f;
+                musicSource.Stop();
             }
         }
 
