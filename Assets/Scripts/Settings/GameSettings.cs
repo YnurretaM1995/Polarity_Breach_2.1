@@ -9,7 +9,7 @@ namespace PolarityBreach.Settings
         private const string SfxKey = "settings_sfx_volume";
         private const string DifficultyKey = "settings_difficulty";
 
-        private const float DefaultVolume = 0.8f;
+        private const float DefaultVolume = 1.0f;
 
         public static float MasterVolume { get; private set; } = DefaultVolume;
         public static float MusicVolume { get; private set; } = DefaultVolume;

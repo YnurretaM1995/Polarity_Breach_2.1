@@ -41,7 +41,7 @@ namespace PolarityBreach.PolaritySystem
 
             if (particles != null)
             {
-                particles.Clear();
+                particles.Clear(true);
                 particles.Play();
             }
         }
