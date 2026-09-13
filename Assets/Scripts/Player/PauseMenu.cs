@@ -39,6 +39,11 @@ namespace PolarityBreach.Player
         {
             controls = new PlayerInputActions();
             controls.Player.Pause.performed += ctx => TogglePause();
+
+            if (optionsMenu == null)
+            {
+                optionsMenu = FindFirstObjectByType<OptionsMenu>(FindObjectsInactive.Include);
+            }
         }
 
         private void OnEnable() => controls.Player.Pause.Enable();
@@ -59,7 +64,6 @@ namespace PolarityBreach.Player
 
             IsPaused = true;
             pausePanel.SetActive(true);
-            if (optionsMenu != null) optionsMenu.Open();
             Time.timeScale = 0f;
             OnPauseChanged?.Invoke(true);
         }
@@ -81,6 +85,36 @@ namespace PolarityBreach.Player
         {
             pausePanel.SetActive(false);
             cheatPanel.SetActive(true);
+        }
+
+        public void OpenSettings()
+        {
+            if (LevelUpMenu.IsOpen) return;
+
+            if (!IsPaused)
+            {
+                IsPaused = true;
+                Time.timeScale = 0f;
+                OnPauseChanged?.Invoke(true);
+            }
+
+            if (pausePanel != null) pausePanel.SetActive(true);
+            if (optionsMenu != null)
+            {
+                optionsMenu.gameObject.SetActive(true);
+                optionsMenu.Open();
+            }
+        }
+
+        public void ExitGame()
+        {
+            Time.timeScale = 1f;
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
         
         public void OpenCheatMenu()
