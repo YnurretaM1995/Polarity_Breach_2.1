@@ -22592,7 +22592,7 @@ PrefabInstance:
     - target: {fileID: 3294912359778463584, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a1da7abac134d09439efca71bea36fd8, type: 2}
+      objectReference: {fileID: 2100000, guid: 69145196297c788499ff51ffc9ce2e01, type: 2}
     - target: {fileID: 3411529684393710266, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.354
@@ -22975,6 +22975,7 @@ MonoBehaviour:
   showBossSpawnWarningBeforeNextRoom: 0
   bossSpawnWarningPrefab: {fileID: 0}
   bossSpawnWarningPoint: {fileID: 0}
+  bossSpawnWarningOffset: {x: 0, y: 0.5, z: 0}
   bossSpawnWarningDuration: 1
   bossSpawnWarningScale: {x: 1, y: 1, z: 1}
   playerShooter: {fileID: 0}
@@ -34638,7 +34639,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.65
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -39297,6 +39298,7 @@ MonoBehaviour:
   showBossSpawnWarningBeforeNextRoom: 0
   bossSpawnWarningPrefab: {fileID: 0}
   bossSpawnWarningPoint: {fileID: 0}
+  bossSpawnWarningOffset: {x: 0, y: 0.5, z: 0}
   bossSpawnWarningDuration: 1
   bossSpawnWarningScale: {x: 1, y: 1, z: 1}
   playerShooter: {fileID: 0}
@@ -43046,7 +43048,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: dadbe2dffdddbd240950695b8d260867, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: chargeSoundVolume
-      value: 0.6
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: playShootSoundAs2D
@@ -43058,7 +43060,7 @@ PrefabInstance:
       objectReference: {fileID: 1755451374}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: heldChargeSoundVolume
-      value: 0.6
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _chargedProjectilePool
@@ -43066,7 +43068,7 @@ PrefabInstance:
       objectReference: {fileID: 1951798309}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: chargedShotSoundVolume
-      value: 0.7
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: shootSounds.Array.size
@@ -43074,7 +43076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: chargeCancelSoundVolume
-      value: 0.45
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: heldChargeSoundStartTime
@@ -43210,7 +43212,7 @@ PrefabInstance:
       objectReference: {fileID: -5817289336624428924, guid: c2624b65132acdf4d8a605e0d481f0cf, type: 2}
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: colorSoundVolume
-      value: 0.8
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: postProcessPulse
