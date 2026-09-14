@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2556,6 +2556,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3328217836881607429, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328217836881607429, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
+      propertyPath: m_LocalRotation.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3328217836881607429, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
@@ -2564,6 +2568,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3328217836881607429, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328217836881607429, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3683883258633779382, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
