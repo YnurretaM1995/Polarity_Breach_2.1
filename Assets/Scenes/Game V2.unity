@@ -3070,7 +3070,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 9c4761edd86e8694d8c56e4778d0a898, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9090,7 +9090,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10533,7 +10533,7 @@ MonoBehaviour:
   audioSource: {fileID: 478683705}
   navigationClip: {fileID: 8300000, guid: a291bfff4499ffd49805bb256f501348, type: 3}
   selectClip: {fileID: 8300000, guid: f930c88fddfddd84d94d91f4565bcc1e, type: 3}
-  navigationVolume: 0.5
+  navigationVolume: 0.2
   selectVolume: 1
 --- !u!114 &517392764
 MonoBehaviour:
@@ -12240,7 +12240,7 @@ MonoBehaviour:
   sfxParameter: SFXVolume
   minDecibels: -80
   masterMaxDecibels: 0
-  musicMaxDecibels: 0
+  musicMaxDecibels: -5
   sfxMaxDecibels: 20
 --- !u!1 &584802609
 GameObject:
@@ -28077,7 +28077,7 @@ MonoBehaviour:
   blinkSpeed: 5
   blinkMinAlpha: 0.15
   warningSound: {fileID: 8300000, guid: 85dbc801ae0215f4198e6b625af68c32, type: 3}
-  warningSoundVolume: 0.6
+  warningSoundVolume: 0.2
 --- !u!114 &1132328035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34639,7 +34639,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -40491,7 +40491,7 @@ MonoBehaviour:
   audioSource: {fileID: 478683705}
   navigationClip: {fileID: 8300000, guid: a291bfff4499ffd49805bb256f501348, type: 3}
   selectClip: {fileID: 8300000, guid: f930c88fddfddd84d94d91f4565bcc1e, type: 3}
-  navigationVolume: 0.5
+  navigationVolume: 0.2
   selectVolume: 1
 --- !u!114 &1742878732
 MonoBehaviour:
@@ -42004,7 +42004,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -43048,7 +43048,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: dadbe2dffdddbd240950695b8d260867, type: 3}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: chargeSoundVolume
-      value: 0.2
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 5479298315962273938, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: playShootSoundAs2D
@@ -43212,7 +43212,7 @@ PrefabInstance:
       objectReference: {fileID: -5817289336624428924, guid: c2624b65132acdf4d8a605e0d481f0cf, type: 2}
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: colorSoundVolume
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8249433527409625419, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: postProcessPulse
@@ -46031,7 +46031,7 @@ MonoBehaviour:
   audioSource: {fileID: 478683705}
   navigationClip: {fileID: 8300000, guid: a291bfff4499ffd49805bb256f501348, type: 3}
   selectClip: {fileID: 8300000, guid: f930c88fddfddd84d94d91f4565bcc1e, type: 3}
-  navigationVolume: 0.5
+  navigationVolume: 0.2
   selectVolume: 1
 --- !u!114 &1941363043
 MonoBehaviour:
