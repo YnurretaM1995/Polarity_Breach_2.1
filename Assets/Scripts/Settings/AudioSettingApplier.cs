@@ -28,6 +28,16 @@ namespace PolarityBreach.Settings
             Instance = this;
             GameSettings.Load();
             ApplyAll();
+            //Debug.Log($"[AudioSettings] master {GameSettings.MasterVolume} | music {GameSettings.MusicVolume} | sfx {GameSettings.SfxVolume}");
+            StartCoroutine(ApplyNextFrame());
+        }
+
+        private System.Collections.IEnumerator ApplyNextFrame()
+        {
+            yield return new WaitForEndOfFrame();
+            ApplyAll();
+            yield return null;
+            ApplyAll();
         }
 
         private void OnDestroy()
