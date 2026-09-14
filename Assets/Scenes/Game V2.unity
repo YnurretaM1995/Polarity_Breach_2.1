@@ -22975,6 +22975,7 @@ MonoBehaviour:
   showBossSpawnWarningBeforeNextRoom: 0
   bossSpawnWarningPrefab: {fileID: 0}
   bossSpawnWarningPoint: {fileID: 0}
+  bossSpawnWarningOffset: {x: 0, y: 0.5, z: 0}
   bossSpawnWarningDuration: 1
   bossSpawnWarningScale: {x: 1, y: 1, z: 1}
   playerShooter: {fileID: 0}
@@ -36605,11 +36606,11 @@ MonoBehaviour:
   cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 1015451772}
   showBossSpawnWarningBeforeNextRoom: 1
-  bossSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
+  bossSpawnWarningPrefab: {fileID: 4672234145031736809, guid: 39417630fcce51c4f8d40b51ff9f3e1d, type: 3}
   bossSpawnWarningPoint: {fileID: 0}
-  bossSpawnWarningOffset: {x: 0, y: 0.75, z: 0}
-  bossSpawnWarningDuration: 3
-  bossSpawnWarningScale: {x: 3, y: 3, z: 3}
+  bossSpawnWarningOffset: {x: 0, y: 2, z: 0}
+  bossSpawnWarningDuration: 6
+  bossSpawnWarningScale: {x: 10, y: 10, z: 10}
   playerShooter: {fileID: 0}
   playerStats: {fileID: 0}
   unlocksDash: 1
@@ -39297,6 +39298,7 @@ MonoBehaviour:
   showBossSpawnWarningBeforeNextRoom: 0
   bossSpawnWarningPrefab: {fileID: 0}
   bossSpawnWarningPoint: {fileID: 0}
+  bossSpawnWarningOffset: {x: 0, y: 0.5, z: 0}
   bossSpawnWarningDuration: 1
   bossSpawnWarningScale: {x: 1, y: 1, z: 1}
   playerShooter: {fileID: 0}
