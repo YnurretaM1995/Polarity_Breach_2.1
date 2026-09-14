@@ -23,6 +23,14 @@ namespace PolarityBreach.Level
         [Header("Next Room")]
         [SerializeField] private GameObject nextRoomSpawner;
 
+        [Header("Boss Spawn Warning")]
+        [SerializeField] private bool showBossSpawnWarningBeforeNextRoom;
+        [SerializeField] private GameObject bossSpawnWarningPrefab;
+        [SerializeField] private Transform bossSpawnWarningPoint;
+        [SerializeField] private Vector3 bossSpawnWarningOffset = new Vector3(0f, 0.5f, 0f);
+        [SerializeField] private float bossSpawnWarningDuration = 1f;
+        [SerializeField] private Vector3 bossSpawnWarningScale = Vector3.one;
+
         [Header("Player Shooting")]
         [SerializeField] private TestShooter playerShooter;
 
@@ -129,6 +137,8 @@ namespace PolarityBreach.Level
             }
 
 
+            yield return PlayBossSpawnWarning();
+
             if (nextRoomSpawner != null)
                 nextRoomSpawner.SetActive(true);
 
@@ -205,6 +215,43 @@ namespace PolarityBreach.Level
         {
             PlayLevelMusicAfterCrossDialogues();
             SetPlayerShooting(true);
+        }
+
+        private IEnumerator PlayBossSpawnWarning()
+        {
+            if (!showBossSpawnWarningBeforeNextRoom) yield break;
+            if (bossSpawnWarningPrefab == null) yield break;
+            if (bossSpawnWarningDuration <= 0f) yield break;
+
+            Vector3 warningPosition = bossSpawnWarningPoint != null
+                ? bossSpawnWarningPoint.position
+                : GetNextRoomWarningPosition();
+            warningPosition += bossSpawnWarningOffset;
+
+            GameObject warning = Instantiate(bossSpawnWarningPrefab, warningPosition, Quaternion.identity);
+            warning.transform.localScale = bossSpawnWarningScale;
+
+            yield return new WaitForSeconds(bossSpawnWarningDuration);
+
+            if (warning != null)
+            {
+                Destroy(warning);
+            }
+        }
+
+        private Vector3 GetNextRoomWarningPosition()
+        {
+            if (nextRoomSpawner != null)
+            {
+                return nextRoomSpawner.transform.position;
+            }
+
+            if (destinationPoint != null)
+            {
+                return destinationPoint.position;
+            }
+
+            return transform.position;
         }
 
         private void SetPlayerShooting(bool enabled)

@@ -22972,6 +22972,11 @@ MonoBehaviour:
   closeAfterUse: 1
   cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 495826143}
+  showBossSpawnWarningBeforeNextRoom: 0
+  bossSpawnWarningPrefab: {fileID: 0}
+  bossSpawnWarningPoint: {fileID: 0}
+  bossSpawnWarningDuration: 1
+  bossSpawnWarningScale: {x: 1, y: 1, z: 1}
   playerShooter: {fileID: 0}
   playerStats: {fileID: 0}
   unlocksDash: 1
@@ -36599,6 +36604,12 @@ MonoBehaviour:
   closeAfterUse: 1
   cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 1015451772}
+  showBossSpawnWarningBeforeNextRoom: 1
+  bossSpawnWarningPrefab: {fileID: 8006639428528994385, guid: 2034f08d4fdfac94a9608d8aad024a64, type: 3}
+  bossSpawnWarningPoint: {fileID: 0}
+  bossSpawnWarningOffset: {x: 0, y: 0.75, z: 0}
+  bossSpawnWarningDuration: 3
+  bossSpawnWarningScale: {x: 3, y: 3, z: 3}
   playerShooter: {fileID: 0}
   playerStats: {fileID: 0}
   unlocksDash: 1
@@ -39283,6 +39294,11 @@ MonoBehaviour:
   closeAfterUse: 1
   cameraControl: {fileID: 0}
   nextRoomSpawner: {fileID: 638365802}
+  showBossSpawnWarningBeforeNextRoom: 0
+  bossSpawnWarningPrefab: {fileID: 0}
+  bossSpawnWarningPoint: {fileID: 0}
+  bossSpawnWarningDuration: 1
+  bossSpawnWarningScale: {x: 1, y: 1, z: 1}
   playerShooter: {fileID: 0}
   playerStats: {fileID: 0}
   unlocksDash: 1
@@ -45976,9 +45992,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 0.69411767, g: 0.8117647, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.5411765, g: 0, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 0.8509804}
-    m_SelectedColor: {r: 0.69411767, g: 0.8117647, b: 1, a: 1}
+    m_SelectedColor: {r: 0.5411765, g: 0, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
