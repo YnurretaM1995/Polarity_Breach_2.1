@@ -16,22 +16,22 @@ MonoBehaviour:
   leftPortrait: {fileID: 21300000, guid: c5a77ef38f5fd0c47ab83e999215f3b6, type: 3}
   rightPortrait: {fileID: 21300000, guid: ea464f51bc1bc1b4e8fcca6c88e5ecde, type: 3}
   lines:
-  - text: Deck's quiet. That's all of them.
+  - text: The deck is clear. That's all of them.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 1
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: "Something opened at the far end \u2014 one of their gates. They came in
-      through those. Which means it goes deeper."
+  - text: One of their gates opened at the far end. They must have used these to
+      get onto the ship. If I follow them, they should lead me deeper inside.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: Two decks between me and whatever's steering this.
+  - text: Two more decks between me and whatever is controlling them.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0

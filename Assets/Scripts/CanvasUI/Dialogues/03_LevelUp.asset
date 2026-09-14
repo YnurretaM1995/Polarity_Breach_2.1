@@ -16,21 +16,21 @@ MonoBehaviour:
   leftPortrait: {fileID: 21300000, guid: 5d19048fe99a87d41ad6bfa480eaabc0, type: 3}
   rightPortrait: {fileID: 0}
   lines:
-  - text: The suit's rerouting power from whatever's left of the Meridian.
+  - text: The suit is pulling power from what's left of the Meridian.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: Three systems on the table. Enough charge for one.
+  - text: Three systems are available. I only have enough power for one.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: Choose well. There's no second draw.
+  - text: Choose carefully. I don't know when I'll get another chance.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0

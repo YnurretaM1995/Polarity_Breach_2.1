@@ -16,52 +16,53 @@ MonoBehaviour:
   leftPortrait: {fileID: 21300000, guid: c5a77ef38f5fd0c47ab83e999215f3b6, type: 3}
   rightPortrait: {fileID: 0}
   lines:
-  - text: Forty-one days out from Earth. Cargo run. Nothing on the scopes.
+  - text: Forty-one days out from Earth. Routine cargo run. Nothing unusual on the
+      scopes.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 1
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: Then the hull opened like paper, and they walked in.
+  - text: Then they breached the hull and came aboard.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: They don't shoot metal. They shoot color. Black and white. And whatever
-      matches them, passes right through.
+  - text: 'Their weapons use two polarities: black and white. Match the polarity
+      of an attack, and it passes right through.'
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: I watched Vasquez take a white round to the chest and shrug it off. The
-      next one was black. She didn't get up.
+  - text: I watched Vasquez take a white shot to the chest without a scratch. The
+      next one was black. She didn't survive.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: The Meridian's course is locked. Earth in nineteen hours. If they're still
-      aboard when we hit atmosphere, it won't be a landing. It'll be a seeding.
+  - text: The Meridian is locked on course for Earth. Nineteen hours until we get
+      there. If they're still aboard when we arrive, Earth is in danger.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: So I flood the decks. Clear them out. Room by room.
+  - text: So I clear the ship. Room by room.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
     isPrompt: 0
     keyboardHint: 
     gamepadHint: 
-  - text: And I find the thing giving the orders.
+  - text: Then I find whatever is controlling them.
     speakerName: 
     leftPortrait: 0
     rightPortrait: 0
