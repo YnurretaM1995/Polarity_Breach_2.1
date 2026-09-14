@@ -37,7 +37,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 0.78431374}
     - _Black: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 0.78431374}
-    - _Outline: {r: 1, g: 0.7734498, b: 0, a: 1}
+    - _Outline: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &8792317015680684035
