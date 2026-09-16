@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name: ""
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &52205893
 MonoBehaviour:
@@ -1494,6 +1494,7 @@ GameObject:
   - component: {fileID: 1355949630}
   - component: {fileID: 1355949629}
   - component: {fileID: 1355949631}
+  - component: {fileID: 1355949632}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -1633,6 +1634,25 @@ MonoBehaviour:
   masterMaxDecibels: 0
   musicMaxDecibels: 0
   sfxMaxDecibels: 0
+--- !u!114 &1355949632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355949628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddbac7bc0e440d4a8dd4671664b829d, type: 3}
+  m_Name: ""
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Settings.CursorManager
+  cursorOnStart: 0
+  menuCursor: {fileID: 2800000, guid: 5dfcde11d208b8b4cbacd4d65110d948, type: 3}
+  menuCursorHotspot: {x: 0, y: 0}
+  menuCursorMode: 0
+  gameplayCursor: {fileID: 0}
+  gameplayCursorHotspot: {x: 16, y: 16}
+  gameplayCursorMode: 0
 --- !u!1 &1367219538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8217446444016912260, guid: 97c9afdd65af27344a9717b488550c83, type: 3}

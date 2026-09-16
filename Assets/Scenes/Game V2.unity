@@ -12187,6 +12187,7 @@ GameObject:
   - component: {fileID: 584218160}
   - component: {fileID: 584218159}
   - component: {fileID: 584218161}
+  - component: {fileID: 584218162}
   m_Layer: 0
   m_Name: AudioHandlerSettings
   m_TagString: Untagged
@@ -12242,6 +12243,25 @@ MonoBehaviour:
   masterMaxDecibels: 0
   musicMaxDecibels: -5
   sfxMaxDecibels: 20
+--- !u!114 &584218162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584218158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddbac7bc0e440d4a8dd4671664b829d, type: 3}
+  m_Name: ""
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Settings.CursorManager
+  cursorOnStart: 1
+  menuCursor: {fileID: 2800000, guid: 5dfcde11d208b8b4cbacd4d65110d948, type: 3}
+  menuCursorHotspot: {x: 0, y: 0}
+  menuCursorMode: 0
+  gameplayCursor: {fileID: 2800000, guid: a748e483f9f2d9c4abfb23adca93e508, type: 3}
+  gameplayCursorHotspot: {x: 627, y: 627}
+  gameplayCursorMode: 0
 --- !u!1 &584802609
 GameObject:
   m_ObjectHideFlags: 0
