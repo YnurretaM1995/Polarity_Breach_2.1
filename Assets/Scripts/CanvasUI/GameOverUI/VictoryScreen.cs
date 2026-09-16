@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using PolarityBreach.Score;
+using PolarityBreach.Settings;
 
 namespace PolarityBreach.UI
 {
@@ -107,6 +108,7 @@ namespace PolarityBreach.UI
             Prepare(runSeconds, isRecord);
 
             if (root != null) root.SetActive(true);
+            CursorManager.ShowMenuCursor();
 
             yield return Fade(blackBackground, 0f, 1f, blackFadeDuration);
 

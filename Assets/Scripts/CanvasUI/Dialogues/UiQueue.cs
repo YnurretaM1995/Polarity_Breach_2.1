@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PolarityBreach.Settings;
 using UnityEngine;
 
 namespace PolarityBreach.UI
@@ -23,6 +24,7 @@ namespace PolarityBreach.UI
             }
 
             Instance = this;
+            CursorManager.ShowGameplayCursor();
         }
 
         private void OnDestroy()
@@ -63,6 +65,12 @@ namespace PolarityBreach.UI
         {
             IsBlocking = blocking;
             Time.timeScale = blocking ? 0f : 1f;
+
+            if (blocking)
+                CursorManager.ShowMenuCursor();
+            else
+                CursorManager.ShowGameplayCursor();
+
             OnBlockingChanged?.Invoke(blocking);
         }
     }

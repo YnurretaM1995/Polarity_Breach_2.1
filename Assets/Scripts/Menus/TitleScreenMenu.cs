@@ -1,4 +1,5 @@
 using System.Collections;
+using PolarityBreach.Settings;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -47,6 +48,7 @@ namespace PolarityBreach.Menus
         private void Start()
         {
             Time.timeScale = 1f;
+            CursorManager.ShowMenuCursor();
 
             if (optionsPanel != null)
             {

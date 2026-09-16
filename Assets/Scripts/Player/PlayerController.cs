@@ -1,4 +1,5 @@
 using PolarityBreach.Audio;
+using PolarityBreach.Settings;
 using PolarityBreach.UI;
 using System.Collections;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace PolarityBreach.Player
         private Vector3 lookDirection;
         private PlayerInputActions controls;
         private bool isUsingGamepad = false;
+        private bool gameplayCursorVisible = true;
         private float aimStrength = 1f;
         private float currentAimRange;
         private float aimRangeVelocity;
@@ -134,10 +136,12 @@ namespace PolarityBreach.Player
             if (stickInput.magnitude > 0.1f)
             {
                 isUsingGamepad = true;
+                SetGameplayCursorVisible(false);
             }
             else if (Mouse.current != null && Mouse.current.delta.ReadValue().magnitude > 0.1f)
             {
                 isUsingGamepad = false;
+                SetGameplayCursorVisible(true);
             }
 
             if (isUsingGamepad)
@@ -165,6 +169,14 @@ namespace PolarityBreach.Player
                     lookDirection = new Vector3(deltaX, 0f, deltaY).normalized;
                 }
             }
+        }
+
+        private void SetGameplayCursorVisible(bool visible)
+        {
+            if (gameplayCursorVisible == visible) return;
+
+            gameplayCursorVisible = visible;
+            CursorManager.SetGameplayCursorVisible(visible);
         }
 
 

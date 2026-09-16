@@ -1,4 +1,5 @@
 using System.Collections;
+using PolarityBreach.Settings;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -59,6 +60,7 @@ namespace PolarityBreach.Player
 
             panel.SetActive(true);
             IsOpen = true;
+            CursorManager.ShowMenuCursor();
 
             StartCoroutine(SelectDefaultButtonNextFrame());
         }
@@ -109,6 +111,7 @@ namespace PolarityBreach.Player
             else
             {
                 Time.timeScale = previousTimeScale <= 0f ? 1f : previousTimeScale;
+                CursorManager.ShowGameplayCursor();
             }
 
             levelUpBonus = null;

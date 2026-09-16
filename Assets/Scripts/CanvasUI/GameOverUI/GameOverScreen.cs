@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using PolarityBreach.Menus;
+using PolarityBreach.Settings;
 
 namespace PolarityBreach.UI
 {
@@ -97,6 +98,7 @@ namespace PolarityBreach.UI
             Prepare();
 
             if (root != null) root.SetActive(true);
+            CursorManager.ShowMenuCursor();
             if (musicController != null) musicController.PlayGameOverMusic();
 
             yield return Fade(blackBackground, 0f, 1f, blackFadeDuration);
