@@ -14,7 +14,7 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private GameObject _chargedProjectilePrefab;
         [SerializeField] private ProjectilePool _normalProjectilePool;
         [SerializeField] private ProjectilePool _chargedProjectilePool;
-        
+
         [SerializeField] private AudioClip[] shootSounds;
         [SerializeField] private AudioClip shootSound;
         [SerializeField, Range(0f, 1f)] private float shootSoundVolume = 1f;
@@ -32,7 +32,7 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private AudioClip chargedShotSound;
         [SerializeField, Range(0f, 1f)] private float chargedShotSoundVolume = 1f;
         [SerializeField] private bool playChargeShotSoundsAs2D = true;
-        
+
         private bool _isCharging;
         private bool _chargeReady;
         private float _chargeStartTime;
@@ -61,7 +61,7 @@ namespace PolarityBreach.PolaritySystem
             _polarity = GetComponent<PolarityComponent>();
             _playerStats = GetComponent<PlayerStatsData>();
             _cam = Camera.main;
-            if (_muzzle == null) 
+            if (_muzzle == null)
                 _muzzle = transform;
             if (chargeLoopSource == null)
                 chargeLoopSource = CreateLoopSource("Charge Shot Loop Audio");
@@ -74,11 +74,12 @@ namespace PolarityBreach.PolaritySystem
         }
 
         private void OnEnable()
-        { 
+        {
             _fireAction.Enable();
             PauseMenu.OnPauseChanged += HandlePause;
             UIQueue.OnBlockingChanged += HandlePause;
         }
+
         private void OnDisable()
         {
             _fireAction.Disable();
@@ -86,13 +87,17 @@ namespace PolarityBreach.PolaritySystem
             UIQueue.OnBlockingChanged -= HandlePause;
             StopChargeLoop();
             StopHeldChargeLoop();
+
+            if (GamepadRumble.Instance != null) GamepadRumble.Instance.SetChargeRumble(false);
         }
+
         private void OnDestroy() => _fireAction.Dispose();
 
         private void Update()
         {
             if (!_canShoot) return;
             if (UIQueue.IsBlocking || PauseMenu.IsPaused) return;
+
             if (_playerStats.chargeShotUnlocked)
             {
                 if (_fireAction.WasPressedThisFrame())
@@ -116,7 +121,7 @@ namespace PolarityBreach.PolaritySystem
 
             AutoFire();
         }
-        
+
         private void HandlePause(bool paused)
         {
             if (paused)
@@ -144,7 +149,7 @@ namespace PolarityBreach.PolaritySystem
             CancelCharge(false);
             _fireAction.Disable();
         }
-        
+
         private void StartCharging()
         {
             _isCharging = true;
@@ -161,6 +166,7 @@ namespace PolarityBreach.PolaritySystem
             if (holdTime >= _playerStats.chargeTime && !_chargeReady)
             {
                 _chargeReady = true;
+                if (GamepadRumble.Instance != null) GamepadRumble.Instance.SetChargeRumble(true);
                 StartHeldChargeLoop();
                 StopChargeLoop();
                 Debug.Log("Charge Shot READY!");
@@ -169,6 +175,8 @@ namespace PolarityBreach.PolaritySystem
 
         private void ReleaseCharge()
         {
+            if (GamepadRumble.Instance != null) GamepadRumble.Instance.SetChargeRumble(false);
+
             if (_isCharging && _chargeReady)
             {
                 StopChargeLoop();
@@ -179,20 +187,20 @@ namespace PolarityBreach.PolaritySystem
             {
                 CancelCharge(true);
             }
-            
+
             _isCharging = false;
             _chargeReady = false;
         }
-        
+
         private void Shoot()
         {
-            ShootFromPool(_normalProjectilePool, 
+            ShootFromPool(_normalProjectilePool,
                 _playerStats.attackSpeed,
                 _playerStats.attackDamage,
                 _playerStats.knockBackPower);
             PlayShootSfx();
         }
-        
+
         private void ChargeShot()
         {
             float chargeShotDamage = _playerStats.attackDamage * _playerStats.chargeShotDamageMultiplier;
@@ -216,15 +224,13 @@ namespace PolarityBreach.PolaritySystem
 
             if (projectile == null) return;
             projectile.SetStats(speed, damage, knockbackForce);
-            
+
             var bulletPolarity = projectile.GetComponent<PolarityComponent>();
             if (bulletPolarity != null) bulletPolarity.SetPolarity(_polarity.CurrentPolarity);
 
             _lastShotTime = Time.time;
         }
 
-        
-        
         private void AutoFire()
         {
             if (Time.time >= _lastShotTime + _playerStats.attackSpeedDelay)
@@ -309,6 +315,8 @@ namespace PolarityBreach.PolaritySystem
         private void CancelCharge(bool playCancelSound)
         {
             if (!_isCharging) return;
+
+            if (GamepadRumble.Instance != null) GamepadRumble.Instance.SetChargeRumble(false);
 
             StopChargeLoop();
             StopHeldChargeLoop();
