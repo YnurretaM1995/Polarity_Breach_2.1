@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -33,6 +34,7 @@ namespace PolarityBreach.Settings
         private AudioSettingsApplier audioApplier;
         private bool isRefreshing;
 
+        public event Action Closed;
         public bool IsOpen => panel != null && panel.activeSelf;
 
         private void Awake()
@@ -79,6 +81,7 @@ namespace PolarityBreach.Settings
         {
             GameSettings.Save();
             panel.SetActive(false);
+            Closed?.Invoke();
         }
 
         public void Toggle()

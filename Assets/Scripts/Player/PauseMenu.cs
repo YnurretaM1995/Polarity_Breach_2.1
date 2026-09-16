@@ -2,7 +2,10 @@ using PolarityBreach.Enemy;
 using PolarityBreach.Settings;
 using PolarityBreach.UI;
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace PolarityBreach.Player
 {
@@ -12,6 +15,9 @@ namespace PolarityBreach.Player
         [SerializeField] private GameObject pausePanel;
         [SerializeField] private GameObject cheatPanel;
         [SerializeField] private PolarityBreach.Settings.OptionsMenu optionsMenu;
+
+        [Header("Selection")]
+        [SerializeField] private Selectable defaultSelectedButton;
 
         [Header("Cheat")]
         [SerializeField] private CheatMenu cheatMenu;
@@ -26,6 +32,7 @@ namespace PolarityBreach.Player
         public static bool IsPaused { get; private set; } 
         public static event Action<bool> OnPauseChanged;
         private PlayerInputActions controls;
+        private Coroutine selectDefaultRoutine;
         
         public void ResumeButton() => Resume();
         public void ToggleDash(bool value) => playerStats.dashUnlocked = value;
@@ -37,6 +44,9 @@ namespace PolarityBreach.Player
         
         private void Awake()
         {
+            IsPaused = false;
+            Time.timeScale = 1f;
+
             controls = new PlayerInputActions();
             controls.Player.Pause.performed += ctx => TogglePause();
 
@@ -44,10 +54,28 @@ namespace PolarityBreach.Player
             {
                 optionsMenu = FindFirstObjectByType<OptionsMenu>(FindObjectsInactive.Include);
             }
+
+            if (optionsMenu != null)
+            {
+                optionsMenu.Closed += HandleOptionsClosed;
+            }
+
+            if (defaultSelectedButton == null)
+            {
+                defaultSelectedButton = FindResumeButton();
+            }
         }
 
         private void OnEnable() => controls.Player.Pause.Enable();
         private void OnDisable() => controls.Player.Pause.Disable();
+
+        private void OnDestroy()
+        {
+            if (optionsMenu != null)
+            {
+                optionsMenu.Closed -= HandleOptionsClosed;
+            }
+        }
 
         private void TogglePause()
         {
@@ -64,8 +92,10 @@ namespace PolarityBreach.Player
 
             IsPaused = true;
             pausePanel.SetActive(true);
+            CursorManager.ShowMenuCursor();
             Time.timeScale = 0f;
             OnPauseChanged?.Invoke(true);
+            SelectDefaultButtonNextFrame();
         }
 
         public void Resume()
@@ -78,6 +108,7 @@ namespace PolarityBreach.Player
             if (optionsMenu != null) optionsMenu.Close();
             if (cheatMenu != null) cheatMenu.CloseMenu();
             Time.timeScale = 1f;
+            CursorManager.ShowGameplayCursor();
             OnPauseChanged?.Invoke(false);
         }
         
@@ -95,6 +126,7 @@ namespace PolarityBreach.Player
             {
                 IsPaused = true;
                 Time.timeScale = 0f;
+                CursorManager.ShowMenuCursor();
                 OnPauseChanged?.Invoke(true);
             }
 
@@ -130,6 +162,7 @@ namespace PolarityBreach.Player
             IsPaused = false;
             pausePanel.SetActive(false);
             Time.timeScale = 1f;
+            CursorManager.ShowGameplayCursor();
             OnPauseChanged?.Invoke(false);
         }
         
@@ -138,6 +171,55 @@ namespace PolarityBreach.Player
         {
             cheatPanel.SetActive(false);
             pausePanel.SetActive(true);
+            SelectDefaultButtonNextFrame();
+        }
+
+        private void HandleOptionsClosed()
+        {
+            if (!IsPaused || pausePanel == null || !pausePanel.activeInHierarchy) return;
+
+            SelectDefaultButtonNextFrame();
+        }
+
+        private Selectable FindResumeButton()
+        {
+            if (pausePanel == null) return null;
+
+            Selectable[] selectables = pausePanel.GetComponentsInChildren<Selectable>(true);
+            for (int i = 0; i < selectables.Length; i++)
+            {
+                if (selectables[i] != null && selectables[i].name == "ResumeButton")
+                    return selectables[i];
+            }
+
+            for (int i = 0; i < selectables.Length; i++)
+            {
+                if (selectables[i] != null && selectables[i].name.Contains("Resume"))
+                    return selectables[i];
+            }
+
+            return selectables.Length > 0 ? selectables[0] : null;
+        }
+
+        private void SelectDefaultButtonNextFrame()
+        {
+            if (selectDefaultRoutine != null)
+                StopCoroutine(selectDefaultRoutine);
+
+            selectDefaultRoutine = StartCoroutine(SelectDefaultButtonRoutine());
+        }
+
+        private IEnumerator SelectDefaultButtonRoutine()
+        {
+            yield return null;
+
+            if (EventSystem.current != null && defaultSelectedButton != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(defaultSelectedButton.gameObject);
+            }
+
+            selectDefaultRoutine = null;
         }
        
         public void SetFireRate(float sliderValue)
