@@ -16155,8 +16155,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 775767572}
+  - component: {fileID: 775767573}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GamepadRumble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16177,6 +16178,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &775767573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775767571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60fa8456ba5eb18448e88b2d1c5f747c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.GamepadRumble
+  chargeLowFrequency: 0.25
+  chargeHighFrequency: 0.3
+  lowHealthThreshold: 0.3
+  lowHealthPulseStrength: 0.25
+  lowHealthPulseDuration: 0.15
 --- !u!1 &784123168
 GameObject:
   m_ObjectHideFlags: 0
@@ -33837,7 +33855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -5.4001465, y: 851}
+  m_AnchoredPosition: {x: -5.4003906, y: 851}
   m_SizeDelta: {x: 126.71, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1425752839
