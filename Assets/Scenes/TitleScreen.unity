@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: ""
+  m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &52205893
 MonoBehaviour:
@@ -1644,10 +1644,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ddbac7bc0e440d4a8dd4671664b829d, type: 3}
-  m_Name: ""
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Settings.CursorManager
   cursorOnStart: 0
-  menuCursor: {fileID: 2800000, guid: 5dfcde11d208b8b4cbacd4d65110d948, type: 3}
+  menuCursor: {fileID: 2800000, guid: 5aad88ab6d9c5774a8af8e20c445de61, type: 3}
   menuCursorHotspot: {x: 0, y: 0}
   menuCursorMode: 0
   gameplayCursor: {fileID: 0}

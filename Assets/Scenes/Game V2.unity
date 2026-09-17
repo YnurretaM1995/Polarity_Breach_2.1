@@ -867,6 +867,7 @@ MonoBehaviour:
   pausePanel: {fileID: 399083339}
   cheatPanel: {fileID: 1938681924}
   optionsMenu: {fileID: 0}
+  defaultSelectedButton: {fileID: 0}
   cheatMenu: {fileID: 53516370}
   playerStats: {fileID: 1817478972}
   playerHealth: {fileID: 1817478971}
@@ -4468,7 +4469,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 393074687}
-    m_SelectOnDown: {fileID: 2142805195}
+    m_SelectOnDown: {fileID: 1911057616}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -12253,10 +12254,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ddbac7bc0e440d4a8dd4671664b829d, type: 3}
-  m_Name: ""
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Settings.CursorManager
   cursorOnStart: 1
-  menuCursor: {fileID: 2800000, guid: 5dfcde11d208b8b4cbacd4d65110d948, type: 3}
+  menuCursor: {fileID: 2800000, guid: 026bcf7914eb96348823cca0e1766c2b, type: 3}
   menuCursorHotspot: {x: 0, y: 0}
   menuCursorMode: 0
   gameplayCursor: {fileID: 2800000, guid: a748e483f9f2d9c4abfb23adca93e508, type: 3}
@@ -41163,7 +41164,7 @@ PrefabInstance:
     - target: {fileID: 2956388602924963341, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1769538157}
     - target: {fileID: 2956388602924963341, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Colors.m_SelectedColor.g
       value: 0.8117647
@@ -41172,6 +41173,10 @@ PrefabInstance:
       propertyPath: m_Colors.m_SelectedColor.r
       value: 0.69411767
       objectReference: {fileID: 0}
+    - target: {fileID: 2956388602924963341, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 1776524157}
     - target: {fileID: 2956388602924963341, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.g
       value: 0.8117647
@@ -41659,7 +41664,7 @@ PrefabInstance:
     - target: {fileID: 6349328897364416742, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1179869062}
     - target: {fileID: 6349328897364416742, guid: 97c9afdd65af27344a9717b488550c83, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 1
