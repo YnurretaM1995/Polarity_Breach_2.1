@@ -27,7 +27,6 @@ namespace PolarityBreach
         [SerializeField, Range(0.5f, 3f)] private float menuScale = 1.5f;
 
         [Header("Gamepad Navigation")]
-        [Tooltip("Slider range is divided into this many steps. One D-Pad press = one step.")]
         [SerializeField] private int sliderSteps = 20;
 
         private bool showMenu;
@@ -48,6 +47,8 @@ namespace PolarityBreach
 
         private bool navigatedWithGamepad;
 
+        private CheatMenuGUI guiHost;
+
         private void Awake()
         {
             if (playerStats == null)
@@ -55,6 +56,12 @@ namespace PolarityBreach
 
             if (bossObject != null)
                 bossObject.SetActive(false);
+
+            guiHost = GetComponent<CheatMenuGUI>();
+            if (guiHost == null) guiHost = gameObject.AddComponent<CheatMenuGUI>();
+
+            guiHost.Initialize(this);
+            RefreshGUIHost();
         }
 
         private void Update()
@@ -152,7 +159,7 @@ namespace PolarityBreach
                 bossObject.SetActive(true);
         }
 
-        private void OnGUI()
+        public void DrawGUI()
         {
             if (!showMenu || playerStats == null) return;
 
@@ -169,48 +176,48 @@ namespace PolarityBreach
             scrollPosition = GUILayout.BeginScrollView(scrollPosition);
 
             GUILayout.Label("Player Stats", boldStyle);
-            playerStats.movementSpeed = NavSlider("Movement Speed", playerStats.movementSpeed, 0f, 20f);        // 0
-            playerStats.maxHealth = NavSlider("Max Health", playerStats.maxHealth, 1f, 300f);                   // 1
-            playerStats.godMode = NavToggle(playerStats.godMode, "God Mode");                                   // 2
-            playerStats.polaritySwitchCooldown = NavSlider("Polarity Cooldown", playerStats.polaritySwitchCooldown, 0f, 5f); // 3
+            playerStats.movementSpeed = NavSlider("Movement Speed", playerStats.movementSpeed, 0f, 20f);
+            playerStats.maxHealth = NavSlider("Max Health", playerStats.maxHealth, 1f, 300f);
+            playerStats.godMode = NavToggle(playerStats.godMode, "God Mode");
+            playerStats.polaritySwitchCooldown = NavSlider("Polarity Cooldown", playerStats.polaritySwitchCooldown, 0f, 5f);
 
             GUILayout.Space(20);
 
             GUILayout.Label("Dash", boldStyle);
-            playerStats.dashUnlocked = NavToggle(playerStats.dashUnlocked, "Dash Unlocked");                    // 4
-            playerStats.dashSpeed = NavSlider("Dash Speed", playerStats.dashSpeed, 0f, 60f);                    // 5
-            playerStats.dashDuration = NavSlider("Dash Duration", playerStats.dashDuration, 0f, 2f);            // 6
-            playerStats.dashCooldown = NavSlider("Dash Cooldown", playerStats.dashCooldown, 0f, 5f);            // 7
+            playerStats.dashUnlocked = NavToggle(playerStats.dashUnlocked, "Dash Unlocked");
+            playerStats.dashSpeed = NavSlider("Dash Speed", playerStats.dashSpeed, 0f, 60f);
+            playerStats.dashDuration = NavSlider("Dash Duration", playerStats.dashDuration, 0f, 2f);
+            playerStats.dashCooldown = NavSlider("Dash Cooldown", playerStats.dashCooldown, 0f, 5f);
 
             GUILayout.Space(20);
 
             GUILayout.Label("Normal Shot", boldStyle);
-            playerStats.attackSpeedDelay = NavSlider("Attack Speed Delay", playerStats.attackSpeedDelay, 0.01f, 3f); // 8
-            playerStats.attackDamage = NavSlider("Attack Damage", playerStats.attackDamage, 0f, 100f);          // 9
-            playerStats.attackSpeed = NavSlider("Projectile Speed", playerStats.attackSpeed, 0f, 200f);         // 10
-            playerStats.knockBackPower = NavSlider("Knockback", playerStats.knockBackPower, 0f, 100f);          // 11
+            playerStats.attackSpeedDelay = NavSlider("Attack Speed Delay", playerStats.attackSpeedDelay, 0.01f, 3f);
+            playerStats.attackDamage = NavSlider("Attack Damage", playerStats.attackDamage, 0f, 100f);
+            playerStats.attackSpeed = NavSlider("Projectile Speed", playerStats.attackSpeed, 0f, 200f);
+            playerStats.knockBackPower = NavSlider("Knockback", playerStats.knockBackPower, 0f, 100f);
 
             GUILayout.Space(20);
 
             GUILayout.Label("Charge Shot", boldStyle);
-            playerStats.chargeShotUnlocked = NavToggle(playerStats.chargeShotUnlocked, "Charge Shot Unlocked"); // 12
-            playerStats.chargeShotDamageMultiplier = NavSlider("Charge Damage Multiplier", playerStats.chargeShotDamageMultiplier, 1f, 5f); // 13
-            playerStats.chargeShotSpeed = NavSlider("Charge Speed", playerStats.chargeShotSpeed, 0f, 50f);      // 14
-            playerStats.chargeShotKnockBackPower = NavSlider("Charge Knockback", playerStats.chargeShotKnockBackPower, 0f, 200f); // 15
-            playerStats.chargeTime = NavSlider("Charge Time", playerStats.chargeTime, 0f, 5f);                  // 16
+            playerStats.chargeShotUnlocked = NavToggle(playerStats.chargeShotUnlocked, "Charge Shot Unlocked");
+            playerStats.chargeShotDamageMultiplier = NavSlider("Charge Damage Multiplier", playerStats.chargeShotDamageMultiplier, 1f, 5f);
+            playerStats.chargeShotSpeed = NavSlider("Charge Speed", playerStats.chargeShotSpeed, 0f, 50f);
+            playerStats.chargeShotKnockBackPower = NavSlider("Charge Knockback", playerStats.chargeShotKnockBackPower, 0f, 200f);
+            playerStats.chargeTime = NavSlider("Charge Time", playerStats.chargeTime, 0f, 5f);
 
             GUILayout.Space(20);
 
             GUILayout.Label("Wave Debug", boldStyle);
-            if (NavButton("Kill all enemies"))                                           // 17
+            if (NavButton("Kill all enemies"))
                 KillAllEnemies();
-            if (NavButton("Clear current room"))                                          // 18
+            if (NavButton("Clear current room"))
                 ClearRoomForDebug();
 
             GUILayout.Space(10);
 
             GUILayout.Label("Boss Debug", boldStyle);
-            if (NavButton("Go to Boss Fight"))                                                                  // 19
+            if (NavButton("Go to Boss Fight"))
                 GoToBossFight();
 
             GUILayout.Space(10);
@@ -267,6 +274,7 @@ namespace PolarityBreach
             selectedRect = GUILayoutUtility.GetLastRect();
             selectedRectValid = true;
         }
+
         private void CheckMouseHover(int myIndex)
         {
             if (Event.current.type != EventType.Repaint) return;
@@ -275,7 +283,6 @@ namespace PolarityBreach
             if (r.Contains(Event.current.mousePosition))
                 selectedIndex = myIndex;
         }
-
 
         private float NavSlider(string label, float value, float min, float max)
         {
@@ -337,9 +344,28 @@ namespace PolarityBreach
             return pressed;
         }
 
-        public void ToggleMenu() => showMenu = !showMenu;
-        public void OpenMenu() => showMenu = true;
-        public void CloseMenu() => showMenu = false;
+        public void ToggleMenu()
+        {
+            showMenu = !showMenu;
+            RefreshGUIHost();
+        }
+
+        public void OpenMenu()
+        {
+            showMenu = true;
+            RefreshGUIHost();
+        }
+
+        public void CloseMenu()
+        {
+            showMenu = false;
+            RefreshGUIHost();
+        }
+
+        private void RefreshGUIHost()
+        {
+            if (guiHost != null) guiHost.enabled = showMenu;
+        }
 
         private void KillAllEnemies()
         {
