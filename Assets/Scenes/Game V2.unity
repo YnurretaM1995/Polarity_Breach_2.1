@@ -44501,9 +44501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6aec91a3b1c63f4ab660eb8fe09a5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.UI.BossDefeatedDialogue
-  bossHealth: {fileID: 0}
+  bossHealth: {fileID: 1015451780}
   endingDialogue: {fileID: 1508979111}
-  gameTimer: {fileID: 0}
+  gameTimer: {fileID: 53516371}
   musicController: {fileID: 0}
   deathAnimationDuration: 2
   extraDelay: 1

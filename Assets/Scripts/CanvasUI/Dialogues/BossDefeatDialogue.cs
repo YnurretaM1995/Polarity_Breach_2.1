@@ -17,23 +17,34 @@ namespace PolarityBreach.UI
 
         private bool subscribed;
 
-        private void Update()
+        private void OnEnable()
         {
-            if (subscribed) return;
-
-            if (bossHealth == null)
-                bossHealth = FindFirstObjectByType<BossHealth>();
-
-            if (bossHealth != null)
-            {
-                bossHealth.OnDied += PlayEnding;
-                subscribed = true;
-            }
+            Subscribe();
         }
 
         private void OnDisable()
         {
-            if (bossHealth != null) bossHealth.OnDied -= PlayEnding;
+            Unsubscribe();
+        }
+
+        private void Subscribe()
+        {
+            if (subscribed) return;
+
+            if (bossHealth == null)
+                bossHealth = FindFirstObjectByType<BossHealth>(FindObjectsInactive.Include);
+
+            if (bossHealth == null) return;
+
+            bossHealth.OnDied += PlayEnding;
+            subscribed = true;
+        }
+
+        private void Unsubscribe()
+        {
+            if (subscribed && bossHealth != null)
+                bossHealth.OnDied -= PlayEnding;
+
             subscribed = false;
         }
 
