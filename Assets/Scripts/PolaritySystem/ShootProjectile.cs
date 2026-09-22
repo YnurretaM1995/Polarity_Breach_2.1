@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using PolarityBreach.Audio;
 using PolarityBreach.Boss;
 using PolarityBreach.Enemy;
@@ -10,6 +11,9 @@ namespace PolarityBreach.PolaritySystem
     [RequireComponent(typeof(PolarityComponent))]
     public class ShootProjectile : MonoBehaviour
     {
+        private const int MaxHitsPerFrame = 16;
+        private static readonly RaycastHit[] hitBuffer = new RaycastHit[MaxHitsPerFrame];
+
         [SerializeField] private TrailRenderer trail;
         [SerializeField] private ParticleSystem particles;
 
@@ -30,18 +34,20 @@ namespace PolarityBreach.PolaritySystem
 
         private PolarityComponent _polarity;
         private float _spawnTime;
+        private readonly HashSet<Collider> _hitColliders = new HashSet<Collider>();
 
         private void Awake() => _polarity = GetComponent<PolarityComponent>();
 
         private void OnEnable()
         {
             _spawnTime = Time.time;
+            _hitColliders.Clear();
 
             if (trail != null) trail.Clear();
 
             if (particles != null)
             {
-                particles.Clear(true);
+                particles.Clear();
                 particles.Play();
             }
         }
@@ -50,17 +56,24 @@ namespace PolarityBreach.PolaritySystem
         {
             float step = _speed * Time.deltaTime;
             Vector3 origin = transform.position;
+            Vector3 direction = transform.forward;
 
-            transform.position += transform.forward * step;
+            transform.position += direction * step;
 
-            RaycastHit[] hits = Physics.SphereCastAll(origin, hitRadius, transform.forward, step, ~0, QueryTriggerInteraction.Collide);
+            int hitCount = Physics.SphereCastNonAlloc(origin, hitRadius, direction, hitBuffer, step, ~0, QueryTriggerInteraction.Collide);
 
-            for (int i = 0; i < hits.Length; i++)
+            for (int i = 0; i < hitCount; i++)
             {
-                if (hits[i].collider.GetComponentInParent<IDamageable>() == null) continue;
+                Collider hitCollider = hitBuffer[i].collider;
 
-                HandleHit(hits[i].collider);
-                return;
+                if (hitCollider == null) continue;
+                if (_hitColliders.Contains(hitCollider)) continue;
+                if (hitCollider.transform.IsChildOf(transform)) continue;
+                if (hitCollider.GetComponentInParent<IDamageable>() == null) continue;
+
+                HandleHit(hitCollider);
+
+                if (!gameObject.activeSelf) return;
             }
 
             if (Time.time - _spawnTime >= _lifeTime) gameObject.SetActive(false);
@@ -81,6 +94,7 @@ namespace PolarityBreach.PolaritySystem
         private void HandleHit(Collider other)
         {
             if (!gameObject.activeSelf) return;
+            if (!_hitColliders.Add(other)) return;
 
             BossShield bossShield = other.GetComponentInParent<BossShield>();
             if (bossShield != null && bossShield.IsInvulnerable)
@@ -111,7 +125,9 @@ namespace PolarityBreach.PolaritySystem
             {
                 Rigidbody rb = other.GetComponent<Rigidbody>();
                 Vector3 impactDirection = transform.forward;
-                FeedbackHandler.SpawnParticles(_impactEffect, transform.position, impactDirection);
+
+                if (_impactEffect != null)
+                    FeedbackHandler.SpawnParticles(_impactEffect, transform.position, impactDirection);
 
                 if (enemyHealth == null || !enemyHealth.IsDead)
                 {

@@ -17,7 +17,8 @@ namespace PolarityBreach.Player
         [SerializeField, Range(0f, 1f)] private float threeMeleeSlowMultiplier = 0.4f;
         [SerializeField, Range(0f, 1f)] private float maxMeleeSlowMultiplier = 0.2f;
         private readonly Dictionary<object, MovementSlowRequest> movementSlowRequests = new Dictionary<object, MovementSlowRequest>();
-        
+        private readonly List<object> expiredSlowSources = new List<object>();
+
         [Header("Weapon Stats")] 
         public float attackSpeedDelay;
         public float attackDamage;
@@ -74,14 +75,18 @@ namespace PolarityBreach.Player
 
         private void RefreshMovementSpeedMultiplier()
         {
-            foreach (object source in new List<object>(movementSlowRequests.Keys))
+            if (movementSlowRequests.Count > 0)
             {
-                MovementSlowRequest request = movementSlowRequests[source];
+                expiredSlowSources.Clear();
 
-                if (Time.time >= request.expiresAt)
+                foreach (KeyValuePair<object, MovementSlowRequest> pair in movementSlowRequests)
                 {
-                    movementSlowRequests.Remove(source);
+                    if (Time.time >= pair.Value.expiresAt)
+                        expiredSlowSources.Add(pair.Key);
                 }
+
+                for (int i = 0; i < expiredSlowSources.Count; i++)
+                    movementSlowRequests.Remove(expiredSlowSources[i]);
             }
 
             movementSpeedMultiplier = GetMeleeSlowMultiplier(movementSlowRequests.Count);

@@ -29,6 +29,16 @@ namespace PolarityBreach.Level
             }
         }
 
+        private void OnEnable()
+        {
+            SubscribeToBoss();
+        }
+
+        private void OnDisable()
+        {
+            UnsubscribeFromBoss();
+        }
+
         private void Start()
         {
             elapsedTime = 0f;
@@ -37,36 +47,36 @@ namespace PolarityBreach.Level
 
         private void Update()
         {
-            if (!subscribedToBoss) SubscribeToBoss();
-
             if (isStopped) return;
             if (IsBlocked) return;
 
             elapsedTime += Time.unscaledDeltaTime;
         }
 
-        private void OnDisable()
-        {
-            if (bossHealth != null) bossHealth.OnDied -= StopTimer;
-            subscribedToBoss = false;
-        }
-
         public void StopTimer()
         {
             isStopped = true;
-            Debug.Log($"Run finished in {FormattedTime}");
         }
 
         private void SubscribeToBoss()
         {
-            if (bossHealth == null)
-                bossHealth = FindFirstObjectByType<BossHealth>();
+            if (subscribedToBoss) return;
 
-            if (bossHealth != null)
-            {
-                bossHealth.OnDied += StopTimer;
-                subscribedToBoss = true;
-            }
+            if (bossHealth == null)
+                bossHealth = FindFirstObjectByType<BossHealth>(FindObjectsInactive.Include);
+
+            if (bossHealth == null) return;
+
+            bossHealth.OnDied += StopTimer;
+            subscribedToBoss = true;
+        }
+
+        private void UnsubscribeFromBoss()
+        {
+            if (subscribedToBoss && bossHealth != null)
+                bossHealth.OnDied -= StopTimer;
+
+            subscribedToBoss = false;
         }
     }
 }
