@@ -5,6 +5,7 @@ using PolarityBreach.PolaritySystem;
 using PolarityBreach.UI;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace PolarityBreach.Level
 {
@@ -19,6 +20,13 @@ namespace PolarityBreach.Level
         [SerializeField] private float teleportDelay = 0.1f;
         [SerializeField] private bool closeAfterUse = true;
         [SerializeField] private CameraControlScript cameraControl;
+
+        [Header("Portal Timeline")]
+        [SerializeField] private PlayableDirector portalTimeline;
+        [SerializeField] private Transform portalCameraRig;
+        [SerializeField] private Transform portalCameraAnchor;
+        [SerializeField] private bool alignTimelineToPortal = true;
+        [SerializeField] private bool keepPortalCameraActiveUntilCrossDialoguesFinish = true;
 
         [Header("Next Room")]
         [SerializeField] private GameObject nextRoomSpawner;
@@ -113,6 +121,7 @@ namespace PolarityBreach.Level
         private IEnumerator TeleportRoutine(Transform player)
         {
             GameObject playerObj = player.gameObject;
+            yield return PlayPortalTimeline();
             playerObj.SetActive(false);
             yield return new WaitForSecondsRealtime(teleportDelay);
             player.position = destinationPoint.position;
@@ -153,6 +162,30 @@ namespace PolarityBreach.Level
                 portalVisuals.SetActive(false);
             else
                 isOpen = true;
+        }
+
+        private IEnumerator PlayPortalTimeline()
+        {
+            if (portalTimeline == null) yield break;
+
+            SetPortalCameraActive(true);
+
+            if (alignTimelineToPortal && portalCameraRig != null)
+            {
+                Transform anchor = portalCameraAnchor != null ? portalCameraAnchor : transform;
+                portalCameraRig.SetPositionAndRotation(anchor.position, anchor.rotation);
+            }
+
+            portalTimeline.time = 0d;
+            portalTimeline.Play();
+
+            while (portalTimeline.state == PlayState.Playing)
+                yield return null;
+
+            if (keepPortalCameraActiveUntilCrossDialoguesFinish)
+                SetPortalCameraActive(true);
+            else
+                SetPortalCameraActive(false);
         }
 
         private void PlayDialoguesOnCross()
@@ -213,6 +246,7 @@ namespace PolarityBreach.Level
 
         private void FinishCrossTransition()
         {
+            SetPortalCameraActive(false);
             PlayLevelMusicAfterCrossDialogues();
             SetPlayerShooting(true);
         }
@@ -252,6 +286,13 @@ namespace PolarityBreach.Level
             }
 
             return transform.position;
+        }
+
+        private void SetPortalCameraActive(bool active)
+        {
+            if (portalCameraRig == null) return;
+
+            portalCameraRig.gameObject.SetActive(active);
         }
 
         private void SetPlayerShooting(bool enabled)
