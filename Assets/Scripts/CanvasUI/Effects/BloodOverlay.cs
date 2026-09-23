@@ -23,7 +23,6 @@ namespace PolarityBreach.Player
 
         private float _hitAlpha;
         private float _pulseTimer;
-        private float _lastPulseValue;
 
         private void Awake()
         {
@@ -49,16 +48,6 @@ namespace PolarityBreach.Player
             float pulseSpeed = Mathf.Lerp(slowPulse, fastPulse, lowHealth);
             _pulseTimer += Time.deltaTime * pulseSpeed;
             float pulse = (Mathf.Sin(_pulseTimer) + 1f) * 0.5f * pulseAmount * lowHealth;
-
-            float rawPulse = (Mathf.Sin(_pulseTimer) + 1f) * 0.5f;
-
-            if (GamepadRumble.Instance != null && healthPercent <= GamepadRumble.Instance.LowHealthThreshold)
-            {
-                if (_lastPulseValue < 0.9f && rawPulse >= 0.9f)
-                    GamepadRumble.Instance.PulseLowHealth();
-            }
-
-            _lastPulseValue = rawPulse;
 
             if (_hitAlpha > 0f)
                 _hitAlpha -= hitFadeSpeed * Time.deltaTime;

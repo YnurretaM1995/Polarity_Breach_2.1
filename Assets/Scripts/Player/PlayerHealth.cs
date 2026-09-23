@@ -51,10 +51,12 @@ namespace PolarityBreach.Player
             {
                 SpawnsDamagePopups.Instance.DamageDone(amount, spawnPosition, false);
             }
-            
+
             bloodOverlay?.OnDamaged();
             cameraShake?.Shake(1.25f);
-            
+
+            if (GamepadRumble.Instance != null) GamepadRumble.Instance.PulseDamage();
+
             if (CurrentHealth <= 0f)
             {
                 CurrentHealth = 0f;

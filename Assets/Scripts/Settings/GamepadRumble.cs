@@ -12,15 +12,13 @@ namespace PolarityBreach.Player
         [SerializeField] private float chargeLowFrequency = 0.3f;
         [SerializeField] private float chargeHighFrequency = 0.5f;
 
-        [Header("Low Health")]
-        [SerializeField] private float lowHealthThreshold = 0.3f;
-        [SerializeField] private float lowHealthPulseStrength = 0.5f;
-        [SerializeField] private float lowHealthPulseDuration = 0.06f;
+        [Header("Damage Taken")]
+        [SerializeField] private float damageLowFrequency = 0.8f;
+        [SerializeField] private float damageHighFrequency = 0.6f;
+        [SerializeField] private float damagePulseDuration = 0.18f;
 
         private bool chargeActive;
         private Coroutine pulseRoutine;
-
-        public float LowHealthThreshold => lowHealthThreshold;
 
         private void Awake()
         {
@@ -37,6 +35,7 @@ namespace PolarityBreach.Player
         {
             if (!chargeActive) return;
             if (Gamepad.current == null) return;
+            if (pulseRoutine != null) return;
 
             Gamepad.current.SetMotorSpeeds(chargeLowFrequency, chargeHighFrequency);
         }
@@ -59,45 +58,42 @@ namespace PolarityBreach.Player
         public void SetChargeRumble(bool active)
         {
             chargeActive = active;
-            Debug.Log($"[Rumble] SetChargeRumble: {active}");
-
-            if (active && pulseRoutine != null)
-            {
-                StopCoroutine(pulseRoutine);
-                pulseRoutine = null;
-            }
 
             if (Gamepad.current == null) return;
 
             if (active)
             {
-                Gamepad.current.SetMotorSpeeds(chargeLowFrequency, chargeHighFrequency);
+                if (pulseRoutine == null)
+                    Gamepad.current.SetMotorSpeeds(chargeLowFrequency, chargeHighFrequency);
             }
-            else
+            else if (pulseRoutine == null)
             {
                 Gamepad.current.SetMotorSpeeds(0f, 0f);
             }
         }
 
-        public void PulseLowHealth()
+        public void PulseDamage()
         {
-            if (chargeActive) return;
             if (Gamepad.current == null) return;
 
             if (pulseRoutine != null) StopCoroutine(pulseRoutine);
-            pulseRoutine = StartCoroutine(PulseRoutine());
+            pulseRoutine = StartCoroutine(DamagePulseRoutine());
         }
 
-        private IEnumerator PulseRoutine()
+        private IEnumerator DamagePulseRoutine()
         {
-            Gamepad.current.SetMotorSpeeds(lowHealthPulseStrength, lowHealthPulseStrength);
+            Gamepad.current.SetMotorSpeeds(damageLowFrequency, damageHighFrequency);
 
-            yield return new WaitForSecondsRealtime(lowHealthPulseDuration);
-
-            if (!chargeActive && Gamepad.current != null)
-                Gamepad.current.SetMotorSpeeds(0f, 0f);
+            yield return new WaitForSecondsRealtime(damagePulseDuration);
 
             pulseRoutine = null;
+
+            if (Gamepad.current == null) yield break;
+
+            if (chargeActive)
+                Gamepad.current.SetMotorSpeeds(chargeLowFrequency, chargeHighFrequency);
+            else
+                Gamepad.current.SetMotorSpeeds(0f, 0f);
         }
 
         public void StopAll()
