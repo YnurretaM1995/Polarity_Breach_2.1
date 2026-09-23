@@ -35,20 +35,28 @@ namespace PolarityBreach.PolaritySystem
         private PolarityComponent _polarity;
         private float _spawnTime;
         private readonly HashSet<Collider> _hitColliders = new HashSet<Collider>();
+        [SerializeField] private TrailPolarityColor polarityColor;
 
-        private void Awake() => _polarity = GetComponent<PolarityComponent>();
+        private void Awake()
+        {
+            _polarity = GetComponent<PolarityComponent>();
+            if (polarityColor == null) polarityColor = GetComponent<TrailPolarityColor>();
+        }
 
         private void OnEnable()
         {
             _spawnTime = Time.time;
             _hitColliders.Clear();
 
+            if (polarityColor != null) polarityColor.ApplyCurrent();
+
             if (trail != null) trail.Clear();
 
             if (particles != null)
             {
-                particles.Clear();
-                particles.Play();
+                particles.Clear(true);
+                particles.Simulate(0f, true, true);
+                particles.Play(true);
             }
         }
 
