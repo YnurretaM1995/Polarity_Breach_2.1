@@ -19,9 +19,42 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private Color blackColor = Color.black;
 
         private PolarityComponent polarity;
+        private bool cached;
 
         private void Awake()
         {
+            CacheReferences();
+        }
+
+        private void OnEnable()
+        {
+            CacheReferences();
+
+            if (polarity == null) return;
+
+            polarity.OnPolarityChanged += Apply;
+            Apply(polarity.CurrentPolarity);
+        }
+
+        private void OnDisable()
+        {
+            if (polarity != null)
+                polarity.OnPolarityChanged -= Apply;
+        }
+
+        public void ApplyCurrent()
+        {
+            CacheReferences();
+
+            if (polarity == null) return;
+
+            Apply(polarity.CurrentPolarity);
+        }
+
+        private void CacheReferences()
+        {
+            if (cached) return;
+
             polarity = GetComponent<PolarityComponent>();
 
             if (trail == null)
@@ -29,17 +62,8 @@ namespace PolarityBreach.PolaritySystem
 
             if (particles == null || particles.Length == 0)
                 particles = GetComponentsInChildren<ParticleSystem>();
-        }
 
-        private void OnEnable()
-        {
-            polarity.OnPolarityChanged += Apply;
-            Apply(polarity.CurrentPolarity);
-        }
-
-        private void OnDisable()
-        {
-            polarity.OnPolarityChanged -= Apply;
+            cached = true;
         }
 
         private void Apply(Polarity value)
