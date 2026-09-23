@@ -220,13 +220,16 @@ namespace PolarityBreach.PolaritySystem
             dir.y = 0f;
             dir.Normalize();
 
-            ShootProjectile projectile = pool.GetProjectile(_muzzle.position, Quaternion.LookRotation(dir));
+            ShootProjectile projectile = pool.GetInactiveProjectile(_muzzle.position, Quaternion.LookRotation(dir));
 
             if (projectile == null) return;
+
             projectile.SetStats(speed, damage, knockbackForce);
 
             var bulletPolarity = projectile.GetComponent<PolarityComponent>();
             if (bulletPolarity != null) bulletPolarity.SetPolarity(_polarity.CurrentPolarity);
+
+            projectile.gameObject.SetActive(true);
 
             _lastShotTime = Time.time;
         }
