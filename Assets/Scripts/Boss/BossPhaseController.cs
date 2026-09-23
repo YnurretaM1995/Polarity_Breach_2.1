@@ -1,6 +1,7 @@
 using PolarityBreach.Enemy;
 using PolarityBreach.PolaritySystem;
 using UnityEngine;
+using System.Collections;
 
 namespace PolarityBreach.Boss
 {
@@ -22,6 +23,9 @@ namespace PolarityBreach.Boss
 
         [Header("Player Shooting")]
         [SerializeField] private TestShooter playerShooter;
+
+        [Header("Start Delay")]
+        [SerializeField] private float attackStartDelay = 1f;
 
         private BossHealth health;
         private PolarityComponent shieldPolarity;
@@ -73,12 +77,18 @@ namespace PolarityBreach.Boss
             nextTransitionWaveIndex = firstTransitionWaveIndex;
 
             StopAllAttacks();
-            StartCurrentPhase();
+            StartCoroutine(StartFirstPhaseDelayed());
 
             if (spawnWaveOnStart)
             {
                 SpawnNextTransitionWave();
             }
+        }
+
+        private IEnumerator StartFirstPhaseDelayed()
+        {
+            yield return new WaitForSeconds(attackStartDelay);
+            StartCurrentPhase();
         }
 
         private void Update()
